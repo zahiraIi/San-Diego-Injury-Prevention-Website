@@ -142,11 +142,11 @@
             min-height: 400px; /* ensures all pillars have same height */
         }
         .pillar-header {
-            height: 220px; /* adjust to tallest image + title */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start; /* header content stays top-aligned */
+            margin-bottom: 20px;
         }
         .pillar img {
             width: 80%;
@@ -155,14 +155,13 @@
         .pillar-subtitle {
             font-family: 'Rosehot', sans-serif;
             font-size: 30px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         .pillar-description {
             font-family: 'Charter', sans-serif;
             font-size: 17px;
-            margin-top: auto; /* pushes description to the bottom */
+            margin-top: 10px; /* pushes description to the bottom */
             opacity: 90%;
-            margin-bottom: 20px;
         }
 
         /* Divider */
@@ -182,27 +181,25 @@
             margin-bottom: 150px;
         }
         .howtojoin-container {
-            position: relative;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            gap: 40px;
+            align-items: flex-start; /* keep items aligned at the top */
+            gap: 80px;
             max-width: 1200px;
             margin: 0 auto;
-            flex-wrap: wrap; /* ensures responsiveness */
-            padding-right: 420px;
+            flex-wrap: nowrap;       /* prevent photo from dropping below */
+            padding: 0 40px;
         }
         /* Left side text */
         .howtojoin-text h1 {
             font-family: 'Rosehot', sans-serif;
             font-size: 80px; 
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             color: #102f48;
-            margin-left: 80px;
         }
         .howtojoin-text ul {
             list-style-type: disc;
-            padding-left: 125px;
+            padding-left: 40px;
         }
         .howtojoin-text li {
             font-family: 'Charter', sans-serif;
@@ -213,11 +210,9 @@
         }
         /* Right side image + squares */
         .howtojoin-image-container {
-            position: absolute;
-            top: 150px;
-            right: 40px;
-            width: 400px; /* adjust as needed */
-            height: auto;
+            position: relative;
+            width: 480px; /* adjust as needed */
+            margin-top: 100px;
         }
         .howtojoin-image-container img {
             width: 100%;
@@ -266,7 +261,7 @@
             <a href="apply.html">Apply</a>
             <a href="about.html">About Us</a>
             <a href="members.html">Members</a>
-            <a href="recognitions.html">Volunteers</a>
+            <a href="recognitions.html">Volunteer Recognitions</a>
             <a href="contact.html">Contact Us</a>
             <a href="faq.html">FAQ</a>
             <a href="more.html">More</a>
@@ -326,7 +321,14 @@
                     <img src="pillar2.png" alt="Pillar 2 Photo">
                     <h2 class="pillar-subtitle">Resource Dissemination</h2>
                 </div>
-                <p class="pillar-description">[text here]</p>
+                <p class="pillar-description">Many people in San Diego, from 
+                    elders to new families, often lack access to injury 
+                    prevention necessities. Our collaborations, such as with the
+                     Dignity at Home Fall Prevention Program, ensure that those 
+                     we serve are aware of and are able to access tools that 
+                     promote their long-term health. We work with our volunteers
+                      to identify and connect each person who comes to us with 
+                      what they need.</p>
             </div>
             <div class="pillar" style="background-color:#164862; color: 
             rgba(254, 248, 237, 0.9);">
@@ -334,7 +336,15 @@
                     <img src="pillar3.png" alt="Pillar 3 Photo">
                     <h2 class="pillar-subtitle">Education</h2>
                 </div>
-                <p class="pillar-description">[text here]</p>
+                <p class="pillar-description">We seek to educate people about 
+                    injury prevention topics to compliment the resources we 
+                    distribute. As a student organization, we utilize modern 
+                    approaches and research to address problems. Our educational
+                     initiatives are supported by our dedicated committees, as 
+                     well as our volunteering affiliation with UCSD Trauma. We 
+                     also take pride in developing presentations for children 
+                     that focus on sports and injury science, general health, 
+                     and careers in medicine.</p>
             </div>
             <hr class="red-line">
         </div>
