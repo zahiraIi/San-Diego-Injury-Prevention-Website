@@ -18,16 +18,16 @@ const staff = [
     reason: "Wants to support his community by increasing overall wellness through fitness and education.",
   },
   {
+    name: "Sonja Wang",
+    role: "Vice President",
+    desc: "Other commitments: volunteering. Hobbies: creating art, figure skating.",
+    reason: "Focused on empowering individuals to enjoy safe and independent lives.",
+  },
+  {
     name: "Medha Nemani",
     role: "Secretary",
     desc: "Other commitments: research. Hobbies: piano, crafts, writing.",
     reason: "Passionate about ensuring people are healthy and happy in all phases of their life.",
-  },
-  {
-    name: "Sonja Wang",
-    role: "Program Researcher",
-    desc: "Other commitments: volunteering. Hobbies: creating art, figure skating.",
-    reason: "Focused on empowering individuals to enjoy safe and independent lives.",
   },
   {
     name: "Payton Chung",

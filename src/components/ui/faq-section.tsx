@@ -96,16 +96,16 @@ export default function FAQSection({
                   />
                 </svg>
               </div>
-              <p 
+              <div 
                 className={cn(
-                  "text-sm md:text-base text-accent-blue font-charter transition-all duration-500 ease-in-out max-w-md",
+                  "text-sm md:text-base text-accent-blue font-charter transition-all duration-500 ease-in-out max-w-md whitespace-pre-line",
                   openIndex === index 
-                    ? "opacity-100 max-h-[300px] translate-y-0 pt-4" 
+                    ? "opacity-100 max-h-[800px] translate-y-0 pt-4" 
                     : "opacity-0 max-h-0 -translate-y-2 overflow-hidden"
                 )}
               >
                 {faq.answer}
-              </p>
+              </div>
             </motion.div>
           ))}
         </div>

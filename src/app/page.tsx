@@ -33,6 +33,13 @@ const staff = [
     reason: "Wants to support his community by increasing overall wellness through fitness and education.",
   },
   {
+    name: "Sonja Wang",
+    role: "Vice President",
+    avatar: "/images/team/sonjawang.webp",
+    desc: "Sonja Wang is the vice president of our program! In addition to her involvement in SDIPP and volunteering, she enjoys creating art, figure skating, and dancing. Sonja is focused on empowering individuals to enjoy safe and independent lives.",
+    reason: "Focused on empowering individuals to enjoy safe and independent lives.",
+  },
+  {
     name: "Medha Nemani",
     role: "Secretary",
     avatar: "/images/team/medhanamani.webp",
@@ -45,13 +52,6 @@ const staff = [
     avatar: "/images/team/paytonchung.webp",
     desc: "Payton Chung is the treasurer of our program! His other commitments include research on breast cancer metastasis and leading other UCSD organizations like Quiz Bowl. Some of his hobbies include cooking, baking, board/tabletop games, and trivia. Payton is passionate about helping others in the San Diego community in an administrative role.",
     reason: "Passionate about helping others in the San Diego community in an administrative role.",
-  },
-  {
-    name: "Sonja Wang",
-    role: "Program Researcher",
-    avatar: "/images/team/sonjawang.webp",
-    desc: "Sonja Wang is the program researcher of our program! In addition to her involvement in SDIPP and volunteering, she enjoys creating art, figure skating, and dancing. Sonja is focused on empowering individuals to enjoy safe and independent lives.",
-    reason: "Focused on empowering individuals to enjoy safe and independent lives.",
   },
   {
     name: "Aarav Rajpara",
@@ -427,7 +427,7 @@ export default function Home() {
           <FAQSection
             faqs={[
               { question: "How do I become a member?", answer: "Refer to the Apply section on this website!" },
-              { question: "What are the benefits?", answer: "Join a supportive community, get Kaplan benefits (15% off courses), and make a real impact." },
+              { question: "What are the benefits of being an active member?", answer: "As an active member, you'll be part of a supportive, purpose-driven community! You get the chance to give back, build meaningful connections, and make a real impact while growing personally.\n\nMany members are inspired by personal experiences, such as helping older adults stay mobile and independent so they can enjoy time with family and pursue hobbies. These shared stories and goals create a strong sense of community and fulfillment in SDIPP.\n\nKaplan benefits: Since we've partnered with Kaplan (a company that provides prep courses for MCAT, law school, etc.), UCSD SDIPP members can get:\n• 15% off on Kaplan MCAT courses\n• Exclusive access to a Kaplan expert to help you build your study plan and find the best prep option\n• A free study guide and access to upcoming teacher-led events" },
               { question: "How do I get certified for volunteer hours?", answer: "Our master spreadsheet logs your hours. More info coming soon." }
             ]}
             title="Looking for answers?"

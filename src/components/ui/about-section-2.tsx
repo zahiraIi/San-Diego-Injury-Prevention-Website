@@ -1,6 +1,5 @@
 "use client";
 import { TimelineContent } from "@/components/ui/timeline-animation";
-import { Heart } from "lucide-react";
 import { useRef } from "react";
 
 export default function AboutSection2() {
@@ -96,14 +95,6 @@ export default function AboutSection2() {
                   Building healthier communities
                 </div>
               </TimelineContent>
-
-              <a
-                href="#our-focus"
-                className="bg-accent-blue gap-2 font-medium shadow-lg shadow-accent-blue/50 text-white h-12 px-6 rounded-full text-sm inline-flex items-center cursor-pointer hover:bg-accent-red transition-colors"
-              >
-                <Heart fill="white" size={16} />
-                Our Focus
-              </a>
             </div>
           </div>
         </div>
