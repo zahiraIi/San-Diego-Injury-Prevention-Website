@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const GBM_IMAGES = [
-  "/images/GBM/GBM1.JPG",
-  "/images/GBM/GBM2.JPG",
-  "/images/GBM/GBM3.JPG",
-  "/images/GBM/GBM4.JPG",
-  "/images/GBM/GBM5.JPG",
-  "/images/GBM/GBM6.JPG",
-  "/images/GBM/GBM7.JPG",
-  "/images/GBM/GBM8.JPG",
-  "/images/GBM/GMB9.JPG",
+  "/images/GBM/GBM1.webp",
+  "/images/GBM/GBM2.webp",
+  "/images/GBM/GBM3.webp",
+  "/images/GBM/GBM4.webp",
+  "/images/GBM/GBM5.webp",
+  "/images/GBM/GBM6.webp",
+  "/images/GBM/GBM7.webp",
+  "/images/GBM/GBM8.webp",
+  "/images/GBM/GMB9.webp",
 ];
 
 export default function GBMGallery() {
