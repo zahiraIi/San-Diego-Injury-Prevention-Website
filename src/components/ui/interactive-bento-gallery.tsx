@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react';
+import Image from 'next/image';
 
 
 // MediaItemType defines the structure of a media item
@@ -119,13 +120,13 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
     }
 
     return (
-        <img
-            src={item.url} // Image source URL
-            alt={item.title} // Alt text for the image
-            className={`${className} object-cover cursor-pointer`} // Style the image
-            onClick={onClick} // Trigger onClick when the image is clicked
-            loading="lazy" // Lazy load the image for performance
-            decoding="async" // Decode the image asynchronously
+        <Image
+            src={item.url}
+            alt={item.title}
+            fill
+            className={`${className} object-cover cursor-pointer`}
+            onClick={onClick}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
     );
 };
@@ -300,9 +301,7 @@ const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = ({ media
         <div className="container mx-auto px-4 py-8 max-w-7xl">
             <div className="mb-8 text-center">
                 <motion.h1
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent 
-                             bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900
-                             dark:from-white dark:via-gray-200 dark:to-white"
+                    className="text-6xl md:text-7xl font-rosehot text-foreground mb-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}

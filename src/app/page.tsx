@@ -7,7 +7,7 @@ import { GradualSpacing } from "@/components/ui/gradual-spacing";
 import { WordPullUp } from "@/components/ui/word-pull-up";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import TeamSection from "@/components/ui/team-section";
-import FAQSection from "@/components/ui/faq-section";
+import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
 import ContactForm from "@/components/ui/contact-form";
 import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery";
 import { FeaturesSectionWithHoverEffects } from "@/components/ui/feature-section-with-hover-effects";
@@ -16,6 +16,7 @@ import { HowItWorks } from "@/components/ui/how-it-works";
 import { IconHeartHandshake, IconCoins, IconBook } from "@tabler/icons-react";
 import { useEffect } from "react";
 import Lenis from "lenis";
+import GBMGallery from "@/components/ui/gbm-gallery";
 
 const staff = [
   {
@@ -207,24 +208,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pillars Section */}
-      <section id="pillars" className="min-h-screen flex items-center px-6 py-32">
+      {/* About Section */}
+      <section id="about" className="min-h-screen">
         <div className="container mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-6xl font-rosehot text-center text-accent-red mb-16"
+            className="text-center mb-20 pt-20"
           >
-            Our Pillars
-          </motion.h2>
-          
+            <h2 className="text-6xl md:text-7xl font-rosehot text-foreground mb-4">About Us</h2>
+            <p className="text-xl text-accent-blue font-charter max-w-2xl mx-auto mb-8">
+              Meet the team behind SDIPP
+            </p>
+            <div className="w-24 h-1 bg-accent-red mx-auto" />
+          </motion.div>
+
+          <AboutSection2 />
+
+          {/* Our Pillars */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="mt-20 mb-20"
           >
             <FeaturesSectionWithHoverEffects
               features={[
@@ -246,26 +254,6 @@ export default function Home() {
               ]}
             />
           </motion.div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="min-h-screen">
-        <div className="container mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20 pt-20"
-          >
-            <h2 className="text-6xl md:text-7xl font-rosehot text-foreground mb-4">About Us</h2>
-            <p className="text-xl text-accent-blue font-charter max-w-2xl mx-auto mb-8">
-              Meet the team behind SDIPP
-            </p>
-            <div className="w-24 h-1 bg-accent-red mx-auto" />
-          </motion.div>
-
-          <AboutSection2 />
 
           <TeamSection 
             members={staff}
@@ -347,8 +335,32 @@ export default function Home() {
                   url: "/images/volunteering/volunteer8.webp",
                   span: "col-span-2 row-span-3",
                 },
+                {
+                  id: 9,
+                  type: "image",
+                  title: "Community Service",
+                  desc: "Making a difference together",
+                  url: "/images/volunteering/volunteer9.webp",
+                  span: "col-span-1 row-span-3",
+                },
+                {
+                  id: 10,
+                  type: "image",
+                  title: "Student Volunteers",
+                  desc: "Students helping seniors",
+                  url: "/images/volunteering/volunteer10.webp",
+                  span: "col-span-2 row-span-3",
+                },
+                {
+                  id: 11,
+                  type: "image",
+                  title: "Active Living",
+                  desc: "Promoting healthy lifestyles",
+                  url: "/images/volunteering/volunteer 11.webp",
+                  span: "col-span-1 row-span-3",
+                },
               ]}
-              title="Gallery"
+              title="Volunteering"
               description="Explore our community engagement and outreach activities"
             />
           </motion.div>
@@ -401,6 +413,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* GBM Gallery Section */}
+      <section id="gallery" className="min-h-screen flex items-center px-6 py-32 bg-background">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-6xl md:text-7xl font-rosehot text-foreground mb-4">GBM Gallery</h2>
+            <div className="w-24 h-1 bg-accent-red mx-auto" />
+          </motion.div>
+          <GBMGallery />
+        </div>
+      </section>
+
       {/* Apply Section */}
       <section id="apply" className="min-h-screen flex items-center px-6 py-32">
         <div className="container mx-auto">
@@ -424,16 +452,42 @@ export default function Home() {
       {/* FAQ Section */}
       <section id="faq" className="min-h-screen flex items-center px-6 py-32">
         <div className="container mx-auto">
-          <FAQSection
-            faqs={[
-              { question: "How do I become a member?", answer: "Refer to the Apply section on this website!" },
-              { question: "What are the benefits of being an active member?", answer: "As an active member, you'll be part of a supportive, purpose-driven community! You get the chance to give back, build meaningful connections, and make a real impact while growing personally.\n\nMany members are inspired by personal experiences, such as helping older adults stay mobile and independent so they can enjoy time with family and pursue hobbies. These shared stories and goals create a strong sense of community and fulfillment in SDIPP.\n\nKaplan benefits: Since we've partnered with Kaplan (a company that provides prep courses for MCAT, law school, etc.), UCSD SDIPP members can get:\n• 15% off on Kaplan MCAT courses\n• Exclusive access to a Kaplan expert to help you build your study plan and find the best prep option\n• A free study guide and access to upcoming teacher-led events" },
-              { question: "How do I get certified for volunteer hours?", answer: "Our master spreadsheet logs your hours. More info coming soon." }
-            ]}
-            title="Looking for answers?"
-            subtitle="Find answers to common questions about our program and membership."
-            imageUrl="/images/volunteering/volunteer2.webp"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-6xl md:text-7xl font-rosehot text-foreground mb-4">FAQ</h2>
+            <p className="text-xl text-accent-blue font-charter max-w-2xl mx-auto mb-8">
+              Find answers to common questions about our program and membership
+            </p>
+            <div className="w-24 h-1 bg-accent-red mx-auto" />
+          </motion.div>
+          <div className="flex justify-center">
+            <FaqAccordion
+              data={[
+                {
+                  id: 1,
+                  question: "How do I become a member?",
+                  answer: "Refer to the Apply section on this website!",
+                },
+                {
+                  id: 2,
+                  question: "What are the benefits of being an active member?",
+                  answer: "As an active member, you'll be part of a supportive, purpose-driven community! You get the chance to give back, build meaningful connections, and make a real impact while growing personally.\n\nMany members are inspired by personal experiences, such as helping older adults stay mobile and independent so they can enjoy time with family and pursue hobbies. These shared stories and goals create a strong sense of community and fulfillment in SDIPP.\n\nKaplan benefits: Since we've partnered with Kaplan (a company that provides prep courses for MCAT, law school, etc.), UCSD SDIPP members can get:\n• 15% off on Kaplan MCAT courses\n• Exclusive access to a Kaplan expert to help you build your study plan and find the best prep option\n• A free study guide and access to upcoming teacher-led events",
+                },
+                {
+                  id: 3,
+                  question: "How do I get certified for volunteer hours?",
+                  answer: "Our master spreadsheet logs your hours. More info coming soon.",
+                },
+              ]}
+              className="max-w-[700px] w-full"
+              timestamp={undefined}
+              answerClassName="max-w-full whitespace-pre-line"
+            />
+          </div>
         </div>
       </section>
 
