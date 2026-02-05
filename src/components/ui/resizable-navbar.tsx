@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import { IconMenu2, IconX, IconChevronDown } from "@tabler/icons-react";
 import {
   motion,
   AnimatePresence,
@@ -11,6 +11,11 @@ import Link from "next/link";
 
 import React, { useRef, useState } from "react";
 
+interface NavItem {
+  name: string;
+  link: string;
+  children?: { name: string; link: string }[];
+}
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -24,10 +29,7 @@ interface NavBodyProps {
 }
 
 interface NavItemsProps {
-  items: {
-    name: string;
-    link: string;
-  }[];
+  items: NavItem[];
   className?: string;
   onItemClick?: () => void;
 }
@@ -91,7 +93,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "none",
-        width: visible ? "40%" : "100%",
+        width: visible ? "50%" : "100%",
         y: visible ? 20 : 0,
       }}
       transition={{
@@ -100,7 +102,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 50,
       }}
       style={{
-        minWidth: "800px",
+        minWidth: "700px",
       }}
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
@@ -115,33 +117,94 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState<number | null>(null);
 
   return (
     <motion.div
-      onMouseLeave={() => setHovered(null)}
+      onMouseLeave={() => {
+        setHovered(null);
+        setDropdownOpen(null);
+      }}
       className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-1 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-1",
         className,
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          onMouseEnter={() => setHovered(idx)}
-          onClick={() => {
-            if (onItemClick) onItemClick();
+        <div
+          key={`nav-item-${idx}`}
+          className="relative"
+          onMouseEnter={() => {
+            setHovered(idx);
+            if (item.children) setDropdownOpen(idx);
           }}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300 font-rosehot"
-          key={`link-${idx}`}
-          href={item.link}
+          onMouseLeave={() => {
+            if (!item.children) setHovered(null);
+          }}
         >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
+          {item.children ? (
+            // Dropdown trigger
+            <button
+              className="relative px-3 py-2 text-neutral-600 dark:text-neutral-300 font-rosehot flex items-center gap-1"
+            >
+              {hovered === idx && (
+                <motion.div
+                  layoutId="hovered"
+                  className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+                />
+              )}
+              <span className="relative z-20">{item.name}</span>
+              <IconChevronDown className={cn(
+                "relative z-20 w-4 h-4 transition-transform",
+                dropdownOpen === idx && "rotate-180"
+              )} />
+            </button>
+          ) : (
+            // Regular link
+            <Link
+              onClick={() => {
+                if (onItemClick) onItemClick();
+              }}
+              className="relative px-3 py-2 text-neutral-600 dark:text-neutral-300 font-rosehot block"
+              href={item.link}
+            >
+              {hovered === idx && (
+                <motion.div
+                  layoutId="hovered"
+                  className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+                />
+              )}
+              <span className="relative z-20">{item.name}</span>
+            </Link>
           )}
-          <span className="relative z-20">{item.name}</span>
-        </Link>
+
+          {/* Dropdown menu */}
+          <AnimatePresence>
+            {item.children && dropdownOpen === idx && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full left-0 mt-2 min-w-[160px] rounded-lg bg-white dark:bg-neutral-900 shadow-lg border border-gray-200 dark:border-neutral-700 py-2 z-50"
+              >
+                {item.children.map((child, childIdx) => (
+                  <Link
+                    key={`dropdown-${idx}-${childIdx}`}
+                    href={child.link}
+                    onClick={() => {
+                      setDropdownOpen(null);
+                      if (onItemClick) onItemClick();
+                    }}
+                    className="block px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 font-rosehot transition-colors"
+                  >
+                    {child.name}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       ))}
     </motion.div>
   );
