@@ -229,7 +229,6 @@ export default function MorePage() {
                 className="w-full h-[500px] border-0"
                 title="SDIPP Instagram Feed"
                 loading="lazy"
-                allowTransparency={true}
                 allow="encrypted-media"
               />
             </div>

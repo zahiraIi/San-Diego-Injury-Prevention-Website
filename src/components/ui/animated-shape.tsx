@@ -1,69 +1,44 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { animate, svg, utils } from 'animejs';
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface ShadowProps {
   className?: string;
 }
 
 export function Shadow({ className }: ShadowProps) {
-  const svgRef = useRef<SVGSVGElement>(null);
-  const path1Ref = useRef<SVGPolygonElement>(null);
-  const path2Ref = useRef<SVGPolygonElement>(null);
+  const [points, setPoints] = useState("152,4 170,38 204,56 170,74 152,108 134,74 100,56 134,38");
 
   useEffect(() => {
-    if (!svgRef.current || !path1Ref.current || !path2Ref.current) return;
+    const interval = setInterval(() => {
+      setPoints(generatePoints());
+    }, 800);
 
-    const $path1 = path1Ref.current;
-    const $path2 = path2Ref.current;
-
-    function animateRandomPoints() {
-      // Update the points attribute on #path-2
-      const newPoints = generatePoints();
-      $path2.setAttribute('points', newPoints);
-      
-      // Morph the points of #path-1 into #path-2
-      animate($path1, {
-        points: svg.morphTo($path2),
-        ease: 'inOutCirc',
-        duration: 500,
-        onComplete: animateRandomPoints,
-      });
-    }
-
-    // Start the animation
-    animateRandomPoints();
-
-    // Cleanup function
-    return () => {
-      // Stop any ongoing animations
-      if (svgRef.current) {
-        animate.remove(svgRef.current);
-      }
-    };
+    return () => clearInterval(interval);
   }, []);
 
-  // A function to generate random points on #path-2 on each iteration
+  // A function to generate random points
   function generatePoints(): string {
-    const total = utils.random(4, 64);
-    const r1 = utils.random(4, 56);
+    const total = Math.floor(Math.random() * 60) + 4; // 4-64
+    const r1 = Math.floor(Math.random() * 52) + 4; // 4-56
     const r2 = 56;
     const isOdd = (n: number): boolean => n % 2 === 1;
-    let points = '';
+    let newPoints = '';
     
-    for (let i = 0, l = isOdd(total) ? total + 1 : total; i < l; i++) {
+    const l = isOdd(total) ? total + 1 : total;
+    for (let i = 0; i < l; i++) {
       const r = isOdd(i) ? r1 : r2;
       const a = (2 * Math.PI * i) / l - Math.PI / 2;
-      const x = 152 + utils.round(r * Math.cos(a), 0);
-      const y = 56 + utils.round(r * Math.sin(a), 0);
-      points += `${x},${y} `;
+      const x = 152 + Math.round(r * Math.cos(a));
+      const y = 56 + Math.round(r * Math.sin(a));
+      newPoints += `${x},${y} `;
     }
-    return points;
+    return newPoints.trim();
   }
 
   return (
-    <svg ref={svgRef} viewBox="0 0 304 112" className={className}>
+    <svg viewBox="0 0 304 112" className={className}>
       <g
         strokeWidth="2"
         stroke="currentColor"
@@ -71,16 +46,13 @@ export function Shadow({ className }: ShadowProps) {
         fill="none"
         fillRule="evenodd"
       >
-        <polygon
-          ref={path1Ref}
-          id="path-1"
-          points="152,4 170,38 204,56 170,74 152,108 134,74 100,56 134,38"
-        />
-        <polygon
-          ref={path2Ref}
-          style={{ opacity: 0 }}
-          id="path-2"
-          points="152,4 170,38 204,56 170,74 152,108 134,74 100,56 134,38"
+        <motion.polygon
+          animate={{ points }}
+          transition={{ 
+            duration: 0.5, 
+            ease: "easeInOut"
+          }}
+          points={points}
         />
       </g>
     </svg>
