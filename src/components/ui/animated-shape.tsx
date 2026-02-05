@@ -1,41 +1,41 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 interface ShadowProps {
   className?: string;
 }
 
+// Fixed number of points for smooth interpolation
+const POINT_COUNT = 12;
+
+function generatePoints(): string {
+  const r1 = Math.random() * 40 + 16; // inner radius 16-56
+  const r2 = 56; // outer radius stays constant
+  let points = '';
+
+  for (let i = 0; i < POINT_COUNT; i++) {
+    const r = i % 2 === 1 ? r1 : r2;
+    const a = (2 * Math.PI * i) / POINT_COUNT - Math.PI / 2;
+    const x = 152 + Math.round(r * Math.cos(a));
+    const y = 56 + Math.round(r * Math.sin(a));
+    points += `${x},${y} `;
+  }
+  return points.trim();
+}
+
 export function Shadow({ className }: ShadowProps) {
-  const [points, setPoints] = useState("152,4 170,38 204,56 170,74 152,108 134,74 100,56 134,38");
+  const [points, setPoints] = useState(() => generatePoints());
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPoints(generatePoints());
-    }, 800);
-
-    return () => clearInterval(interval);
+  const updatePoints = useCallback(() => {
+    setPoints(generatePoints());
   }, []);
 
-  // A function to generate random points
-  function generatePoints(): string {
-    const total = Math.floor(Math.random() * 60) + 4; // 4-64
-    const r1 = Math.floor(Math.random() * 52) + 4; // 4-56
-    const r2 = 56;
-    const isOdd = (n: number): boolean => n % 2 === 1;
-    let newPoints = '';
-    
-    const l = isOdd(total) ? total + 1 : total;
-    for (let i = 0; i < l; i++) {
-      const r = isOdd(i) ? r1 : r2;
-      const a = (2 * Math.PI * i) / l - Math.PI / 2;
-      const x = 152 + Math.round(r * Math.cos(a));
-      const y = 56 + Math.round(r * Math.sin(a));
-      newPoints += `${x},${y} `;
-    }
-    return newPoints.trim();
-  }
+  useEffect(() => {
+    const interval = setInterval(updatePoints, 500);
+    return () => clearInterval(interval);
+  }, [updatePoints]);
 
   return (
     <svg viewBox="0 0 304 112" className={className}>
@@ -48,11 +48,10 @@ export function Shadow({ className }: ShadowProps) {
       >
         <motion.polygon
           animate={{ points }}
-          transition={{ 
-            duration: 0.5, 
-            ease: "easeInOut"
+          transition={{
+            duration: 0.4,
+            ease: [0.4, 0, 0.2, 1],
           }}
-          points={points}
         />
       </g>
     </svg>
