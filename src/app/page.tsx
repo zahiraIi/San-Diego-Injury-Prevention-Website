@@ -7,6 +7,7 @@ import { WordPullUp } from "@/components/ui/word-pull-up";
 import Link from "next/link";
 import { FeaturesSectionWithHoverEffects } from "@/components/ui/feature-section-with-hover-effects";
 import { IconHeartHandshake, IconCoins, IconBook } from "@tabler/icons-react";
+import { Shadow } from "@/components/ui/animated-shape";
 
 export default function Home() {
   return (
@@ -114,8 +115,8 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="grid md:grid-cols-2 gap-12 items-center"
           >
-            {/* Rocket Illustration */}
-            <div className="flex justify-center">
+            {/* Animated Shape */}
+            <div className="flex justify-center items-center">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -123,29 +124,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative"
               >
-                <svg
-                  viewBox="0 0 200 300"
-                  className="w-64 h-96 md:w-80 md:h-[450px]"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* Rocket body */}
-                  <ellipse cx="100" cy="140" rx="45" ry="80" fill="#8a9bae" />
-                  {/* Rocket nose */}
-                  <path d="M55 140 L100 30 L145 140" fill="#c45c3e" />
-                  {/* Window */}
-                  <circle cx="100" cy="120" r="20" fill="#1a3a5c" stroke="#6b7f94" strokeWidth="4" />
-                  <circle cx="100" cy="120" r="12" fill="#4a6a8a" />
-                  {/* Left fin */}
-                  <path d="M55 180 L30 250 L55 220" fill="#c45c3e" />
-                  {/* Right fin */}
-                  <path d="M145 180 L170 250 L145 220" fill="#c45c3e" />
-                  {/* Flames */}
-                  <path d="M70 220 L100 290 L130 220" fill="#e07850" />
-                  <path d="M80 220 L100 270 L120 220" fill="#f0a060" />
-                  {/* Orbit ring */}
-                  <ellipse cx="100" cy="150" rx="70" ry="25" stroke="#6b8faa" strokeWidth="3" fill="none" opacity="0.6" transform="rotate(-20 100 150)" />
-                </svg>
+                <Shadow className="w-72 h-40 md:w-96 md:h-56 text-[#b8c5d4]" />
               </motion.div>
             </div>
             

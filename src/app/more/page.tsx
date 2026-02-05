@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import PageHeader from "@/components/ui/PageHeader";
-import { IconExternalLink, IconFileTypePdf, IconCalendarEvent } from "@tabler/icons-react";
+import { IconExternalLink, IconFileTypePdf, IconBrandInstagram } from "@tabler/icons-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -87,56 +87,67 @@ export default function MorePage() {
             </div>
           </div>
 
-          {/* PDF Preview Card */}
+          {/* Screenshot Preview Card */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="group"
           >
-            <Link
-              href="https://www.sandiegocounty.gov/content/dam/sdc/hhsa/programs/ais/fall-prevention/FPTF%201-Pager.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block group"
-            >
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow">
-                {/* PDF Preview Header */}
-                <div className="bg-gradient-to-r from-accent-blue to-[#1a3a5c] p-6 text-white">
-                  <div className="flex items-center gap-3 mb-3">
-                    <IconFileTypePdf className="w-10 h-10" />
-                    <span className="text-sm font-medium uppercase tracking-wider">PDF Document</span>
-                  </div>
-                  <h3 className="text-xl font-bold">San Diego Fall Prevention Task Force</h3>
-                  <p className="text-sm opacity-80 mt-1">1-Page Information Sheet</p>
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-2xl transition-all duration-300">
+              {/* Browser Header */}
+              <div className="bg-gray-100 px-4 py-3 flex items-center gap-3 border-b border-gray-200">
+                {/* Traffic lights */}
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
                 </div>
-                
-                {/* Preview Content */}
-                <div className="p-6 bg-gray-50">
-                  <div className="space-y-3 text-sm text-gray-600">
-                    <div className="flex items-start gap-2">
-                      <IconCalendarEvent className="w-5 h-5 text-accent-blue flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-semibold text-gray-800">Monthly Meetings</p>
-                        <p>2nd Tuesday of the month | 1:00 pm – 2:00 pm</p>
-                      </div>
-                    </div>
-                    <div className="border-t pt-3">
-                      <p className="font-semibold text-gray-800 mb-1">Services Offered:</p>
-                      <ul className="space-y-1">
-                        <li>• Speakers Bureau (free presentations)</li>
-                        <li>• Balance Screeners Bureau (fall risk assessments)</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-4 flex items-center justify-center gap-2 text-accent-blue font-semibold group-hover:underline">
-                    <span>Click to view full document</span>
-                    <IconExternalLink className="w-4 h-4" />
-                  </div>
+                {/* URL Bar */}
+                <div className="flex-1 bg-white rounded-md px-4 py-1.5 text-xs text-gray-500 font-mono truncate border border-gray-200">
+                  sandiegocounty.gov/.../fall-prevention
                 </div>
               </div>
-            </Link>
+              
+              {/* Screenshot Preview */}
+              <div className="relative overflow-hidden">
+                <Image
+                  src="/images/fall-prevention-flyer.png"
+                  alt="San Diego Fall Prevention Task Force Information Sheet"
+                  width={600}
+                  height={800}
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                  <Link
+                    href="https://www.sandiegocounty.gov/content/dam/sdc/hhsa/programs/ais/fall-prevention/FPTF%201-Pager.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#1a3a5c] rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg"
+                  >
+                    <IconFileTypePdf className="w-5 h-5" />
+                    View Document
+                    <IconExternalLink className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+              
+              {/* Footer */}
+              <div className="p-4 bg-gray-50 border-t border-gray-200">
+                <Link
+                  href="https://www.sandiegocounty.gov/content/dam/sdc/hhsa/programs/ais/fall-prevention/FPTF%201-Pager.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 text-accent-blue font-semibold hover:underline"
+                >
+                  <span>View Full Document</span>
+                  <IconExternalLink className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
           </motion.div>
         </div>
       </motion.section>
@@ -150,33 +161,94 @@ export default function MorePage() {
         className="mb-20"
       >
         <h2 className="text-4xl md:text-5xl font-rosehot text-accent-red mb-8">Past Events</h2>
-        <p className="text-lg text-[#1a3a5c] mb-8">
+        <p className="text-lg text-[#1a3a5c] mb-12">
           Take a look at some of our previous events and activities in the community.
         </p>
         
-        {/* Photo Grid Placeholder */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {/* Placeholder cards - will be replaced with actual photos */}
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="aspect-square bg-gray-200 rounded-lg flex items-center justify-center text-gray-400"
-            >
-              <div className="text-center">
-                <IconCalendarEvent className="w-8 h-8 mx-auto mb-2" />
-                <span className="text-sm">Photo {i}</span>
-              </div>
-            </motion.div>
-          ))}
+        {/* Chateau Event - January 17 */}
+        <div>
+          <h3 className="text-2xl md:text-3xl font-rosehot text-[#1a3a5c] mb-6">Chateau La Jolla Event</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((i) => (
+              <motion.div
+                key={`chateau-${i}`}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: (i % 4) * 0.05 }}
+                className="relative aspect-square rounded-lg overflow-hidden group"
+              >
+                <Image
+                  src={`/images/1:17Chateau/chateau${i}.webp`}
+                  alt={`Chateau La Jolla Event photo ${i}`}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
-        
-        <p className="text-center text-gray-500 mt-6 italic">
-          More photos coming soon!
+      </motion.section>
+
+      {/* Social Media Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mb-20"
+      >
+        <h2 className="text-4xl md:text-5xl font-rosehot text-accent-red mb-4">Follow Us</h2>
+        <p className="text-lg text-[#1a3a5c] mb-8">
+          Stay connected with SDIPP on social media for updates, events, and more!
         </p>
+
+        {/* Instagram Embed */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-lg mx-auto"
+        >
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+            {/* Instagram Header */}
+            <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 p-4 flex items-center gap-3">
+              <IconBrandInstagram className="w-8 h-8 text-white" />
+              <div>
+                <h3 className="text-white font-bold text-lg">@sd__ipp</h3>
+                <p className="text-white/80 text-sm">San Diego Injury Prevention Program</p>
+              </div>
+            </div>
+            
+            {/* Instagram Feed Embed */}
+            <div className="relative w-full bg-white">
+              <iframe
+                src="https://www.instagram.com/sd__ipp/embed"
+                className="w-full h-[500px] border-0"
+                title="SDIPP Instagram Feed"
+                loading="lazy"
+                allowTransparency={true}
+                allow="encrypted-media"
+              />
+            </div>
+            
+            {/* Follow Button */}
+            <div className="p-4 bg-gray-50 border-t border-gray-200">
+              <Link
+                href="https://www.instagram.com/sd__ipp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white rounded-lg font-bold hover:opacity-90 transition-opacity"
+              >
+                <IconBrandInstagram className="w-5 h-5" />
+                Follow on Instagram
+                <IconExternalLink className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </motion.section>
     </div>
   );
