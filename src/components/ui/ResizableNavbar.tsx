@@ -10,41 +10,21 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import Link from "next/link";
 
 const navItems = [
-  { name: "Home", link: "#home" },
-  { name: "Mission", link: "#mission" },
-  { name: "Pillars", link: "#pillars" },
-  { name: "About", link: "#about" },
-  { name: "Events", link: "#events" },
-  { name: "Apply", link: "#apply" },
-  { name: "FAQ", link: "#faq" },
-  { name: "Contact", link: "#contact" },
+  { name: "Home", link: "/" },
+  { name: "Mission", link: "/mission" },
+  { name: "About", link: "/about" },
+  { name: "Events", link: "/events" },
+  { name: "Gallery", link: "/gallery" },
+  { name: "Apply", link: "/apply" },
+  { name: "FAQ", link: "/faq" },
+  { name: "Contact", link: "/contact" },
 ];
 
 export default function ResizableNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    if (href.startsWith('#')) {
-      const sectionId = href.substring(1);
-      const section = document.getElementById(sectionId);
-      if (section) {
-        const lenis = (window as any).lenis;
-        if (lenis) {
-          lenis.scrollTo(section, { 
-            offset: -80, 
-            duration: 1.5,
-            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-          });
-        } else {
-          section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-        setIsMobileMenuOpen(false);
-      }
-    }
-  };
 
   return (
     <Navbar>
@@ -72,18 +52,17 @@ export default function ResizableNavbar() {
           onClose={() => setIsMobileMenuOpen(false)}
         >
           {navItems.map((item, idx) => (
-            <a
+            <Link
               key={`mobile-link-${idx}`}
               href={item.link}
-              onClick={(e) => handleLinkClick(e, item.link)}
+              onClick={() => setIsMobileMenuOpen(false)}
               className="relative text-neutral-600 dark:text-neutral-300 font-rosehot"
             >
               <span className="block">{item.name}</span>
-            </a>
+            </Link>
           ))}
         </MobileNavMenu>
       </MobileNav>
     </Navbar>
   );
 }
-

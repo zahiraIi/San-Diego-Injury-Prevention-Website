@@ -7,6 +7,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
+import Link from "next/link";
 
 import React, { useRef, useState } from "react";
 
@@ -124,27 +125,10 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       )}
     >
       {items.map((item, idx) => (
-        <a
+        <Link
           onMouseEnter={() => setHovered(idx)}
-          onClick={(e) => {
+          onClick={() => {
             if (onItemClick) onItemClick();
-            e.preventDefault();
-            if (item.link.startsWith('#')) {
-              const sectionId = item.link.substring(1);
-              const section = document.getElementById(sectionId);
-              if (section) {
-                const lenis = (window as any).lenis;
-                if (lenis) {
-                  lenis.scrollTo(section, { 
-                    offset: -80, 
-                    duration: 1.5,
-                    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-                  });
-                } else {
-                  section.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-              }
-            }
           }}
           className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300 font-rosehot"
           key={`link-${idx}`}
@@ -157,7 +141,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
             />
           )}
           <span className="relative z-20">{item.name}</span>
-        </a>
+        </Link>
       ))}
     </motion.div>
   );
@@ -213,7 +197,6 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
@@ -249,31 +232,13 @@ export const MobileNavToggle = ({
 };
 
 export const NavbarLogo = () => {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const section = document.getElementById('home');
-    if (section) {
-      const lenis = (window as any).lenis;
-      if (lenis) {
-        lenis.scrollTo(section, { 
-          offset: -80, 
-          duration: 1.5,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-        });
-      } else {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  };
-
   return (
-    <a
-      href="#home"
-      onClick={handleClick}
+    <Link
+      href="/"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal"
     >
       <span className="text-2xl font-rosehot text-accent-red">SDIPP</span>
-    </a>
+    </Link>
   );
 };
 
@@ -316,4 +281,3 @@ export const NavbarButton = ({
     </Tag>
   );
 };
-

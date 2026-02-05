@@ -2,12 +2,12 @@
 
 import { motion } from "motion/react";
 import PageHeader from "@/components/ui/PageHeader";
-import { HowItWorks } from "@/components/ui/how-it-works";
+import GBMGallery from "@/components/ui/gbm-gallery";
 
-export default function ApplyPage() {
+export default function GalleryPage() {
   return (
     <div className="container mx-auto px-6 pb-20">
-      <PageHeader title="Apply" subtitle="Join the movement" />
+      <PageHeader title="GBM Gallery" subtitle="Photos from our General Body Meetings" />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -15,7 +15,7 @@ export default function ApplyPage() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <HowItWorks />
+        <GBMGallery />
       </motion.div>
     </div>
   );
