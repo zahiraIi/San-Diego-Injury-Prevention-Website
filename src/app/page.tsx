@@ -5,7 +5,8 @@ import { motion } from "motion/react";
 import { GradualSpacing } from "@/components/ui/gradual-spacing";
 import { WordPullUp } from "@/components/ui/word-pull-up";
 import Link from "next/link";
-import { IconAccessible, IconNetwork, IconSchool } from "@tabler/icons-react";
+import { FeaturesSectionWithHoverEffects } from "@/components/ui/feature-section-with-hover-effects";
+import { IconHeartHandshake, IconCoins, IconBook } from "@tabler/icons-react";
 
 export default function Home() {
   return (
@@ -169,69 +170,34 @@ export default function Home() {
       </section>
 
       {/* Pillars Section */}
-      <section className="bg-[#f5f0e8] py-20 px-6">
+      <section className="py-20 px-6">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-5xl md:text-6xl font-rosehot text-accent-red">Pillars</h2>
+            <FeaturesSectionWithHoverEffects
+              features={[
+                {
+                  title: "Individualized Care",
+                  description: "We provide communities with care specific for them. Our senior clients receive custom mobility plans that account for their goals and conditions.",
+                  icon: <IconHeartHandshake className="w-8 h-8" />,
+                },
+                {
+                  title: "Resource Dissemination",
+                  description: "We ensure that those we serve are aware of and are able to access tools that promote their long-term health, connecting each person with what they need.",
+                  icon: <IconCoins className="w-8 h-8" />,
+                },
+                {
+                  title: "Education",
+                  description: "We seek to educate people about injury prevention topics to compliment the resources we distribute, utilizing modern approaches and research.",
+                  icon: <IconBook className="w-8 h-8" />,
+                },
+              ]}
+            />
           </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {/* Individualized Care */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-[#a8c4d4] rounded-lg p-8 text-center"
-            >
-              <div className="flex justify-center mb-6">
-                <IconAccessible className="w-16 h-16 text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-2xl font-rosehot text-[#1a3a5c] mb-4">Individualized Care</h3>
-              <p className="text-[#1a3a5c] text-sm leading-relaxed">
-                We provide communities with care specific for them. Our senior clients receive custom mobility plans that account for their goals and conditions, and are heard by real people on a consistent basis during our Walk With a Senior Program. Our health fairs focus on underserved socioeconomic groups, and we partner with San Diego organizations to identify the best ways for us to support injury prevention initiatives relevant to their community.
-              </p>
-            </motion.div>
-
-            {/* Resource Dissemination */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-[#5a8fa8] rounded-lg p-8 text-center"
-            >
-              <div className="flex justify-center mb-6">
-                <IconNetwork className="w-16 h-16 text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-2xl font-rosehot text-white mb-4">Resource Dissemination</h3>
-              <p className="text-white text-sm leading-relaxed">
-                Many people in San Diego, from elders to new families, often lack access to injury prevention necessities. Our collaborations, such as with the Dignity at Home Fall Prevention Program, ensure that those we serve are aware of and are able to access tools that promote their long-term health. We work with our volunteers to identify and connect each person who comes to us with what they need.
-              </p>
-            </motion.div>
-
-            {/* Education */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-[#3a7a8c] rounded-lg p-8 text-center"
-            >
-              <div className="flex justify-center mb-6">
-                <IconSchool className="w-16 h-16 text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-2xl font-rosehot text-white mb-4">Education</h3>
-              <p className="text-white text-sm leading-relaxed">
-                We seek to educate people about injury prevention topics to compliment the resources we distribute. As a student organization, we utilize modern approaches and research to address problems. Our educational initiatives are supported by our dedicated committees, as well as our volunteering affiliation with UCSD Trauma. We also take pride in developing presentations for children that focus on sports and injury science, general health, and careers in medicine.
-              </p>
-            </motion.div>
-          </div>
         </div>
       </section>
 

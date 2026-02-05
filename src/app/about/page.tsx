@@ -4,9 +4,7 @@ import { motion } from "motion/react";
 import PageHeader from "@/components/ui/PageHeader";
 import TeamSection from "@/components/ui/team-section";
 import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery";
-import { FeaturesSectionWithHoverEffects } from "@/components/ui/feature-section-with-hover-effects";
 import AboutSection2 from "@/components/ui/about-section-2";
-import { IconHeartHandshake, IconCoins, IconBook } from "@tabler/icons-react";
 
 const staff = [
   {
@@ -59,35 +57,6 @@ export default function AboutPage() {
       <PageHeader title="About Us" subtitle="Meet the team behind SDIPP" />
 
       <AboutSection2 />
-
-      {/* Our Pillars */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mt-20 mb-20"
-      >
-        <FeaturesSectionWithHoverEffects
-          features={[
-            {
-              title: "Individualized Care",
-              description: "We provide communities with care specific for them. Our senior clients receive custom mobility plans that account for their goals and conditions.",
-              icon: <IconHeartHandshake className="w-8 h-8" />,
-            },
-            {
-              title: "Resource Dissemination",
-              description: "We ensure that those we serve are aware of and are able to access tools that promote their long-term health, connecting each person with what they need.",
-              icon: <IconCoins className="w-8 h-8" />,
-            },
-            {
-              title: "Education",
-              description: "We seek to educate people about injury prevention topics to compliment the resources we distribute, utilizing modern approaches and research.",
-              icon: <IconBook className="w-8 h-8" />,
-            },
-          ]}
-        />
-      </motion.div>
 
       <TeamSection 
         members={staff}
