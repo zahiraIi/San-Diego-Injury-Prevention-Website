@@ -112,17 +112,17 @@ interface GallerySectionProps {
 
 function GallerySection({ title, count, isOpen, onToggle, children }: GallerySectionProps) {
   return (
-    <div className="mb-5 md:mb-6">
+    <div className="mb-12 md:mb-16">
       {/* Clickable header */}
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-3 px-4 md:px-6 py-4 rounded-xl
+        className="w-full flex items-center justify-between gap-3 px-6 md:px-8 py-5 md:py-6 rounded-xl
                    bg-white/50 dark:bg-white/5 backdrop-blur-sm
                    border border-accent-blue/15 hover:border-accent-blue/30
                    shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
       >
         <div className="flex items-center gap-4">
-          <h2 className="text-2xl md:text-3xl font-rosehot text-accent-red">
+          <h2 className="text-2xl md:text-3xl font-sans text-accent-red">
             {title}
           </h2>
           <span className="text-xs md:text-sm font-medium text-muted-foreground opacity-60 bg-accent-blue/10 px-2.5 py-0.5 rounded-full">
@@ -147,7 +147,7 @@ function GallerySection({ title, count, isOpen, onToggle, children }: GallerySec
             transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             className="overflow-hidden"
           >
-            <div className="pt-6">{children}</div>
+            <div className="pt-8 md:pt-10">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -168,33 +168,41 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
+    <>
       <PageHeader title="Gallery" subtitle="Photos from our events and activities" />
 
-      {/* Volunteering Section (first) */}
-      <GallerySection
-        title="Volunteering"
-        count={volunteeringItems.length}
-        isOpen={openSections.volunteering}
-        onToggle={() => toggleSection("volunteering")}
-      >
-        <InteractiveBentoGallery
-          mediaItems={volunteeringItems}
-          title="Volunteering"
-          description="Explore our community engagement and outreach activities"
-          hideHeader
-        />
-      </GallerySection>
+      {/* Main Content Area with Gradient Background */}
+      <section className="relative py-16 md:py-20 px-4 md:px-6 pb-20 md:pb-24">
+        {/* White to gray gradient background */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
+          {/* Volunteering Section (first) */}
+          <GallerySection
+            title="Volunteering"
+            count={volunteeringItems.length}
+            isOpen={openSections.volunteering}
+            onToggle={() => toggleSection("volunteering")}
+          >
+            <InteractiveBentoGallery
+              mediaItems={volunteeringItems}
+              title="Volunteering"
+              description="Explore our community engagement and outreach activities"
+              hideHeader
+            />
+          </GallerySection>
 
-      {/* GBM Section (second) */}
-      <GallerySection
-        title="GBM Photos"
-        count={9}
-        isOpen={openSections.gbm}
-        onToggle={() => toggleSection("gbm")}
-      >
-        <GBMGallery />
-      </GallerySection>
-    </div>
+          {/* GBM Section (second) */}
+          <GallerySection
+            title="GBM Photos"
+            count={9}
+            isOpen={openSections.gbm}
+            onToggle={() => toggleSection("gbm")}
+          >
+            <GBMGallery />
+          </GallerySection>
+        </div>
+      </section>
+    </>
   );
 }

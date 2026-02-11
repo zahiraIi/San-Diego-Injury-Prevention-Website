@@ -2,246 +2,221 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { GradualSpacing } from "@/components/ui/gradual-spacing";
-import { WordPullUp } from "@/components/ui/word-pull-up";
 import Link from "next/link";
-import { FeaturesSectionWithHoverEffects } from "@/components/ui/feature-section-with-hover-effects";
-import { IconHeartHandshake, IconCoins, IconBook } from "@tabler/icons-react";
-import { Shadow } from "@/components/ui/animated-shape";
+import { IconHeartHandshake, IconCoins, IconBook, IconArrowRight } from "@tabler/icons-react";
+import { Asterisk } from "lucide-react";
+import { CircleAnimation } from "@/components/ui/circle-animations-collection";
 
 export default function Home() {
   return (
     <>
-      {/* Home Section */}
-      <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 py-16 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col items-center gap-5 md:gap-8"
-        >
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative w-48 h-48 md:w-72 md:h-72"
-          >
-            <Image
-              src="/logo.png"
-              alt="San Diego Injury Prevention Program Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </motion.div>
-          
-          <div className="flex flex-col items-center gap-4 md:gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <h2 className="text-lg md:text-2xl font-bold tracking-widest text-accent-red mb-2 uppercase">
-                Welcome to the
-              </h2>
-            </motion.div>
-            
-            <div className="w-full max-w-7xl mx-auto px-4">
-              <GradualSpacing
-                text="San Diego Injury Prevention Program"
-                className="font-rosehot text-foreground text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl leading-tight tracking-tight"
-                duration={0.6}
-                delayMultiple={0.05}
-                framerProps={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-              />
-            </div>
-            
-            <div className="max-w-2xl mx-auto">
-              <WordPullUp
-                words="Promoting fitness, mobility, and injury-free lives for seniors in our community."
-                className="text-xl md:text-2xl text-accent-blue font-charter leading-normal tracking-normal"
-                wrapperFramerProps={{
-                  hidden: { opacity: 0 },
-                  show: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.08,
-                      delayChildren: 1.2,
-                    },
-                  },
-                }}
-                framerProps={{
-                  hidden: { y: 20, opacity: 0 },
-                  show: { y: 0, opacity: 1 },
-                }}
-              />
-            </div>
+      {/* ═══════════════════════════════════════════════════════════════════
+          HERO — Warm Gradient, Asterisk + Text (UMA-style height/spacing)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[650px] flex flex-col justify-center items-center text-center overflow-hidden pt-16">
+        {/* Dark blue gradient: Jelly Bean -> Midnight Blue */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#2774ae] via-[#002E5D] to-[#002E5D]" />
 
-            {/* Quick Navigation Links */}
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center px-4 sm:px-6 py-12 sm:py-16 md:py-24 max-w-4xl mx-auto">
+          {/* Asterisk Icon */}
+          <motion.div
+            initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+            animate={{ opacity: 1, rotate: 0, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mb-4 sm:mb-6 md:mb-10"
+          >
+            <Asterisk className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 text-white" strokeWidth={2} />
+          </motion.div>
+
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="font-sans font-bold text-white text-4xl sm:text-5xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tighter max-w-6xl lowercase px-2"
+          >
+            san diego <br className="block md:hidden" /> <br className="hidden md:block" /> injury prevention
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="font-sans text-white/90 text-lg sm:text-xl md:text-3xl mt-4 sm:mt-6 md:mt-8 tracking-wide font-medium lowercase"
+          >
+            program
+          </motion.p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          INTRO — Gradient background, Text Left, Team Photo Right
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6">
+        {/* White to gray gradient background */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-20 items-center">
+            {/* Text */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.8 }}
-              className="flex flex-wrap justify-center gap-3 md:gap-4 mt-4 md:mt-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              <Link 
-                href="/about" 
-                className="px-6 py-3 bg-accent-blue text-white rounded-full font-bold hover:bg-accent-blue/90 transition-colors"
+              <h2 className="font-sans text-[#7f1d1d] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
+                San Diego's premier student-run injury prevention program.
+              </h2>
+              <p className="text-[#0f172a] text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 font-medium">
+                We are a student-run organization dedicated to empowering seniors in the
+                San Diego area through evidence-based fitness programs, community outreach,
+                and fall prevention education.
+              </p>
+              <Link
+                href="/apply"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 bg-[#7f1d1d] text-white rounded-full font-bold text-xs sm:text-sm hover:bg-[#6b1515] transition-all duration-300 shadow-lg hover:shadow-xl border border-[#6b1515]"
               >
-                Learn More
+                apply <IconArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2" />
               </Link>
-              <Link 
-                href="/apply" 
-                className="px-6 py-3 bg-accent-red text-white rounded-full font-bold hover:bg-accent-red/90 transition-colors"
-              >
-                Join Us
-              </Link>
+            </motion.div>
+
+            {/* Board Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mt-6 md:mt-0"
+            >
+              <Image
+                src="/images/board/wholeboard.webp"
+                alt="SDIPP board members"
+                fill
+                className="object-cover"
+              />
             </motion.div>
           </div>
-        </motion.div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="bg-[#1a3a5c] py-12 md:py-16 px-4 md:px-6">
-        <div className="container mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-2 gap-8 md:gap-10 items-center"
-          >
-            {/* Animated Shape */}
-            <div className="flex justify-center items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
-              >
-                <Shadow className="w-72 h-40 md:w-96 md:h-56 text-[#b8c5d4]" />
-              </motion.div>
-            </div>
-            
-            {/* Mission Text */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-white"
-            >
-              <h2 className="text-4xl md:text-5xl font-rosehot text-[#b8c5d4] mb-5">Mission</h2>
-              <p className="text-lg md:text-xl leading-relaxed mb-6 text-gray-200">
-                We are dedicated to promoting fitness and mobility among older individuals in the San Diego area. Our club offers a supportive community where members can engage in various activities to enhance their overall well-being.
-              </p>
-              <p className="text-lg md:text-xl leading-relaxed text-gray-200">
-                At San Diego Injury Prevention Program, we believe in empowering seniors to lead active lives free from injuries. Through our programs, we focus on improving fitness levels, mobility, and quality of life. Join us in our mission to prioritize health and wellness for all.
-              </p>
-            </motion.div>
-          </motion.div>
         </div>
       </section>
 
-      {/* Pillars Section */}
-      <section className="py-12 md:py-16 px-4 md:px-6">
-        <div className="container mx-auto">
+      {/* ═══════════════════════════════════════════════════════════════════
+          MISSION — Site gradient with concentration ring animation
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
+        {/* Site gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#2774ae] via-[#002E5D] to-[#002E5D]" />
+        
+        <div className="container mx-auto max-w-6xl grid md:grid-cols-[1fr,2fr] gap-8 sm:gap-12 items-center relative z-10">
+          {/* Concentration ring animation */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="flex justify-center md:justify-start mb-6 md:mb-0"
           >
-            <FeaturesSectionWithHoverEffects
-              features={[
-                {
-                  title: "Individualized Care",
-                  description: "We provide communities with care specific for them. Our senior clients receive custom mobility plans that account for their goals and conditions.",
-                  icon: <IconHeartHandshake className="w-8 h-8" />,
-                },
-                {
-                  title: "Resource Dissemination",
-                  description: "We ensure that those we serve are aware of and are able to access tools that promote their long-term health, connecting each person with what they need.",
-                  icon: <IconCoins className="w-8 h-8" />,
-                },
-                {
-                  title: "Education",
-                  description: "We seek to educate people about injury prevention topics to compliment the resources we distribute, utilizing modern approaches and research.",
-                  icon: <IconBook className="w-8 h-8" />,
-                },
-              ]}
+            <CircleAnimation
+              title=""
+              animationId="concentric-rings"
+              className="bg-transparent border-none scale-75 md:scale-100"
             />
           </motion.div>
-        </div>
-      </section>
 
-      {/* How to Join Section */}
-      <section className="bg-[#f5f0e8] py-12 md:py-16 px-4 md:px-6">
-        <div className="container mx-auto max-w-6xl">
-          {/* Top divider line */}
-          <div className="w-full h-[2px] bg-[#1a3a5c] mb-10" />
-          
+          {/* Mission text */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-2 gap-8 md:gap-10 items-center"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-left space-y-4 sm:space-y-5"
           >
-            {/* Text Content */}
-            <div>
-              <h2 className="text-4xl md:text-5xl font-rosehot text-accent-red mb-6">How to Join?</h2>
-              <ul className="space-y-6 text-lg md:text-xl text-[#1a3a5c]">
-                <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-[#1a3a5c] rounded-full mt-3 flex-shrink-0" />
-                  <span>No application fee required.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-[#1a3a5c] rounded-full mt-3 flex-shrink-0" />
-                  <span>Members must be 14 years of age or older.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-[#1a3a5c] rounded-full mt-3 flex-shrink-0" />
-                  <span>
-                    More information on membership can be found on the{" "}
-                    <Link href="/apply" className="underline hover:text-accent-red transition-colors">
-                      Apply
-                    </Link>{" "}
-                    page.
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Image with decorative frame */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
-            >
-              {/* Decorative frame */}
-              <div className="absolute -top-4 -right-4 w-full h-full border-4 border-accent-red rounded-lg" />
-              <div className="absolute -bottom-4 -left-4 w-full h-full border-4 border-accent-red rounded-lg" />
-              {/* Image */}
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                <Image
-                  src="/images/volunteering/volunteer1.webp"
-                  alt="SDIPP members during a session"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
+            <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
+              Mission
+            </h2>
+            <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
+              We are dedicated to promoting fitness and mobility among older individuals in the San Diego
+              area. Our club offers a supportive community where members can engage in various activities
+              to enhance their overall well-being.
+            </p>
+            <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
+              At San Diego Injury Prevention Program, we believe in empowering seniors to lead active
+              lives free from injuries. Through our programs, we focus on improving fitness levels,
+              mobility, and quality of life. Join us in our mission to prioritize health and wellness for all.
+            </p>
           </motion.div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          HOW TO JOIN — Gradient background with framed image
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6">
+        {/* White to gray gradient background */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
+        <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center relative z-10">
+          {/* Text content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-[#7f1d1d] mb-4 sm:mb-6">
+              How to Join?
+            </h2>
+            <ul className="space-y-3 sm:space-y-4 text-[#0f172a] text-sm sm:text-base md:text-lg">
+              <li className="flex items-start gap-3">
+                <span className="mt-2 h-2 w-2 rounded-full bg-[#7f1d1d] flex-shrink-0" />
+                <span>No application fee required.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-2 h-2 w-2 rounded-full bg-[#7f1d1d] flex-shrink-0" />
+                <span>Members must be 14 years of age or older.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-2 h-2 w-2 rounded-full bg-[#7f1d1d] flex-shrink-0" />
+                <span>
+                  More information on membership can be found on the{" "}
+                  <Link
+                    href="/apply"
+                    className="underline decoration-[#7f1d1d]/70 underline-offset-4 hover:text-[#7f1d1d] transition-colors"
+                  >
+                    Apply
+                  </Link>{" "}
+                  page.
+                </span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Framed image */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative mt-6 md:mt-0"
+          >
+            <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-full h-full rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[#7f1d1d]/60" />
+            <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-full h-full rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[#7f1d1d]/30" />
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/volunteering/volunteer1.webp"
+                alt="SDIPP members during a session"
+                width={800}
+                height={500}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          FOOTER — (Moved to Global Layout)
+      ═══════════════════════════════════════════════════════════════════ */}
     </>
   );
 }

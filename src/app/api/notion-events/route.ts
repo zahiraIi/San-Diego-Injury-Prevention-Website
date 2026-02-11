@@ -1,11 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { fetchNotionEvents } from "@/lib/notion";
 
-export const revalidate = 300; // ISR: revalidate every 5 minutes
+export const dynamic = "force-dynamic"; // uses searchParams, must be dynamic
+export const revalidate = 0;
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const events = await fetchNotionEvents(20);
+    const { searchParams } = request.nextUrl;
+    const onOrAfter = searchParams.get("from") ?? undefined;
+    const onOrBefore = searchParams.get("to") ?? undefined;
+
+    const events = await fetchNotionEvents(100, { onOrAfter, onOrBefore });
 
     return NextResponse.json(
       { events },

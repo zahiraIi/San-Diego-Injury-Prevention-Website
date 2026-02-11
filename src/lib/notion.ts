@@ -92,7 +92,10 @@ function getSelectValue(props: PageObjectResponse["properties"], key: string): s
  *
  * @param limit  Maximum number of events to return (default 20).
  */
-export async function fetchNotionEvents(limit: number = 20): Promise<NotionEvent[]> {
+export async function fetchNotionEvents(
+  limit: number = 100,
+  options?: { onOrAfter?: string; onOrBefore?: string }
+): Promise<NotionEvent[]> {
   const apiKey = process.env.NOTION_API_KEY;
   const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -103,7 +106,26 @@ export async function fetchNotionEvents(limit: number = 20): Promise<NotionEvent
     throw new Error("NOTION_DATABASE_ID environment variable is not set");
   }
 
-  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+  // Build date filter conditions
+  const dateConditions: Record<string, unknown>[] = [];
+  if (options?.onOrAfter) {
+    dateConditions.push({
+      property: "Date",
+      date: { on_or_after: options.onOrAfter },
+    });
+  }
+  if (options?.onOrBefore) {
+    dateConditions.push({
+      property: "Date",
+      date: { on_or_before: options.onOrBefore },
+    });
+  }
+
+  // Default: no date filter (return all events)
+  const filter =
+    dateConditions.length > 0
+      ? { and: dateConditions }
+      : undefined;
 
   // Query the Notion database directly via REST API
   const response = await fetch(
@@ -123,16 +145,7 @@ export async function fetchNotionEvents(limit: number = 20): Promise<NotionEvent
             direction: "ascending",
           },
         ],
-        filter: {
-          and: [
-            {
-              property: "Date",
-              date: {
-                on_or_after: today,
-              },
-            },
-          ],
-        },
+        ...(filter ? { filter } : {}),
       }),
     }
   );

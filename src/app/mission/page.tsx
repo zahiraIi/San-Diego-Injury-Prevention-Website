@@ -30,64 +30,71 @@ const impactCards = [
 
 export default function MissionPage() {
   return (
-    <div className="pb-12 md:pb-16">
-      <div className="container mx-auto px-4 md:px-6">
-        <PageHeader title="Our Mission" subtitle="Dedicated to promoting fitness and mobility" />
+    <>
+      <PageHeader title="Our Mission" subtitle="Dedicated to promoting fitness and mobility" />
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center mb-10 md:mb-14">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <LiquidGlassCard className="border border-accent-blue/20 bg-gradient-to-br from-background/80 to-accent-blue/10">
-              <div className="relative aspect-video rounded-lg overflow-hidden">
-                <Image
-                  src="/images/volunteering/volunteer1.webp"
-                  alt="Volunteering at San Diego Injury Prevention Program"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-            </LiquidGlassCard>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-left space-y-6"
-          >
-            <p className="text-lg opacity-80 leading-relaxed">
-              We are dedicated to promoting fitness and mobility among older individuals in the San Diego area. 
-              Our club offers a supportive community where members can engage in various activities to enhance 
-              their overall well-being.
-            </p>
-            <p className="text-lg opacity-80 leading-relaxed">
-              At San Diego Injury Prevention Program, we believe in empowering seniors to lead active lives 
-              free from injuries. Through our programs, we focus on improving fitness levels, mobility, 
-              and quality of life.
-            </p>
-          </motion.div>
+      {/* Mission Content Section - White Gradient */}
+      <section className="relative py-24 md:py-28 px-4 md:px-6">
+        {/* White to gray gradient background */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <LiquidGlassCard className="border border-accent-blue/20 bg-gradient-to-br from-background/80 to-accent-blue/10">
+                <div className="relative aspect-video rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/volunteering/volunteer1.webp"
+                    alt="Volunteering at San Diego Injury Prevention Program"
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
+              </LiquidGlassCard>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-left space-y-6"
+            >
+              <p className="text-lg md:text-xl leading-relaxed text-[#0f172a]">
+                We are dedicated to promoting fitness and mobility among older individuals in the San Diego area. 
+                Our club offers a supportive community where members can engage in various activities to enhance 
+                their overall well-being.
+              </p>
+              <p className="text-lg md:text-xl leading-relaxed text-[#0f172a]">
+                At San Diego Injury Prevention Program, we believe in empowering seniors to lead active lives 
+                free from injuries. Through our programs, we focus on improving fitness levels, mobility, 
+                and quality of life.
+              </p>
+            </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Impact & Plans Section */}
-      <section className="bg-[#7a9bb5] py-12 md:py-16 px-4 md:px-6">
-        <div className="container mx-auto">
+      {/* Impact & Plans Section - Blue Gradient */}
+      <section className="relative py-24 md:py-28 px-4 md:px-6">
+        {/* Blue gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#2774ae] via-[#002E5D] to-[#002E5D]" />
+        <div className="container mx-auto relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-rosehot text-white text-center mb-8"
+            className="text-4xl md:text-5xl font-sans text-white text-center mb-16 md:mb-20"
           >
             Impact & Plans
           </motion.h2>
 
           {/* Top Row - 3 cards */}
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-6">
+          <div className="grid md:grid-cols-3 gap-10 md:gap-12 max-w-5xl mx-auto mb-12 md:mb-16">
             {impactCards.slice(0, 3).map((card, index) => (
               <motion.div
                 key={card.title}
@@ -95,16 +102,16 @@ export default function MissionPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-[#f5f0e8] rounded-lg p-8 text-center"
+                className="bg-[#f5f0e8] rounded-lg p-8 md:p-10 text-center"
               >
-                <h3 className="text-2xl font-rosehot text-[#1a3a5c] mb-4">{card.title}</h3>
+                <h3 className="text-2xl font-sans text-[#1a3a5c] mb-4">{card.title}</h3>
                 <p className="text-[#1a3a5c] text-sm leading-relaxed">{card.description}</p>
               </motion.div>
             ))}
           </div>
 
           {/* Bottom Row - 2 cards centered */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-12 max-w-3xl mx-auto">
             {impactCards.slice(3).map((card, index) => (
               <motion.div
                 key={card.title}
@@ -112,9 +119,9 @@ export default function MissionPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
-                className="bg-[#f5f0e8] rounded-lg p-8 text-center"
+                className="bg-[#f5f0e8] rounded-lg p-8 md:p-10 text-center"
               >
-                <h3 className="text-2xl font-rosehot text-[#1a3a5c] mb-4">{card.title}</h3>
+                <h3 className="text-2xl font-sans text-[#1a3a5c] mb-4">{card.title}</h3>
                 <p className="text-[#1a3a5c] text-sm leading-relaxed">{card.description}</p>
               </motion.div>
             ))}
@@ -122,15 +129,17 @@ export default function MissionPage() {
         </div>
       </section>
 
-      {/* Message from the Presidents */}
-      <section className="py-12 md:py-16 px-4 md:px-6">
-        <div className="container mx-auto max-w-4xl">
+      {/* Message from the Presidents - White Gradient */}
+      <section className="relative py-24 md:py-28 px-4 md:px-6">
+        {/* White to gray gradient background */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
+        <div className="container mx-auto max-w-4xl relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-rosehot text-center mb-8"
+            className="text-4xl md:text-5xl font-sans text-center mb-12 md:mb-16 text-[#7f1d1d]"
           >
             Message from the Presidents
           </motion.h2>
@@ -140,7 +149,7 @@ export default function MissionPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-6 text-lg leading-relaxed opacity-80"
+            className="space-y-8 text-lg md:text-xl leading-relaxed text-[#0f172a]"
           >
             <p>
               The San Diego Injury Prevention Program was founded based off a simple realization: injuries are
@@ -182,6 +191,6 @@ export default function MissionPage() {
           </motion.div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

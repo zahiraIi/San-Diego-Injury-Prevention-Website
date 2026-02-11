@@ -2,27 +2,49 @@
 
 import { motion } from "motion/react";
 import PageHeader from "@/components/ui/PageHeader";
-import { LiquidGlassCard } from "@/components/kokonutui/liquid-glass-card";
+import CalendarView from "@/components/ui/calendar-view";
 import EventsDisplay from "@/components/ui/events-display";
 
 export default function EventsPage() {
   return (
-    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
-      <PageHeader title="Events" subtitle="Join us at our upcoming events" />
+    <>
+      <PageHeader
+        title="Events"
+        subtitle="Join us at our upcoming events"
+        size="compact"
+      />
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <LiquidGlassCard className="border border-accent-blue/20 bg-gradient-to-br from-background/80 to-accent-blue/10 p-5 md:p-10">
-          <h2 className="text-2xl md:text-3xl font-rosehot mb-6 text-center">
-            Upcoming Events
-          </h2>
-          <EventsDisplay />
-        </LiquidGlassCard>
-      </motion.div>
-    </div>
+      {/* Main Content Area with Gradient Background */}
+      <section className="relative py-16 md:py-20 px-4 md:px-6 pb-20 md:pb-24">
+        {/* White to gray gradient background */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
+          {/* Calendar View */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-20 md:mb-24"
+          >
+            <CalendarView />
+          </motion.div>
+
+          {/* Upcoming Events List */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <h2 className="text-2xl md:text-3xl font-sans text-[#1a3a5c] mb-12 md:mb-16">
+              Upcoming Events
+            </h2>
+            <EventsDisplay />
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }

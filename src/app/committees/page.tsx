@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Timeline } from "@/components/ui/timeline";
 import { IconUsers, IconCalendarEvent, IconChartBar, IconScale } from "@tabler/icons-react";
+import PageHeader from "@/components/ui/PageHeader";
 
 const committees = [
   {
@@ -77,7 +78,7 @@ const timelineData = committees.map((committee) => ({
       {/* Member count badge */}
       <div className="flex items-center gap-4">
         <committee.icon className="w-8 h-8 text-accent-blue" />
-        <span className="text-[#a8c4d4] font-charter text-xl bg-[#1a3a5c]/50 px-5 py-2 rounded-full">
+        <span className="text-[#1a3a5c] font-sans text-xl bg-accent-blue/10 px-5 py-2 rounded-full">
           {committee.members}
         </span>
       </div>
@@ -85,7 +86,7 @@ const timelineData = committees.map((committee) => ({
       {/* Description */}
       <div className="space-y-4">
         {committee.description.map((desc, i) => (
-          <p key={i} className="text-white/90 text-base md:text-lg leading-relaxed flex items-start gap-3">
+          <p key={i} className="text-[#0f172a] text-base md:text-lg leading-relaxed flex items-start gap-3">
             <span className="text-accent-blue mt-1.5 text-xl">•</span>
             <span>{desc}</span>
           </p>
@@ -94,20 +95,20 @@ const timelineData = committees.map((committee) => ({
 
       {/* Focus and Tasks Grid */}
       {(committee.focus || committee.tasks) && (
-        <div className="grid md:grid-cols-2 gap-8 mt-8 bg-[#1a3a5c]/30 rounded-xl p-8">
+        <div className="grid md:grid-cols-2 gap-8 mt-8 bg-white/60 rounded-xl p-8 border border-accent-blue/20">
           {committee.focus && (
             <div>
-              <h4 className="text-xl font-rosehot text-accent-blue mb-4">Focus</h4>
-              <p className="text-white/90 text-base md:text-lg leading-relaxed">{committee.focus}</p>
+              <h4 className="text-xl font-sans text-accent-blue mb-4">Focus</h4>
+              <p className="text-[#0f172a] text-base md:text-lg leading-relaxed">{committee.focus}</p>
             </div>
           )}
           {committee.tasks && (
-            <div className={committee.focus ? "md:border-l md:border-[#5a8fa8]/50 md:pl-8" : ""}>
-              <h4 className="text-xl font-rosehot text-[#7dd3fc] mb-4">Member Tasks</h4>
+            <div className={committee.focus ? "md:border-l md:border-accent-blue/30 md:pl-8" : ""}>
+              <h4 className="text-xl font-sans text-[#7f1d1d] mb-4">Member Tasks</h4>
               <ul className="space-y-3">
                 {committee.tasks.map((task, i) => (
-                  <li key={i} className="text-white/90 text-base md:text-lg flex items-start gap-3">
-                    <span className="text-[#7dd3fc]">✓</span>
+                  <li key={i} className="text-[#0f172a] text-base md:text-lg flex items-start gap-3">
+                    <span className="text-[#7f1d1d]">✓</span>
                     <span>{task}</span>
                   </li>
                 ))}
@@ -122,29 +123,20 @@ const timelineData = committees.map((committee) => ({
 
 export default function CommitteesPage() {
   return (
-    <div className="bg-[#1a3a5c] min-h-screen">
-      {/* Header */}
-      <div className="container mx-auto pt-8 pb-4 md:pt-12 md:pb-6 px-4 md:px-6">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-6xl font-rosehot text-white text-center"
-        >
-          Committees
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[#a8c4d4] text-center mt-3 text-base md:text-lg max-w-2xl mx-auto"
-        >
-          Join a committee and contribute to our mission of promoting injury prevention in San Diego
-        </motion.p>
-      </div>
+    <>
+      <PageHeader
+        title="Committees"
+        subtitle="Join a committee and contribute to our mission of promoting injury prevention in San Diego."
+      />
 
-      {/* Timeline */}
-      <Timeline data={timelineData} />
-    </div>
+      {/* Timeline Section */}
+      <section className="relative py-24 md:py-28 px-6">
+        {/* White to gray gradient background */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <Timeline data={timelineData} />
+        </div>
+      </section>
+    </>
   );
 }
