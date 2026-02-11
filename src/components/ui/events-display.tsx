@@ -48,7 +48,8 @@ export default function EventsDisplay({ maxDisplay }: EventsDisplayProps) {
 
   const formatDate = (dateString: string | null) => {
     if (!dateString) return "TBD";
-    const date = new Date(dateString + "T00:00:00");
+    const iso = dateString.includes("T") ? dateString : dateString + "T00:00:00";
+    const date = new Date(iso);
     return date.toLocaleDateString("en-US", {
       weekday: "short",
       year: "numeric",
@@ -131,7 +132,7 @@ export default function EventsDisplay({ maxDisplay }: EventsDisplayProps) {
           {/* Date badge */}
           {event.date && (
             <div className="absolute -top-3 left-5 bg-accent-red text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-              {new Date(event.date + "T00:00:00").toLocaleDateString("en-US", {
+              {new Date(event.date.includes("T") ? event.date : event.date + "T00:00:00").toLocaleDateString("en-US", {
                 month: "short",
                 day: "numeric",
               })}
