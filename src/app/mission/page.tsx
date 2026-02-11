@@ -30,11 +30,11 @@ const impactCards = [
 
 export default function MissionPage() {
   return (
-    <div className="pb-20">
-      <div className="container mx-auto px-6">
+    <div className="pb-12 md:pb-16">
+      <div className="container mx-auto px-4 md:px-6">
         <PageHeader title="Our Mission" subtitle="Dedicated to promoting fitness and mobility" />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center mb-10 md:mb-14">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -74,14 +74,14 @@ export default function MissionPage() {
       </div>
 
       {/* Impact & Plans Section */}
-      <section className="bg-[#7a9bb5] py-20 px-6">
+      <section className="bg-[#7a9bb5] py-12 md:py-16 px-4 md:px-6">
         <div className="container mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl font-rosehot text-white text-center mb-12"
+            className="text-4xl md:text-5xl font-rosehot text-white text-center mb-8"
           >
             Impact & Plans
           </motion.h2>
@@ -119,6 +119,67 @@ export default function MissionPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Message from the Presidents */}
+      <section className="py-12 md:py-16 px-4 md:px-6">
+        <div className="container mx-auto max-w-4xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-rosehot text-center mb-8"
+          >
+            Message from the Presidents
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="space-y-6 text-lg leading-relaxed opacity-80"
+          >
+            <p>
+              The San Diego Injury Prevention Program was founded based off a simple realization: injuries are
+              not inevitable. These injuries plague everyone, from children, to senior citizens, to even regular
+              families, leaving lasting consequences impacting multiple facets of life. However, a combination
+              of proper education, community engagement, and lifestyle changes holds the potential to reduce
+              the morbidity of so many traumas. Our mission is therefore, to reduce preventable injuries and
+              promote safer environments for individuals and families throughout San Diego.
+            </p>
+            <p>
+              The most effective way to stop injuries is to prevent them from happening. In this spirit, our
+              dedicated team identifies risk factors and promotes evidence-based strategies to help empower
+              our community with the knowledge to live a little safer each day. Addressing every walk of life,
+              our programs extend into every community, be it through our school presentations on adolescent
+              physical activity, mobility and fall prevention classes at senior residential homes, or our public
+              health outreach for various underrepresented groups.
+            </p>
+            <p>
+              As collaboration is the cornerstone of community impact, these initiatives would not be possible
+              without our various partners, for which we are grateful to continue working with. Finding other
+              organizations that match our drive to improve our community, the San Diego Injury Prevention
+              Program is always proud to work with the San Diego County Fall Prevention Task Force, UCSD
+              Trauma Center, Scripps Health, United Way of San Diego, and multiple other healthcare
+              professionals and community organizations. It is through this shared commitment to safety and
+              these strong collaborations that we can continue to expand our reach and tailor our initiatives
+              further to our local communities.
+            </p>
+            <p>
+              As we grow, we plan on continuing to strengthen our programs and expand access to proper
+              injury prevention services, ensuring that these services are accessible and inclusive. Innovation
+              and analysis will continue to fuel our improvement as we optimize our programs and keep them
+              informed by feedback, research, and data. So, while we will improve and expand, we will never
+              lose sight of our goal and the community we serve.
+            </p>
+            <p>
+              Thank you to our partners, our supporters, and of course, our dedicated volunteers. Together we
+              can build a healthier, safer San Diego &mdash; one less injury at a time.
+            </p>
+          </motion.div>
         </div>
       </section>
     </div>

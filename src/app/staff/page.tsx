@@ -50,7 +50,7 @@ const staff = [
 
 export default function StaffPage() {
   return (
-    <div className="container mx-auto px-6 pb-20">
+    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
       <PageHeader title="Our Staff" subtitle="Meet the team behind SDIPP" />
 
       <TeamSection 

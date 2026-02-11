@@ -3,7 +3,7 @@ import PageHeader from "@/components/ui/PageHeader";
 
 export default function MembersPage() {
   return (
-    <div className="container mx-auto px-6 pb-20">
+    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
       <PageHeader title="Members" subtitle="Our dedicated volunteers" />
       <div className="text-center opacity-60">
         <p>List of volunteers and members will be displayed here.</p>

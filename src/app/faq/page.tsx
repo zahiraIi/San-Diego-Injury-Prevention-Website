@@ -6,7 +6,7 @@ import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
 
 export default function FAQPage() {
   return (
-    <div className="container mx-auto px-6 pb-20">
+    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
       <PageHeader title="FAQ" subtitle="Find answers to common questions about our program and membership" />
 
       <motion.div

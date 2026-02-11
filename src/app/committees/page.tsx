@@ -124,12 +124,12 @@ export default function CommitteesPage() {
   return (
     <div className="bg-[#1a3a5c] min-h-screen">
       {/* Header */}
-      <div className="container mx-auto pt-32 pb-8 px-6">
+      <div className="container mx-auto pt-8 pb-4 md:pt-12 md:pb-6 px-4 md:px-6">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl md:text-7xl font-rosehot text-white text-center"
+          className="text-4xl md:text-6xl font-rosehot text-white text-center"
         >
           Committees
         </motion.h1>
@@ -137,7 +137,7 @@ export default function CommitteesPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[#a8c4d4] text-center mt-4 text-lg md:text-xl max-w-2xl mx-auto"
+          className="text-[#a8c4d4] text-center mt-3 text-base md:text-lg max-w-2xl mx-auto"
         >
           Join a committee and contribute to our mission of promoting injury prevention in San Diego
         </motion.p>

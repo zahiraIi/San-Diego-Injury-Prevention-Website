@@ -13,19 +13,19 @@ export default function Home() {
   return (
     <>
       {/* Home Section */}
-      <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-32">
+      <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col items-center gap-8"
+          className="flex flex-col items-center gap-5 md:gap-8"
         >
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative w-64 h-64 md:w-80 md:h-80"
+            className="relative w-48 h-48 md:w-72 md:h-72"
           >
             <Image
               src="/logo.png"
@@ -36,13 +36,13 @@ export default function Home() {
             />
           </motion.div>
           
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-4 md:gap-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h2 className="text-xl md:text-2xl font-bold tracking-widest text-accent-red mb-4 uppercase">
+              <h2 className="text-lg md:text-2xl font-bold tracking-widest text-accent-red mb-2 uppercase">
                 Welcome to the
               </h2>
             </motion.div>
@@ -86,7 +86,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.8 }}
-              className="flex flex-wrap justify-center gap-4 mt-8"
+              className="flex flex-wrap justify-center gap-3 md:gap-4 mt-4 md:mt-6"
             >
               <Link 
                 href="/about" 
@@ -106,14 +106,14 @@ export default function Home() {
       </section>
 
       {/* Mission Section */}
-      <section className="bg-[#1a3a5c] py-20 px-6">
+      <section className="bg-[#1a3a5c] py-12 md:py-16 px-4 md:px-6">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="grid md:grid-cols-2 gap-8 md:gap-10 items-center"
           >
             {/* Animated Shape */}
             <div className="flex justify-center items-center">
@@ -136,7 +136,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-white"
             >
-              <h2 className="text-5xl md:text-6xl font-rosehot text-[#b8c5d4] mb-8">Mission</h2>
+              <h2 className="text-4xl md:text-5xl font-rosehot text-[#b8c5d4] mb-5">Mission</h2>
               <p className="text-lg md:text-xl leading-relaxed mb-6 text-gray-200">
                 We are dedicated to promoting fitness and mobility among older individuals in the San Diego area. Our club offers a supportive community where members can engage in various activities to enhance their overall well-being.
               </p>
@@ -149,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* Pillars Section */}
-      <section className="py-20 px-6">
+      <section className="py-12 md:py-16 px-4 md:px-6">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -181,21 +181,21 @@ export default function Home() {
       </section>
 
       {/* How to Join Section */}
-      <section className="bg-[#f5f0e8] py-20 px-6">
+      <section className="bg-[#f5f0e8] py-12 md:py-16 px-4 md:px-6">
         <div className="container mx-auto max-w-6xl">
           {/* Top divider line */}
-          <div className="w-full h-[2px] bg-[#1a3a5c] mb-16" />
+          <div className="w-full h-[2px] bg-[#1a3a5c] mb-10" />
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="grid md:grid-cols-2 gap-8 md:gap-10 items-center"
           >
             {/* Text Content */}
             <div>
-              <h2 className="text-5xl md:text-6xl font-rosehot text-accent-red mb-10">How to Join?</h2>
+              <h2 className="text-4xl md:text-5xl font-rosehot text-accent-red mb-6">How to Join?</h2>
               <ul className="space-y-6 text-lg md:text-xl text-[#1a3a5c]">
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-[#1a3a5c] rounded-full mt-3 flex-shrink-0" />

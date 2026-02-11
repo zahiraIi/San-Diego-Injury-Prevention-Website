@@ -17,8 +17,8 @@ const GBM_IMAGES = [
 
 export default function GBMGallery() {
   return (
-    <div className="w-full py-12 flex justify-center">
-      <div className="w-full max-w-5xl mx-auto px-4">
+    <div className="w-full py-4 flex justify-center">
+      <div className="w-full max-w-5xl mx-auto px-2 md:px-4">
         <InView
           viewOptions={{ once: true, margin: "0px 0px -250px 0px" }}
           variants={{

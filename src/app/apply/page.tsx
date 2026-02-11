@@ -6,7 +6,7 @@ import { HowItWorks } from "@/components/ui/how-it-works";
 
 export default function ApplyPage() {
   return (
-    <div className="container mx-auto px-6 pb-20">
+    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
       <PageHeader title="Apply" subtitle="Join the movement" />
 
       <motion.div

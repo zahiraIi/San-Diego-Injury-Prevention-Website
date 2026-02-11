@@ -6,7 +6,7 @@ import ContactForm from "@/components/ui/contact-form";
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto px-6 pb-20">
+    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
       <PageHeader title="Contact Us" subtitle="We'd love to hear from you" />
 
       <motion.div
@@ -16,9 +16,9 @@ export default function ContactPage() {
         transition={{ duration: 0.6 }}
         className="max-w-2xl mx-auto flex flex-col items-center"
       >
-        <div className="mb-8 text-center">
-          <p className="text-lg mb-2"><strong>Email:</strong> sdinjurypreventionprogram@gmail.com</p>
-          <p className="text-lg"><strong>Location:</strong> La Jolla, CA</p>
+        <div className="mb-6 text-center">
+          <p className="text-base md:text-lg mb-1"><strong>Email:</strong> sdinjurypreventionprogram@gmail.com</p>
+          <p className="text-base md:text-lg"><strong>Location:</strong> La Jolla, CA</p>
         </div>
         <div className="w-full flex justify-center">
           <ContactForm />

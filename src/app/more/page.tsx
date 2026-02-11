@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function MorePage() {
   return (
-    <div className="container mx-auto px-6 pb-20">
+    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
       <PageHeader title="More" subtitle="Additional resources and information" />
 
       {/* Training Section */}
@@ -17,9 +17,9 @@ export default function MorePage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-20 bg-[#f5f0e8] rounded-2xl p-8 md:p-12"
+        className="mb-10 md:mb-14 bg-[#f5f0e8] rounded-2xl p-6 md:p-10"
       >
-        <h2 className="text-4xl md:text-5xl font-rosehot text-accent-red mb-8">Training</h2>
+        <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-5">Training</h2>
         <div className="text-lg text-[#1a3a5c] space-y-4">
           <p className="font-semibold">
             All volunteers are certified and trained for their specific projects!
@@ -52,11 +52,11 @@ export default function MorePage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-20"
+        className="mb-10 md:mb-14"
       >
-        <h2 className="text-4xl md:text-5xl font-rosehot text-accent-red mb-8">San Diego Fall Prevention Task Force</h2>
+        <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-5">San Diego Fall Prevention Task Force</h2>
         
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-start">
           {/* Description */}
           <div className="space-y-4 text-lg text-[#1a3a5c]">
             <p>
@@ -158,10 +158,10 @@ export default function MorePage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-20"
+        className="mb-10 md:mb-14"
       >
-        <h2 className="text-4xl md:text-5xl font-rosehot text-accent-red mb-8">Past Events</h2>
-        <p className="text-lg text-[#1a3a5c] mb-12">
+        <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-5">Past Events</h2>
+        <p className="text-lg text-[#1a3a5c] mb-6">
           Take a look at some of our previous events and activities in the community.
         </p>
         
@@ -197,10 +197,10 @@ export default function MorePage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-20"
+        className="mb-10 md:mb-14"
       >
-        <h2 className="text-4xl md:text-5xl font-rosehot text-accent-red mb-4">Follow Us</h2>
-        <p className="text-lg text-[#1a3a5c] mb-8">
+        <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-3">Follow Us</h2>
+        <p className="text-lg text-[#1a3a5c] mb-6">
           Stay connected with SDIPP on social media for updates, events, and more!
         </p>
 

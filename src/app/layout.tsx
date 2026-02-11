@@ -27,10 +27,10 @@ export default function RootLayout({
         <SmoothScroll>
           <div className="min-h-screen flex flex-col">
             <ResizableNavbar />
-            <main className="flex-grow pt-20">
+            <main className="flex-grow pt-16 md:pt-20">
               {children}
             </main>
-            <footer className="py-10 text-center">
+            <footer className="py-8 text-center">
               <div className="flex flex-col items-center gap-4">
                 <div className="flex items-center gap-6 mb-2">
                   <a
