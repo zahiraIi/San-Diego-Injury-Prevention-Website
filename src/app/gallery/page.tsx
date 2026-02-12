@@ -2,207 +2,174 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, X } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
-import GBMGallery from "@/components/ui/gbm-gallery";
-import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery";
+import {
+  DraggableContainer,
+  GridBody,
+  GridItem,
+} from "@/components/ui/infinite-drag-scroll";
 
-// ─── Volunteering media items ────────────────────────────────────────────────
+// ─── All gallery images from the three folders ─────────────────────────────
 
-const volunteeringItems = [
-  {
-    id: 1,
-    type: "image" as const,
-    title: "Volunteering at SDIPP",
-    desc: "Community outreach and support",
-    url: "/images/volunteering/volunteer1.webp",
-    span: "col-span-1 row-span-4",
-  },
-  {
-    id: 2,
-    type: "image" as const,
-    title: "Health Fair Participation",
-    desc: "Connecting with the community",
-    url: "/images/volunteering/volunteer2.webp",
-    span: "col-span-2 row-span-4",
-  },
-  {
-    id: 3,
-    type: "image" as const,
-    title: "Fitness Classes",
-    desc: "Leading weekly fitness sessions",
-    url: "/images/volunteering/volunteer3.webp",
-    span: "col-span-1 row-span-4",
-  },
-  {
-    id: 4,
-    type: "image" as const,
-    title: "Fall Prevention Program",
-    desc: "Working with UCSD Health",
-    url: "/images/volunteering/volunteer4.webp",
-    span: "col-span-2 row-span-3",
-  },
-  {
-    id: 5,
-    type: "image" as const,
-    title: "Community Engagement",
-    desc: "Building relationships",
-    url: "/images/volunteering/volunteer5.webp",
-    span: "col-span-1 row-span-3",
-  },
-  {
-    id: 6,
-    type: "image" as const,
-    title: "Yoga Sessions",
-    desc: "Promoting mobility and wellness",
-    url: "/images/volunteering/volunteer6.webp",
-    span: "col-span-1 row-span-3",
-  },
-  {
-    id: 7,
-    type: "image" as const,
-    title: "Outreach Events",
-    desc: "Spreading awareness",
-    url: "/images/volunteering/volunteer7.webp",
-    span: "col-span-2 row-span-3",
-  },
-  {
-    id: 8,
-    type: "image" as const,
-    title: "Team Collaboration",
-    desc: "Working together for the community",
-    url: "/images/volunteering/volunteer8.webp",
-    span: "col-span-2 row-span-3",
-  },
-  {
-    id: 9,
-    type: "image" as const,
-    title: "Community Service",
-    desc: "Making a difference together",
-    url: "/images/volunteering/volunteer9.webp",
-    span: "col-span-1 row-span-3",
-  },
-  {
-    id: 10,
-    type: "image" as const,
-    title: "Student Volunteers",
-    desc: "Students helping seniors",
-    url: "/images/volunteering/volunteer10.webp",
-    span: "col-span-2 row-span-3",
-  },
-  {
-    id: 11,
-    type: "image" as const,
-    title: "Active Living",
-    desc: "Promoting healthy lifestyles",
-    url: "/images/volunteering/volunteer 11.webp",
-    span: "col-span-1 row-span-3",
-  },
+const CHATEAU_PREFIX = "/images/1:17Chateau/chateau";
+const GBM_PREFIX = "/images/GBM/GBM";
+const VOL_PREFIX = "/images/volunteering/volunteer";
+
+const chateauImages = Array.from({ length: 23 }, (_, i) => ({
+  id: `chateau-${i + 1}`,
+  src: `${CHATEAU_PREFIX}${i + 1}.webp`,
+  alt: `Chateau La Jolla event ${i + 1}`,
+}));
+
+const gbmImages = [
+  ...Array.from({ length: 8 }, (_, i) => ({
+    id: `gbm-${i + 1}`,
+    src: `${GBM_PREFIX}${i + 1}.webp`,
+    alt: `GBM photo ${i + 1}`,
+  })),
+  { id: "gbm-9", src: "/images/GBM/GMB9.webp", alt: "GBM photo 9" },
 ];
 
-// ─── Collapsible section component ──────────────────────────────────────────
+const volunteerImages = [
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: `vol-${i + 1}`,
+    src: `${VOL_PREFIX}${i + 1}.webp`,
+    alt: `Volunteering ${i + 1}`,
+  })),
+  { id: "vol-11", src: "/images/volunteering/volunteer 11.webp", alt: "Volunteering 11" },
+];
 
-interface GallerySectionProps {
-  title: string;
-  count: number;
-  isOpen: boolean;
-  onToggle: () => void;
-  children: React.ReactNode;
-}
+const ALL_GALLERY_IMAGES = [...volunteerImages, ...gbmImages, ...chateauImages];
 
-function GallerySection({ title, count, isOpen, onToggle, children }: GallerySectionProps) {
-  return (
-    <div className="mb-12 md:mb-16">
-      {/* Clickable header */}
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between gap-3 px-6 md:px-8 py-5 md:py-6 rounded-xl
-                   bg-white/50 dark:bg-white/5 backdrop-blur-sm
-                   border border-accent-blue/15 hover:border-accent-blue/30
-                   shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
-      >
-        <div className="flex items-center gap-4">
-          <h2 className="text-2xl md:text-3xl font-sans text-accent-red">
-            {title}
-          </h2>
-          <span className="text-xs md:text-sm font-medium text-muted-foreground opacity-60 bg-accent-blue/10 px-2.5 py-0.5 rounded-full">
-            {count} photos
-          </span>
-        </div>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-6 h-6 text-accent-blue opacity-70 group-hover:opacity-100 transition-opacity" />
-        </motion.div>
-      </button>
-
-      {/* Expandable content */}
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="pt-8 md:pt-10">{children}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+// Preview: 6 images for the right-side grid (masonry-style)
+const PREVIEW_IMAGES = [
+  volunteerImages[0],
+  volunteerImages[3],
+  gbmImages[0],
+  gbmImages[4],
+  chateauImages[0],
+  chateauImages[5],
+];
 
 // ─── Gallery page ───────────────────────────────────────────────────────────
 
 export default function GalleryPage() {
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    volunteering: false,
-    gbm: false,
-  });
-
-  const toggleSection = (key: string) => {
-    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
+  const [viewAllOpen, setViewAllOpen] = useState(false);
 
   return (
     <>
       <PageHeader title="Gallery" subtitle="Photos from our events and activities" />
 
-      {/* Main Content Area with Gradient Background */}
-      <section className="relative py-16 md:py-20 px-4 md:px-6 pb-20 md:pb-24">
-        {/* White to gray gradient background */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
-        
+      {/* Main content: Shadcn-style two-column layout */}
+      <section className="relative py-16 md:py-24 px-4 md:px-6">
+        <div
+          className="absolute inset-0 -z-10"
+          style={{ background: "linear-gradient(115deg, #ffffff, #dddddd)" }}
+        />
         <div className="container mx-auto max-w-6xl relative z-10">
-          {/* Volunteering Section (first) */}
-          <GallerySection
-            title="Volunteering"
-            count={volunteeringItems.length}
-            isOpen={openSections.volunteering}
-            onToggle={() => toggleSection("volunteering")}
-          >
-            <InteractiveBentoGallery
-              mediaItems={volunteeringItems}
-              title="Volunteering"
-              description="Explore our community engagement and outreach activities"
-              hideHeader
-            />
-          </GallerySection>
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            {/* Left: Text + CTA */}
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-left"
+            >
+              <p className="text-xs font-semibold tracking-widest text-[#1a3a5c]/80 uppercase mb-3">
+                Gallery
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-[#1a3a5c] mb-4 leading-tight">
+                Our Story in Pictures
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 max-w-md">
+                Every image tells a story—explore our gallery to see our journey unfold.
+              </p>
+              <button
+                type="button"
+                onClick={() => setViewAllOpen(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#1a3a5c] text-white font-sans font-medium hover:bg-[#1a3a5c]/90 transition-colors"
+              >
+                See all
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </motion.div>
 
-          {/* GBM Section (second) */}
-          <GallerySection
-            title="GBM Photos"
-            count={9}
-            isOpen={openSections.gbm}
-            onToggle={() => toggleSection("gbm")}
-          >
-            <GBMGallery />
-          </GallerySection>
+            {/* Right: 6-image preview grid (uniform height) */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="grid grid-cols-2 md:grid-cols-3 gap-4"
+            >
+              {PREVIEW_IMAGES.map((img) => (
+                <div
+                  key={img.id}
+                  className="relative w-full aspect-[4/3] overflow-hidden rounded-lg bg-gray-100"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    unoptimized={img.src.includes(" ") ? true : undefined}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
+
+      {/* Full gallery overlay: drag-scroll + instruction text */}
+      <AnimatePresence>
+        {viewAllOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex flex-col bg-[#141414]"
+          >
+            <div className="flex-none flex items-center justify-between px-4 py-3 bg-[#141414] border-b border-white/10">
+              <h3 className="font-sans font-bold text-white text-lg">Gallery</h3>
+              <button
+                type="button"
+                onClick={() => setViewAllOpen(false)}
+                className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                aria-label="Close gallery"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="flex-1 min-h-0 overflow-hidden">
+              <DraggableContainer variant="masonry" heightClass="h-full">
+                <GridBody>
+                  {ALL_GALLERY_IMAGES.map((img) => (
+                    <GridItem
+                      key={img.id}
+                      className="relative h-54 w-36 md:h-96 md:w-64"
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="pointer-events-none object-cover"
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        unoptimized={img.src.includes(" ") ? true : undefined}
+                      />
+                    </GridItem>
+                  ))}
+                </GridBody>
+              </DraggableContainer>
+            </div>
+            <p className="flex-none text-center text-white/60 text-sm py-4 px-4 font-sans">
+              Drag to pan around the gallery · Scroll to move up and down
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

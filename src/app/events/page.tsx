@@ -37,6 +37,7 @@ export default function EventsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            className="max-w-4xl mx-auto w-full"
           >
             <h2 className="text-2xl md:text-3xl font-sans text-[#1a3a5c] mb-12 md:mb-16">
               Upcoming Events

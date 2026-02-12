@@ -108,29 +108,29 @@ export default function Home() {
         {/* Site gradient background */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#2774ae] via-[#002E5D] to-[#002E5D]" />
         
-        <div className="container mx-auto max-w-6xl grid md:grid-cols-[1fr,2fr] gap-8 sm:gap-12 items-center relative z-10">
+        <div className="container mx-auto max-w-6xl flex flex-col md:flex-row gap-8 sm:gap-12 md:gap-16 items-center justify-center relative z-10">
           {/* Concentration ring animation */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex justify-center md:justify-start mb-6 md:mb-0"
+            className="flex-shrink-0"
           >
             <CircleAnimation
               title=""
               animationId="concentric-rings"
-              className="bg-transparent border-none scale-75 md:scale-100"
+              className="bg-transparent border-none scale-125 md:scale-150"
             />
           </motion.div>
 
           {/* Mission text */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-left space-y-4 sm:space-y-5"
+            className="text-left space-y-4 sm:space-y-5 max-w-2xl"
           >
             <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
               Mission

@@ -53,11 +53,7 @@ export default function StaffPage() {
     <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
       <PageHeader title="Our Staff" subtitle="Meet the team behind SDIPP" />
 
-      <TeamSection 
-        members={staff}
-        title=""
-        subtitle=""
-      />
+      <TeamSection members={staff} />
     </div>
   );
 }

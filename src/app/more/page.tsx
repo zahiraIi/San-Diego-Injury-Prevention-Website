@@ -54,11 +54,10 @@ export default function MorePage() {
         transition={{ duration: 0.6 }}
         className="mb-10 md:mb-14"
       >
-        <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-5">San Diego Fall Prevention Task Force</h2>
-        
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-start">
           {/* Description */}
           <div className="space-y-4 text-lg text-[#1a3a5c]">
+            <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-5">San Diego Fall Prevention Task Force</h2>
             <p>
               Established in 2004, the San Diego Fall Prevention Task Force consists of service providers 
               and community members who are dedicated to promoting the health, safety, independence, 

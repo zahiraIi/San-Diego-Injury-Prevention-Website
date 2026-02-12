@@ -19,7 +19,7 @@ export default function PageHeader({ title, subtitle, size = "default" }: PageHe
     <section className="relative w-screen ml-[calc(-50vw+50%)]">
       {/* Dark blue gradient so white navbar/text pop on every page */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#2774ae] via-[#002E5D] to-[#002E5D]" />
-      <div className={`relative z-10 max-w-6xl mx-auto px-6 ${paddingClass}`}>
+      <div className={`relative z-10 container mx-auto px-4 md:px-6 ${paddingClass}`}>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-white tracking-tight mb-4">
           {title}
         </h1>

@@ -2,132 +2,68 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { LiquidGlassCard } from "@/components/kokonutui/liquid-glass-card";
 import PageHeader from "@/components/ui/PageHeader";
+import { ImpactPlansFeatures } from "@/components/ui/impact-plans-features";
+import { Users, Heart, Dumbbell, Shield, Handshake } from "lucide-react";
 
 const impactCards = [
   {
     title: "Committees",
     description: "Join a variety of committees, including outreach, legal, and research.",
+    icon: Users,
   },
   {
     title: "Health Fairs",
     description: "Network at health fairs, both with APAMSA and in the community.",
+    icon: Heart,
   },
   {
     title: "Weekly classes",
     description: "Lead fitness, yoga, and other classes for residents of nursing homes.",
+    icon: Dumbbell,
   },
   {
     title: "Fall/Injury prevention",
     description: "Volunteer through Scripps and the UCSD Health Trauma Center.",
+    icon: Shield,
   },
   {
     title: "Collaboration",
     description: "Work with the San Diego Fall Prevention Task Force.",
+    icon: Handshake,
   },
 ];
 
 export default function MissionPage() {
   return (
     <>
-      <PageHeader title="Our Mission" subtitle="Dedicated to promoting fitness and mobility" />
+      <PageHeader
+        title="Our Mission"
+        subtitle="We are dedicated to promoting fitness and mobility among older individuals in the San Diego area. Our club offers a supportive community where members can engage in various activities to enhance their overall well-being. At San Diego Injury Prevention Program, we believe in empowering seniors to lead active lives free from injuries. Through our programs, we focus on improving fitness levels, mobility, and quality of life."
+      />
 
-      {/* Mission Content Section - White Gradient */}
-      <section className="relative py-24 md:py-28 px-4 md:px-6">
-        {/* White to gray gradient background */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <LiquidGlassCard className="border border-accent-blue/20 bg-gradient-to-br from-background/80 to-accent-blue/10">
-                <div className="relative aspect-video rounded-lg overflow-hidden">
-                  <Image
-                    src="/images/volunteering/volunteer1.webp"
-                    alt="Volunteering at San Diego Injury Prevention Program"
-                    fill
-                    className="object-cover rounded-lg"
-                  />
-                </div>
-              </LiquidGlassCard>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-left space-y-6"
-            >
-              <p className="text-lg md:text-xl leading-relaxed text-[#0f172a]">
-                We are dedicated to promoting fitness and mobility among older individuals in the San Diego area. 
-                Our club offers a supportive community where members can engage in various activities to enhance 
-                their overall well-being.
-              </p>
-              <p className="text-lg md:text-xl leading-relaxed text-[#0f172a]">
-                At San Diego Injury Prevention Program, we believe in empowering seniors to lead active lives 
-                free from injuries. Through our programs, we focus on improving fitness levels, mobility, 
-                and quality of life.
-              </p>
-            </motion.div>
-          </div>
-        </div>
+      {/* Mission photo section - full width */}
+      <section className="relative w-full py-0">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative w-full aspect-[21/9] md:aspect-[3/1]"
+        >
+          <Image
+            src="/images/volunteering/volunteer10.webp"
+            alt="Volunteering at San Diego Injury Prevention Program"
+            fill
+            className="object-cover w-full"
+            sizes="100vw"
+            priority
+          />
+        </motion.div>
       </section>
 
-      {/* Impact & Plans Section - Blue Gradient */}
-      <section className="relative py-24 md:py-28 px-4 md:px-6">
-        {/* Blue gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2774ae] via-[#002E5D] to-[#002E5D]" />
-        <div className="container mx-auto relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-sans text-white text-center mb-16 md:mb-20"
-          >
-            Impact & Plans
-          </motion.h2>
-
-          {/* Top Row - 3 cards */}
-          <div className="grid md:grid-cols-3 gap-10 md:gap-12 max-w-5xl mx-auto mb-12 md:mb-16">
-            {impactCards.slice(0, 3).map((card, index) => (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-[#f5f0e8] rounded-lg p-8 md:p-10 text-center"
-              >
-                <h3 className="text-2xl font-sans text-[#1a3a5c] mb-4">{card.title}</h3>
-                <p className="text-[#1a3a5c] text-sm leading-relaxed">{card.description}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Bottom Row - 2 cards centered */}
-          <div className="grid md:grid-cols-2 gap-10 md:gap-12 max-w-3xl mx-auto">
-            {impactCards.slice(3).map((card, index) => (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
-                className="bg-[#f5f0e8] rounded-lg p-8 md:p-10 text-center"
-              >
-                <h3 className="text-2xl font-sans text-[#1a3a5c] mb-4">{card.title}</h3>
-                <p className="text-[#1a3a5c] text-sm leading-relaxed">{card.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Impact & Plans Section - features-8 style (Card grid) */}
+      <ImpactPlansFeatures items={impactCards} />
 
       {/* Message from the Presidents - White Gradient */}
       <section className="relative py-24 md:py-28 px-4 md:px-6">

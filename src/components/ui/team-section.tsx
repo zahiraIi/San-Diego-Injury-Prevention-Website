@@ -1,14 +1,22 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { IconBrandLinkedin, IconBrandInstagram, IconMail, IconBrandFacebook } from "@tabler/icons-react";
+import { Asterisk } from "lucide-react";
 
 interface TeamMember {
   name: string;
   role: string;
-  avatar?: string;
-  desc?: string;
-  reason?: string;
+  avatar: string;
+  desc: string;
+  socials?: {
+    linkedin?: string;
+    instagram?: string;
+    email?: string;
+    facebook?: string;
+  };
 }
 
 interface TeamSectionProps {
@@ -17,81 +25,112 @@ interface TeamSectionProps {
   subtitle?: string;
 }
 
-export default function TeamSection({ 
-  members, 
-  title = "Our Staff",
-  subtitle 
-}: TeamSectionProps) {
-  return (
-    <section className="py-12 md:py-32">
-      <div className="mx-auto max-w-5xl px-6 lg:px-0">
-        {title && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-8 md:mb-16"
-          >
-            <h2 className="text-4xl font-rosehot font-bold md:text-5xl text-center text-accent-red mb-4">
-              {title}
-            </h2>
-            {subtitle && (
-              <p className="text-xl text-accent-blue font-charter text-center max-w-2xl mx-auto">
-                {subtitle}
-              </p>
-            )}
-          </motion.div>
-        )}
+export default function TeamSection({ members, title, subtitle }: TeamSectionProps) {
+  const [activeMember, setActiveMember] = useState<TeamMember>(members[0]);
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {members.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group flex"
-            >
-              <div className="bg-background/80 backdrop-blur-sm border border-accent-blue/20 rounded-2xl p-8 md:p-10 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-accent-blue/40 h-full flex flex-col">
-                <div className="flex flex-col items-center text-center flex-grow">
-                  <div className="bg-background size-40 md:size-48 lg:size-52 rounded-full border-2 border-accent-blue/20 p-1 shadow-md mb-6 group-hover:border-accent-blue/40 transition-colors overflow-hidden flex-shrink-0">
-                    {member.avatar ? (
-                      <Image
-                        src={member.avatar}
-                        alt={member.name}
-                        width={208}
-                        height={208}
-                        className="aspect-square rounded-full object-cover"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full rounded-full bg-accent-blue/20 flex items-center justify-center">
-                        <span className="text-4xl md:text-5xl lg:text-6xl font-rosehot text-accent-blue">
-                          {member.name.charAt(0)}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-rosehot text-foreground mb-2 group-hover:text-accent-red transition-colors">
-                    {member.name}
-                  </h3>
-                  <span className="text-accent-red font-bold text-base md:text-lg uppercase tracking-wide mb-4">
-                    {member.role}
-                  </span>
-                  {member.desc && (
-                    <p className="text-base md:text-lg opacity-80 leading-relaxed flex-grow">
-                      {member.desc}
-                    </p>
-                  )}
+  return (
+    <section className="pt-6 md:pt-8 pb-12 md:pb-24">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          {/* Left Column: Active Member Info */}
+          <div className="order-2 lg:order-1">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeMember.name}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.4 }}
+                className="space-y-6"
+              >
+                <div>
+                  <h4 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-2">
+                    {activeMember.name}
+                  </h4>
+                  <p className="text-xl text-accent-red font-medium">
+                    {activeMember.role}
+                  </p>
                 </div>
+
+                {/* Social Icons */}
+                <div className="flex gap-4 text-gray-400">
+                  <IconBrandFacebook className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
+                  <IconBrandLinkedin className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
+                  <IconBrandInstagram className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
+                  <IconMail className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
+                </div>
+
+                <blockquote className="text-lg md:text-xl text-gray-600 leading-relaxed italic">
+                  "{activeMember.desc}"
+                </blockquote>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Right Column: Active Member Image */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-md aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100">
+              <div className="absolute top-4 right-4 z-10 text-accent-red">
+                <Asterisk className="w-10 h-10 md:w-12 md:h-12" strokeWidth={2} />
               </div>
-            </motion.div>
-          ))}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeMember.name}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="relative w-full h-full"
+                >
+                  <Image
+                    src={activeMember.avatar}
+                    alt={activeMember.name}
+                    fill
+                    className="object-cover object-center"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Row: Team Grid */}
+        <div className="mt-16 lg:mt-24">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-8">
+            {members.map((member) => (
+              <button
+                key={member.name}
+                onClick={() => setActiveMember(member)}
+                className={`group flex flex-col items-center text-center space-y-3 transition-all duration-300 ${
+                  activeMember.name === member.name ? "opacity-100 scale-105" : "opacity-60 hover:opacity-100"
+                }`}
+              >
+                <div className={`relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 transition-colors ${
+                  activeMember.name === member.name ? "border-accent-red" : "border-transparent group-hover:border-gray-200"
+                }`}>
+                  <Image
+                    src={member.avatar}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h5 className={`font-bold text-sm md:text-base transition-colors ${
+                    activeMember.name === member.name ? "text-[#1a3a5c]" : "text-gray-600"
+                  }`}>
+                    {member.name}
+                  </h5>
+                  <p className="text-xs text-gray-500 font-medium">
+                    {member.role}
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
