@@ -89,27 +89,34 @@ body {
   }
 }
 
-/* Hero entrance animations */
-@keyframes hero-asterisk {
-  from { opacity: 0; transform: rotate(-90deg) scale(0.5); }
-  to { opacity: 1; transform: rotate(0deg) scale(1); }
+/* Scroll reveal animations */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-@keyframes hero-title {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+[data-reveal="left"] {
+  transform: translateX(-30px);
 }
-@keyframes hero-subtitle {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+[data-reveal="right"] {
+  transform: translateX(30px);
 }
-.hero-asterisk {
-  animation: hero-asterisk 0.8s ease-out both;
+[data-reveal][data-visible] {
+  opacity: 1;
+  transform: translateX(0);
 }
-.hero-title {
-  animation: hero-title 0.7s ease-out 0.3s both;
+[data-reveal="right"][data-delay] {
+  transition-delay: 0.15s;
 }
-.hero-subtitle {
-  animation: hero-subtitle 0.6s ease-out 0.6s both;
+[data-reveal="left"][data-delay] {
+  transition-delay: 0.1s;
+}
+
+/* CSS gradient fallbacks for Grainient backgrounds */
+.bg-grainient-blue {
+  background: linear-gradient(135deg, #8FBFD9, #1a5a8a, #001a3a);
+}
+.bg-grainient-white {
+  background: linear-gradient(135deg, #FFFFFF, #F5F5F5, #E8E8E8);
 }
 
 /* Respect reduced motion preference */

@@ -8,9 +8,6 @@ const SiteFooter = dynamic(() => import("@/components/ui/site-footer"));
 const GrainientBackground = dynamic(
   () => import("@/components/ui/GrainientBackground")
 );
-const GSAPScrollProvider = dynamic(
-  () => import("@/components/ui/gsap-scroll-provider")
-);
 
 const rethinkSans = Rethink_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -40,16 +37,14 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://linktr.ee" />
       </head>
       <body className={`${rethinkSans.variable} font-sans antialiased relative`}>
-        <GSAPScrollProvider>
-          <GrainientBackground />
-          <div className="relative min-h-screen flex flex-col">
-            <StaticNavbar />
-            <main className="flex-grow pt-0">
-              {children}
-            </main>
-            <SiteFooter />
-          </div>
-        </GSAPScrollProvider>
+        <GrainientBackground />
+        <div className="relative min-h-screen flex flex-col">
+          <StaticNavbar />
+          <main className="flex-grow pt-0">
+            {children}
+          </main>
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );

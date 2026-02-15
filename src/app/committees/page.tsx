@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Timeline } from "@/components/ui/timeline";
 import { Users, CalendarDays, BarChart3, Scale } from "lucide-react";
 import PageHeader from "@/components/ui/page-header";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Clock, MapPin, ExternalLink, X } from "lucide-react";
 import type { NotionEvent } from "@/lib/notion";
 

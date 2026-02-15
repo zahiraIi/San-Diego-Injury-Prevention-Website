@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [
       "lucide-react",
-      "motion",
+      "framer-motion",
       "@radix-ui/react-accordion",
       "@radix-ui/react-tooltip",
     ],

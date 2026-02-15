@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export interface FeatureItem {
   title?: string;

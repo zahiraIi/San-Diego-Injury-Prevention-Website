@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import PageHeader from "@/components/ui/page-header";
 import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 import { ExternalLink, FileText, Instagram } from "lucide-react";

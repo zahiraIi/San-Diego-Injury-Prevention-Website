@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import PageHeader from "@/components/ui/page-header";
 import CalendarView from "@/components/ui/calendar-view";
 import EventsDisplay from "@/components/ui/events-display";

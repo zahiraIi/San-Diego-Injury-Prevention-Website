@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { NotionEvent } from "@/lib/notion";

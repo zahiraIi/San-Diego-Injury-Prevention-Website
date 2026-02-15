@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import FAQSection from "@/components/ui/faq-section";
 import GrainientBlueSection from "@/components/ui/GrainientBlueSection";
 import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
