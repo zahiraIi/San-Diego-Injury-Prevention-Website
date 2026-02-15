@@ -164,8 +164,16 @@ export default function Grainient({
 
     let cancelled = false;
     let cleanup: (() => void) | undefined;
+    let idleHandle: number | undefined;
 
-    (async () => {
+    const scheduleInit = typeof requestIdleCallback !== "undefined"
+      ? requestIdleCallback
+      : (cb: () => void) => setTimeout(cb, 1) as unknown as number;
+    const cancelInit = typeof cancelIdleCallback !== "undefined"
+      ? cancelIdleCallback
+      : (id: number) => clearTimeout(id);
+
+    idleHandle = scheduleInit(async () => {
       const { Renderer, Program, Mesh, Triangle } = await import("ogl");
       if (cancelled) return;
 
@@ -252,10 +260,11 @@ export default function Grainient({
           // Ignore
         }
       };
-    })();
+    });
 
     return () => {
       cancelled = true;
+      if (idleHandle !== undefined) cancelInit(idleHandle);
       cleanup?.();
     };
   }, [

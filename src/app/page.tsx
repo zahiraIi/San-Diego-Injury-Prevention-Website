@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowRight, Asterisk, Users, Heart, Dumbbell, Shield, Handshake } from "lucide-react";
 import GrainientBlueSection from "@/components/ui/GrainientBlueSection";
@@ -41,7 +40,6 @@ const SCROLL_REVEAL = {
 };
 
 export default function Home() {
-  const [heroKey] = useState(() => Math.random());
   const scrollRoot = useRef<HTMLDivElement>(null);
   const introText = useRef<HTMLDivElement>(null);
   const introImage = useRef<HTMLDivElement>(null);
@@ -120,37 +118,21 @@ export default function Home() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[650px] flex flex-col justify-center items-center text-center overflow-hidden pt-16">
         <GrainientBlueSection />
-        {/* Content — key forces remount so entrance animation runs on every visit */}
-        <div key={heroKey} className="relative z-10 flex flex-col items-center px-4 sm:px-6 py-12 sm:py-16 md:py-24 max-w-4xl mx-auto">
+        <div className="relative z-10 flex flex-col items-center px-4 sm:px-6 py-12 sm:py-16 md:py-24 max-w-4xl mx-auto">
           {/* Asterisk Icon */}
-          <motion.div
-            initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-4 sm:mb-6 md:mb-10"
-          >
+          <div className="hero-asterisk mb-4 sm:mb-6 md:mb-10">
             <Asterisk className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 text-white" strokeWidth={2} />
-          </motion.div>
+          </div>
 
           {/* Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="font-sans font-bold text-white text-4xl sm:text-5xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tighter max-w-6xl lowercase px-2"
-          >
+          <h1 className="hero-title font-sans font-bold text-white text-4xl sm:text-5xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tighter max-w-6xl lowercase px-2">
             san diego <br className="block md:hidden" /> <br className="hidden md:block" /> injury prevention
-          </motion.h1>
+          </h1>
 
           {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="font-sans text-white/90 text-lg sm:text-xl md:text-3xl mt-4 sm:mt-6 md:mt-8 tracking-wide font-medium lowercase"
-          >
+          <p className="hero-subtitle font-sans text-white/90 text-lg sm:text-xl md:text-3xl mt-4 sm:mt-6 md:mt-8 tracking-wide font-medium lowercase">
             program
-          </motion.p>
+          </p>
         </div>
       </section>
 

@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { Rethink_Sans } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
-import StaticNavbar from "@/components/ui/static-navbar";
-import SiteFooter from "@/components/ui/site-footer";
-import GrainientBackground from "@/components/ui/GrainientBackground";
-import GSAPScrollProvider from "@/components/ui/gsap-scroll-provider";
+
+const StaticNavbar = dynamic(() => import("@/components/ui/static-navbar"));
+const SiteFooter = dynamic(() => import("@/components/ui/site-footer"));
+const GrainientBackground = dynamic(
+  () => import("@/components/ui/GrainientBackground")
+);
+const GSAPScrollProvider = dynamic(
+  () => import("@/components/ui/gsap-scroll-provider")
+);
 
 const rethinkSans = Rethink_Sans({ subsets: ["latin"], variable: "--font-sans" });
 

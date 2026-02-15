@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       "@radix-ui/react-accordion",
       "@radix-ui/react-tooltip",
     ],
+    inlineCss: true,
   },
 };
 
