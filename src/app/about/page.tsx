@@ -1,6 +1,6 @@
 "use client";
 
-import PageHeader from "@/components/ui/PageHeader";
+import PageHeader from "@/components/ui/page-header";
 import AboutSection2 from "@/components/ui/about-section-2";
 
 export default function AboutPage() {

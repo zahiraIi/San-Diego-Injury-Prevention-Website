@@ -120,7 +120,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-4xl text-center">
-          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-rosehot">
+          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-sans">
             How to Become a Member
           </h2>
           <p className="mt-4 text-lg text-muted-foreground font-charter">

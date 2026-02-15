@@ -140,7 +140,7 @@ export default function EventsDisplay({ maxDisplay }: EventsDisplayProps) {
           )}
 
           <div className="pt-3">
-            <h3 className="text-lg font-rosehot font-bold mb-3 leading-tight">
+            <h3 className="text-lg font-sans font-bold mb-3 leading-tight">
               {event.name}
             </h3>
 

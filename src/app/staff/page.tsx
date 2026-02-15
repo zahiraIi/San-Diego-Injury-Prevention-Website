@@ -1,7 +1,38 @@
 "use client";
 
-import PageHeader from "@/components/ui/PageHeader";
+import PageHeader from "@/components/ui/page-header";
 import TeamSection from "@/components/ui/team-section";
+import GeneralBoardGallery from "@/components/ui/general-board-gallery";
+import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
+
+const GENERAL_BOARD_IMAGES = [
+  "Celine_Chang.webp",
+  "Derek_Nguyen.webp",
+  "Enzo_Bautista.webp",
+  "Henry_Hsieh.webp",
+  "Isha_Mittal.webp",
+  "Laiken_Thoesen.webp",
+  "Maria_Nouri.webp",
+  "Minshen_Yang.webp",
+  "Panav_Vashishat.webp",
+  "Ranya_Ato.webp",
+  "Rebecca_Zhang.webp",
+  "Ryan_Lao.webp",
+  "Saya_Butler.webp",
+  "Shannon_O_Rourke.webp",
+  "Sophia_Qin.webp",
+];
+
+function generalBoardFileNameToName(filename: string): string {
+  const base = filename.replace(/\.(webp|jpg|jpeg|png)$/i, "");
+  if (base.includes("O_Rourke")) return base.replace(/_/g, " ").replace("O Rourke", "O'Rourke");
+  return base.replace(/_/g, " ");
+}
+
+const generalBoard = GENERAL_BOARD_IMAGES.map((filename) => ({
+  name: generalBoardFileNameToName(filename),
+  image: `/images/generalboard/${filename}`,
+}));
 
 const staff = [
   {
@@ -50,10 +81,22 @@ const staff = [
 
 export default function StaffPage() {
   return (
-    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
+    <>
       <PageHeader title="Our Staff" subtitle="Meet the team behind SDIPP" />
 
-      <TeamSection members={staff} />
-    </div>
+      <section className="relative py-12 md:py-16 px-4 md:px-6">
+        <GrainientWhiteSection />
+        <div className="container mx-auto relative z-10">
+          <section className="pt-2">
+            <h2 className="text-xl md:text-2xl font-sans font-bold text-[#1a3a5c] mb-4 text-center md:text-left">
+              Executive Board
+            </h2>
+            <TeamSection members={staff} />
+          </section>
+
+          <GeneralBoardGallery members={generalBoard} title="General Board" />
+        </div>
+      </section>
+    </>
   );
 }

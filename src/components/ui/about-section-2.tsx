@@ -45,7 +45,7 @@ export default function AboutSection2() {
               animationNum={0}
               timelineRef={heroRef}
               customVariants={revealVariants}
-              className="sm:text-4xl text-2xl md:text-5xl !leading-[110%] font-rosehot text-foreground mb-8"
+              className="sm:text-4xl text-2xl md:text-5xl !leading-[110%] font-sans text-foreground mb-8"
             >
               We are{" "}
               <TimelineContent
@@ -88,7 +88,7 @@ export default function AboutSection2() {
                 customVariants={textVariants}
                 className="mb-4 sm:text-xl text-base"
               >
-                <div className="font-rosehot font-medium text-foreground mb-1 capitalize">
+                <div className="font-sans font-medium text-foreground mb-1 capitalize">
                   San Diego Injury Prevention Program
                 </div>
                 <div className="font-charter text-accent-blue font-semibold uppercase">

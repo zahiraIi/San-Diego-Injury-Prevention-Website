@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { motion, useInView, Variants } from "framer-motion";
+import { motion, useInView, Variants } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface TimelineContentProps {

@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "motion/react";
 import type { LucideIcon } from "lucide-react";
+import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 export interface ImpactPlanItem {
   title: string;
@@ -25,7 +26,7 @@ export function ImpactPlansFeatures({
 
   return (
     <section className="relative py-16 md:py-32">
-      <div className="absolute inset-0" style={{ background: "linear-gradient(115deg, #ffffff, #dddddd)" }} />
+      <GrainientWhiteSection />
       <div className="relative z-10 mx-auto max-w-3xl px-6 lg:max-w-5xl">
         <div className="relative">
           <motion.div

@@ -1,25 +1,29 @@
 "use client";
 
 import { motion } from "motion/react";
-import PageHeader from "@/components/ui/PageHeader";
-import { IconExternalLink, IconFileTypePdf, IconBrandInstagram } from "@tabler/icons-react";
+import PageHeader from "@/components/ui/page-header";
+import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
+import { ExternalLink, FileText, Instagram } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function MorePage() {
   return (
-    <div className="container mx-auto px-4 md:px-6 pb-12 md:pb-16">
+    <>
       <PageHeader title="More" subtitle="Additional resources and information" />
 
+      <section className="relative py-12 md:py-16 px-4 md:px-6">
+        <GrainientWhiteSection />
+        <div className="container mx-auto relative z-10 pb-12 md:pb-16">
       {/* Training Section */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-10 md:mb-14 bg-[#f5f0e8] rounded-2xl p-6 md:p-10"
+        className="mb-10 md:mb-14"
       >
-        <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-5">Training</h2>
+        <h2 className="text-3xl md:text-4xl font-sans text-accent-red mb-5">Training</h2>
         <div className="text-lg text-[#1a3a5c] space-y-4">
           <p className="font-semibold">
             All volunteers are certified and trained for their specific projects!
@@ -57,7 +61,7 @@ export default function MorePage() {
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-start">
           {/* Description */}
           <div className="space-y-4 text-lg text-[#1a3a5c]">
-            <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-5">San Diego Fall Prevention Task Force</h2>
+            <h2 className="text-3xl md:text-4xl font-sans text-accent-red mb-5">San Diego Fall Prevention Task Force</h2>
             <p>
               Established in 2004, the San Diego Fall Prevention Task Force consists of service providers 
               and community members who are dedicated to promoting the health, safety, independence, 
@@ -79,9 +83,9 @@ export default function MorePage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-accent-blue text-white rounded-full font-bold hover:bg-accent-blue/90 transition-colors"
               >
-                <IconFileTypePdf className="w-5 h-5" />
+                <FileText className="w-5 h-5" />
                 View Task Force Info Sheet
-                <IconExternalLink className="w-4 h-4" />
+                <ExternalLink className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -127,9 +131,9 @@ export default function MorePage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#1a3a5c] rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg"
                   >
-                    <IconFileTypePdf className="w-5 h-5" />
+                    <FileText className="w-5 h-5" />
                     View Document
-                    <IconExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -143,7 +147,7 @@ export default function MorePage() {
                   className="flex items-center justify-center gap-2 text-accent-blue font-semibold hover:underline"
                 >
                   <span>View Full Document</span>
-                  <IconExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -159,14 +163,14 @@ export default function MorePage() {
         transition={{ duration: 0.6 }}
         className="mb-10 md:mb-14"
       >
-        <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-5">Past Events</h2>
+        <h2 className="text-3xl md:text-4xl font-sans text-accent-red mb-5">Past Events</h2>
         <p className="text-lg text-[#1a3a5c] mb-6">
           Take a look at some of our previous events and activities in the community.
         </p>
         
         {/* Chateau Event - January 17 */}
         <div>
-          <h3 className="text-2xl md:text-3xl font-rosehot text-[#1a3a5c] mb-6">Chateau La Jolla Event</h3>
+          <h3 className="text-2xl md:text-3xl font-sans text-[#1a3a5c] mb-6">Chateau La Jolla Event</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((i) => (
               <motion.div
@@ -178,7 +182,7 @@ export default function MorePage() {
                 className="relative aspect-square rounded-lg overflow-hidden group"
               >
                 <Image
-                  src={`/images/1:17Chateau/chateau${i}.webp`}
+                  src={`/images/chateau/chateau${i}.webp`}
                   alt={`Chateau La Jolla Event photo ${i}`}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -198,7 +202,7 @@ export default function MorePage() {
         transition={{ duration: 0.6 }}
         className="mb-10 md:mb-14"
       >
-        <h2 className="text-3xl md:text-4xl font-rosehot text-accent-red mb-3">Follow Us</h2>
+        <h2 className="text-3xl md:text-4xl font-sans text-accent-red mb-3">Follow Us</h2>
         <p className="text-lg text-[#1a3a5c] mb-6">
           Stay connected with SDIPP on social media for updates, events, and more!
         </p>
@@ -214,7 +218,7 @@ export default function MorePage() {
           <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
             {/* Instagram Header */}
             <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 p-4 flex items-center gap-3">
-              <IconBrandInstagram className="w-8 h-8 text-white" />
+              <Instagram className="w-8 h-8 text-white" />
               <div>
                 <h3 className="text-white font-bold text-lg">@sd__ipp</h3>
                 <p className="text-white/80 text-sm">San Diego Injury Prevention Program</p>
@@ -240,14 +244,16 @@ export default function MorePage() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white rounded-lg font-bold hover:opacity-90 transition-opacity"
               >
-                <IconBrandInstagram className="w-5 h-5" />
+                <Instagram className="w-5 h-5" />
                 Follow on Instagram
-                <IconExternalLink className="w-4 h-4" />
+                <ExternalLink className="w-4 h-4" />
               </Link>
             </div>
           </div>
         </motion.div>
       </motion.section>
-    </div>
+        </div>
+      </section>
+    </>
   );
 }

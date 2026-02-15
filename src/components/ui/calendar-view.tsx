@@ -159,7 +159,7 @@ export default function CalendarView() {
       {/* ── Header: Month/Year + navigation ── */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <h2 className="font-rosehot text-2xl md:text-3xl text-[#1a3a5c]">
+          <h2 className="font-sans text-2xl md:text-3xl text-[#1a3a5c]">
             {MONTHS[currentMonth]} {currentYear}
           </h2>
           <button
@@ -293,7 +293,7 @@ export default function CalendarView() {
             className="mt-6 border border-[#1a3a5c]/15 rounded-2xl bg-white p-5 md:p-6"
           >
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-rosehot text-lg md:text-xl text-[#1a3a5c]">
+              <h3 className="font-sans text-lg md:text-xl text-[#1a3a5c]">
                 {new Date(selectedDate + "T00:00:00").toLocaleDateString("en-US", {
                   weekday: "long",
                   month: "long",
@@ -319,7 +319,7 @@ export default function CalendarView() {
                     key={event.id}
                     className="border-l-4 border-accent-red pl-4 py-2"
                   >
-                    <h4 className="font-rosehot font-bold text-[#1a3a5c] text-base mb-1">
+                    <h4 className="font-sans font-bold text-[#1a3a5c] text-base mb-1">
                       {event.name}
                     </h4>
                     <div className="space-y-1.5 text-sm text-gray-600">

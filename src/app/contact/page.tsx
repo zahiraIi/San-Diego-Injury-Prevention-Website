@@ -2,14 +2,15 @@
 
 import { motion } from "motion/react";
 import FAQSection from "@/components/ui/faq-section";
+import GrainientBlueSection from "@/components/ui/GrainientBlueSection";
+import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 export default function ContactPage() {
   return (
     <>
       {/* Contact Section - Hero Style */}
       <section className="relative min-h-[600px] flex items-center pt-24 pb-12 px-4 md:px-6 overflow-hidden">
-        {/* Main Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2774ae] via-[#002E5D] to-[#002E5D]" />
+        <GrainientBlueSection />
         
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
@@ -85,7 +86,7 @@ export default function ContactPage() {
 
       {/* FAQ Section */}
       <section className="relative py-24 md:py-28 px-4 md:px-6">
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
+        <GrainientWhiteSection />
         <div className="container mx-auto max-w-4xl relative z-10">
           <FAQSection 
             title="FAQs"

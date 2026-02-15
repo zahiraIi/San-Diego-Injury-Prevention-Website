@@ -1,5 +1,5 @@
 "use client";
-import PageHeader from "@/components/ui/PageHeader";
+import PageHeader from "@/components/ui/page-header";
 
 export default function RecognitionsPage() {
   return (

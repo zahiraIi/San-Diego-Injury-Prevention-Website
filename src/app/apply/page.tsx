@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import PageHeader from "@/components/ui/PageHeader";
+import PageHeader from "@/components/ui/page-header";
 import { HowItWorks } from "@/components/ui/how-it-works";
 
 export default function ApplyPage() {

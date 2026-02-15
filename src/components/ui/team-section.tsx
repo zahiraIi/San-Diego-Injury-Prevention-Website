@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import { IconBrandLinkedin, IconBrandInstagram, IconMail, IconBrandFacebook } from "@tabler/icons-react";
-import { Asterisk } from "lucide-react";
+import { Linkedin, Instagram, Mail, Facebook, Asterisk } from "lucide-react";
 
 interface TeamMember {
   name: string;
@@ -54,10 +53,10 @@ export default function TeamSection({ members, title, subtitle }: TeamSectionPro
 
                 {/* Social Icons */}
                 <div className="flex gap-4 text-gray-400">
-                  <IconBrandFacebook className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
-                  <IconBrandLinkedin className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
-                  <IconBrandInstagram className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
-                  <IconMail className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
+                  <Facebook className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
+                  <Linkedin className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
+                  <Instagram className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
+                  <Mail className="w-5 h-5 hover:text-[#1a3a5c] cursor-pointer transition-colors" />
                 </div>
 
                 <blockquote className="text-lg md:text-xl text-gray-600 leading-relaxed italic">

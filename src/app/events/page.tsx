@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
-import PageHeader from "@/components/ui/PageHeader";
+import PageHeader from "@/components/ui/page-header";
 import CalendarView from "@/components/ui/calendar-view";
 import EventsDisplay from "@/components/ui/events-display";
+import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 export default function EventsPage() {
   return (
@@ -16,9 +17,7 @@ export default function EventsPage() {
 
       {/* Main Content Area with Gradient Background */}
       <section className="relative py-16 md:py-20 px-4 md:px-6 pb-20 md:pb-24">
-        {/* White to gray gradient background */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
-        
+        <GrainientWhiteSection />
         <div className="container mx-auto max-w-6xl relative z-10">
           {/* Calendar View */}
           <motion.div

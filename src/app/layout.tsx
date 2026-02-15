@@ -1,20 +1,25 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Rethink_Sans } from "next/font/google";
 import "./globals.css";
-import StaticNavbar from "@/components/ui/StaticNavbar";
-import SiteFooter from "@/components/ui/SiteFooter";
-import SmoothScroll from "@/components/ui/SmoothScroll";
+import StaticNavbar from "@/components/ui/static-navbar";
+import SiteFooter from "@/components/ui/site-footer";
+import GrainientBackground from "@/components/ui/GrainientBackground";
+import GSAPScrollProvider from "@/components/ui/gsap-scroll-provider";
 
 const rethinkSans = Rethink_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
-  title: "San Diego Injury Prevention Program",
-  description: "Promoting fitness and mobility among older individuals.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
+  title: {
+    default: "San Diego Injury Prevention Program",
+    template: "%s | SDIPP",
   },
+  description: "Promoting fitness and mobility among older individuals in San Diego through evidence-based programs.",
 };
 
 export default function RootLayout({
@@ -24,16 +29,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${rethinkSans.variable} font-sans antialiased`}>
-        <SmoothScroll>
-          <div className="min-h-screen flex flex-col">
+      <body className={`${rethinkSans.variable} font-sans antialiased relative`}>
+        <GSAPScrollProvider>
+          <GrainientBackground />
+          <div className="relative min-h-screen flex flex-col">
             <StaticNavbar />
-            <main className="flex-grow pt-0"> {/* Removed pt-16 since navbar is absolute/transparent over hero */}
+            <main className="flex-grow pt-0">
               {children}
             </main>
             <SiteFooter />
           </div>
-        </SmoothScroll>
+        </GSAPScrollProvider>
       </body>
     </html>
   );

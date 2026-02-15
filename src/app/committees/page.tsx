@@ -2,14 +2,15 @@
 
 import { motion } from "motion/react";
 import { Timeline } from "@/components/ui/timeline";
-import { IconUsers, IconCalendarEvent, IconChartBar, IconScale } from "@tabler/icons-react";
-import PageHeader from "@/components/ui/PageHeader";
+import { Users, CalendarDays, BarChart3, Scale } from "lucide-react";
+import PageHeader from "@/components/ui/page-header";
+import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 const committees = [
   {
     name: "Outreach Committee",
     members: "5+ general members",
-    icon: IconUsers,
+    icon: Users,
     description: [
       "Explore public health initiatives and research in San Diego county and seeing how we could get involved → focus on underserved communities.",
       "Expand and maintain program partnerships.",
@@ -28,7 +29,7 @@ const committees = [
   {
     name: "Logistics Committee",
     members: "~6 general members",
-    icon: IconCalendarEvent,
+    icon: CalendarDays,
     description: [
       "Organize and facilitate smooth execution of volunteer events to maximize community benefit",
     ],
@@ -45,7 +46,7 @@ const committees = [
   {
     name: "Research & Impact Committee",
     members: "~6 general members",
-    icon: IconChartBar,
+    icon: BarChart3,
     description: [
       "Research and utilize resources to educate the community and improve our programs.",
       "Write summaries to support advertising and volunteer initiatives",
@@ -61,7 +62,7 @@ const committees = [
   {
     name: "Legal Committee",
     members: "~3 general members",
-    icon: IconScale,
+    icon: Scale,
     description: [
       "Research, develop plans, and execute projects related to improving San Diego county (and other places) through policy and education.",
     ],
@@ -131,8 +132,7 @@ export default function CommitteesPage() {
 
       {/* Timeline Section */}
       <section className="relative py-24 md:py-28 px-6">
-        {/* White to gray gradient background */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(115deg, #ffffff, #dddddd)' }} />
+        <GrainientWhiteSection />
         <div className="container mx-auto max-w-6xl relative z-10">
           <Timeline data={timelineData} />
         </div>
