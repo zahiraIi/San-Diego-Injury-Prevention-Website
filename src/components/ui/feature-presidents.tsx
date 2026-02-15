@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
 
 export interface FeatureItem {
   title?: string;
@@ -76,12 +75,9 @@ export function FeaturePresidents({
             </div>
             <div className="grid lg:pl-6 grid-cols-1 sm:grid-cols-3 items-start lg:grid-cols-1 gap-6">
               {items.map((item, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  data-reveal="left"
                   className="flex flex-row gap-6 items-start"
                 >
                   <Check
@@ -97,15 +93,13 @@ export function FeaturePresidents({
                       {item.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
+            data-reveal="right"
+            data-delay=""
             className="relative bg-muted rounded-md aspect-square overflow-hidden"
           >
             <Image
@@ -116,7 +110,7 @@ export function FeaturePresidents({
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

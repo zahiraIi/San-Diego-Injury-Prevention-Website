@@ -17,12 +17,31 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+const SITE_URL = "https://sdipp.org";
+
 export const metadata: Metadata = {
   title: {
     default: "San Diego Injury Prevention Program",
     template: "%s | SDIPP",
   },
-  description: "Promoting fitness and mobility among older individuals in San Diego through evidence-based programs.",
+  description:
+    "Promoting fitness and mobility among older individuals in San Diego through evidence-based programs.",
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "San Diego Injury Prevention Program",
+    title: "San Diego Injury Prevention Program",
+    description:
+      "Student-run organization empowering seniors in San Diego through fitness programs, community outreach, and fall prevention education.",
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary",
+    title: "San Diego Injury Prevention Program",
+    description:
+      "Student-run organization empowering seniors in San Diego through fitness programs, community outreach, and fall prevention education.",
+  },
 };
 
 export default function RootLayout({
@@ -35,6 +54,23 @@ export default function RootLayout({
       <head>
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://linktr.ee" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "San Diego Injury Prevention Program",
+              url: SITE_URL,
+              description:
+                "Student-run organization empowering seniors in San Diego through fitness programs, community outreach, and fall prevention education.",
+              areaServed: {
+                "@type": "City",
+                name: "San Diego",
+              },
+            }),
+          }}
+        />
       </head>
       <body className={`${rethinkSans.variable} font-sans antialiased relative`}>
         <GrainientBackground />

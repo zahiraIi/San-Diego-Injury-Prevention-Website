@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
@@ -29,11 +28,8 @@ export function ImpactPlansFeatures({
       <GrainientWhiteSection />
       <div className="relative z-10 mx-auto max-w-3xl px-6 lg:max-w-5xl">
         <div className="relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div
+            data-reveal="left"
             className="mb-14 md:mb-20 text-center"
           >
             <p className="text-sm font-semibold tracking-widest text-[#1a3a5c]/70 uppercase mb-3">
@@ -45,25 +41,17 @@ export function ImpactPlansFeatures({
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               {subtitle}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, staggerChildren: 0.08 }}
-            className="relative z-10 grid grid-cols-6 gap-3"
-          >
+          <div className="relative z-10 grid grid-cols-6 gap-3">
             {/* Top row - 3 cards (each spans 2 cols on lg) */}
-            {topRow.map((item, index) => {
+            {topRow.map((item) => {
               const Icon = item.icon;
               return (
-                <motion.div
+                <div
                   key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  data-reveal="right"
+                  data-delay=""
                   className="col-span-full lg:col-span-2"
                 >
                   <Card className="relative flex h-full overflow-hidden bg-white border-gray-100 shadow-sm">
@@ -81,20 +69,18 @@ export function ImpactPlansFeatures({
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               );
             })}
 
             {/* Bottom row - 2 cards (each spans 3 cols on lg) */}
-            {bottomRow.map((item, index) => {
+            {bottomRow.map((item) => {
               const Icon = item.icon;
               return (
-                <motion.div
+                <div
                   key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: (index + 3) * 0.08 }}
+                  data-reveal="right"
+                  data-delay=""
                   className="col-span-full lg:col-span-3"
                 >
                   <Card className="relative flex h-full overflow-hidden bg-white border-gray-100 shadow-sm">
@@ -112,10 +98,10 @@ export function ImpactPlansFeatures({
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
