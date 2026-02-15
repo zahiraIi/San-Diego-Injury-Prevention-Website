@@ -1,10 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Registers GSAP ScrollTrigger once for the app. Renders children unchanged.
@@ -17,7 +13,9 @@ export default function GSAPScrollProvider({
 }) {
   useEffect(() => {
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      import("gsap/ScrollTrigger").then(({ default: ScrollTrigger }) => {
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+      });
     };
   }, []);
 

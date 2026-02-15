@@ -36,24 +36,26 @@ export default function StaticNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const currentY = window.scrollY;
+      if (ticking) return;
+      ticking = true;
 
-      // Always show when near the top
-      if (currentY < 10) {
-        setIsVisible(true);
+      requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+
+        if (currentY < 10) {
+          setIsVisible(true);
+        } else if (currentY > lastScrollY.current + 5) {
+          setIsVisible(false);
+        } else if (currentY < lastScrollY.current - 5) {
+          setIsVisible(true);
+        }
+
         lastScrollY.current = currentY;
-        return;
-      }
-
-      // Hide on scroll down, show on scroll up
-      if (currentY > lastScrollY.current + 5) {
-        setIsVisible(false);
-      } else if (currentY < lastScrollY.current - 5) {
-        setIsVisible(true);
-      }
-
-      lastScrollY.current = currentY;
+        ticking = false;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -72,7 +74,7 @@ export default function StaticNavbar() {
         {/* Left: Logo */}
         <Link href="/" className="relative w-10 h-10 md:w-16 md:h-16">
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="SDIPP Logo"
             fill
             className="object-contain drop-shadow-lg"

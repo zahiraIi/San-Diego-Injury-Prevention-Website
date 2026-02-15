@@ -112,6 +112,7 @@ export function FeaturePresidents({
               src={imageSrc}
               alt={imageAlt}
               fill
+              loading="lazy"
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />

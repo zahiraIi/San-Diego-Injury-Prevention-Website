@@ -29,6 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="dns-prefetch" href="https://www.instagram.com" />
+        <link rel="dns-prefetch" href="https://linktr.ee" />
+      </head>
       <body className={`${rethinkSans.variable} font-sans antialiased relative`}>
         <GSAPScrollProvider>
           <GrainientBackground />

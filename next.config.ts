@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     remotePatterns: [],
+    formats: ["image/avif", "image/webp"],
+  },
+  experimental: {
+    optimizePackageImports: [
+      "lucide-react",
+      "motion",
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-tooltip",
+    ],
   },
 };
 

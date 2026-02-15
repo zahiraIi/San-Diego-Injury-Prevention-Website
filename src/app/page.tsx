@@ -2,19 +2,21 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion } from "motion/react";
 import Link from "next/link";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { ArrowRight, Asterisk, Users, Heart, Dumbbell, Shield, Handshake } from "lucide-react";
-import { ImpactPlansFeatures } from "@/components/ui/impact-plans-features";
 import GrainientBlueSection from "@/components/ui/GrainientBlueSection";
 import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
-import { FeaturePresidents } from "@/components/ui/feature-presidents";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+const ImpactPlansFeatures = dynamic(
+  () => import("@/components/ui/impact-plans-features").then((m) => m.ImpactPlansFeatures),
+  { ssr: false }
+);
+const FeaturePresidents = dynamic(
+  () => import("@/components/ui/feature-presidents").then((m) => m.FeaturePresidents),
+  { ssr: false }
+);
 
 const impactCards = [
   { title: "Committees", description: "Join a variety of committees, including outreach, legal, and research.", icon: Users },
@@ -49,56 +51,66 @@ export default function Home() {
   const joinImage = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const d = SCROLL_REVEAL.duration;
-      [introText, introImage].forEach((ref, i) => {
-        if (!ref.current) return;
-        gsap.fromTo(
-          ref.current,
-          { opacity: 0, x: ref === introText ? -30 : 30 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: d,
-            delay: ref === introImage ? 0.15 : 0,
-            ease: "power2.out",
-            scrollTrigger: { trigger: ref.current, start: SCROLL_REVEAL.start, once: SCROLL_REVEAL.once },
-          }
-        );
-      });
-      [missionPhoto, missionText].forEach((ref, i) => {
-        if (!ref.current) return;
-        gsap.fromTo(
-          ref.current,
-          { opacity: 0, x: ref === missionPhoto ? -30 : 30 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: d,
-            delay: ref === missionText ? 0.1 : 0,
-            ease: "power2.out",
-            scrollTrigger: { trigger: ref.current, start: SCROLL_REVEAL.start, once: SCROLL_REVEAL.once },
-          }
-        );
-      });
-      [joinText, joinImage].forEach((ref) => {
-        if (!ref.current) return;
-        gsap.fromTo(
-          ref.current,
-          { opacity: 0, x: ref === joinText ? -30 : 30 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: d,
-            delay: ref === joinImage ? 0.1 : 0,
-            ease: "power2.out",
-            scrollTrigger: { trigger: ref.current, start: SCROLL_REVEAL.start, once: SCROLL_REVEAL.once },
-          }
-        );
-      });
-    }, scrollRoot);
+    let ctx: { revert: () => void } | undefined;
 
-    return () => ctx.revert();
+    (async () => {
+      const [{ default: gsap }, { default: ScrollTrigger }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+      ]);
+      gsap.registerPlugin(ScrollTrigger);
+
+      ctx = gsap.context(() => {
+        const d = SCROLL_REVEAL.duration;
+        [introText, introImage].forEach((ref) => {
+          if (!ref.current) return;
+          gsap.fromTo(
+            ref.current,
+            { opacity: 0, x: ref === introText ? -30 : 30 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: d,
+              delay: ref === introImage ? 0.15 : 0,
+              ease: "power2.out",
+              scrollTrigger: { trigger: ref.current, start: SCROLL_REVEAL.start, once: SCROLL_REVEAL.once },
+            }
+          );
+        });
+        [missionPhoto, missionText].forEach((ref) => {
+          if (!ref.current) return;
+          gsap.fromTo(
+            ref.current,
+            { opacity: 0, x: ref === missionPhoto ? -30 : 30 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: d,
+              delay: ref === missionText ? 0.1 : 0,
+              ease: "power2.out",
+              scrollTrigger: { trigger: ref.current, start: SCROLL_REVEAL.start, once: SCROLL_REVEAL.once },
+            }
+          );
+        });
+        [joinText, joinImage].forEach((ref) => {
+          if (!ref.current) return;
+          gsap.fromTo(
+            ref.current,
+            { opacity: 0, x: ref === joinText ? -30 : 30 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: d,
+              delay: ref === joinImage ? 0.1 : 0,
+              ease: "power2.out",
+              scrollTrigger: { trigger: ref.current, start: SCROLL_REVEAL.start, once: SCROLL_REVEAL.once },
+            }
+          );
+        });
+      }, scrollRoot);
+    })();
+
+    return () => ctx?.revert();
   }, []);
 
   return (
@@ -191,7 +203,7 @@ export default function Home() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
         <GrainientBlueSection />
-        
+
         <div className="container mx-auto max-w-6xl flex flex-col md:flex-row gap-8 sm:gap-12 md:gap-16 items-center justify-center relative z-10">
           {/* Volunteering photo */}
           <div
@@ -203,7 +215,8 @@ export default function Home() {
               alt="SDIPP vitals training session"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 448px"
             />
           </div>
 
@@ -292,16 +305,14 @@ export default function Home() {
                 alt="SDIPP members during a session"
                 width={800}
                 height={500}
+                loading="lazy"
                 className="object-cover w-full h-full"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
         </div>
       </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          FOOTER — (Moved to Global Layout)
-      ═══════════════════════════════════════════════════════════════════ */}
     </div>
   );
 }
