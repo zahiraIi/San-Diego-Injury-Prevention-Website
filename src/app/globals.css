@@ -27,6 +27,9 @@
 }
 
 @theme inline {
+  --animate-collapsible-down: collapsible-down 0.2s ease-out;
+  --animate-collapsible-up: collapsible-up 0.2s ease-out;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent-red: var(--accent-red);
@@ -62,7 +65,22 @@
 
 body {
   font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
   min-height: 100vh;
+}
+
+/* Prose rhythm — keep readable measure on free-flowing paragraphs */
+main > section p,
+main > div > section p {
+  max-width: 72ch;
+}
+
+/* Visible focus states for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Scrollbar styling for a premium feel */
@@ -117,6 +135,16 @@ body {
 }
 .bg-grainient-white {
   background: linear-gradient(135deg, #FFFFFF, #F5F5F5, #E8E8E8);
+}
+
+/* Collapsible expand/collapse animations */
+@keyframes collapsible-down {
+  from { height: 0; }
+  to { height: var(--radix-collapsible-content-height); }
+}
+@keyframes collapsible-up {
+  from { height: var(--radix-collapsible-content-height); }
+  to { height: 0; }
 }
 
 /* Respect reduced motion preference */

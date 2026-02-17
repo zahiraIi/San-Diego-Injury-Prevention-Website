@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Timeline } from "@/components/ui/timeline";
 import { Users, CalendarDays, BarChart3, Scale } from "lucide-react";
 import PageHeader from "@/components/ui/page-header";
@@ -131,7 +130,7 @@ export default function CommitteesPage() {
       />
 
       {/* Timeline Section */}
-      <section className="relative py-24 md:py-28 px-6">
+      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-12 md:py-16 px-6">
         <GrainientWhiteSection />
         <div className="container mx-auto max-w-6xl relative z-10">
           <Timeline data={timelineData} />

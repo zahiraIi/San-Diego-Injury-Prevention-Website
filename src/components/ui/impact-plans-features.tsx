@@ -24,13 +24,13 @@ export function ImpactPlansFeatures({
   const [topRow, bottomRow] = [items.slice(0, 3), items.slice(3, 5)];
 
   return (
-    <section className="relative py-16 md:py-32">
+    <section className="relative py-12 md:py-16">
       <GrainientWhiteSection />
       <div className="relative z-10 mx-auto max-w-3xl px-6 lg:max-w-5xl">
         <div className="relative">
           <div
             data-reveal="left"
-            className="mb-14 md:mb-20 text-center"
+            className="mb-10 md:mb-14 text-center"
           >
             <p className="text-sm font-semibold tracking-widest text-[#1a3a5c]/70 uppercase mb-3">
               Impact & Plans

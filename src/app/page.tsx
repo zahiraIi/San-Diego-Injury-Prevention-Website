@@ -23,21 +23,17 @@ export default function Home() {
     <div>
       <ScrollReveal />
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          HERO — Blue gradient, Asterisk + Text
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[650px] flex flex-col justify-center items-center text-center overflow-hidden pt-16 bg-grainient-blue">
+      {/* ─── HERO ──────────────────────────────────────────────────────── */}
+      <section className="relative min-h-[100svh] flex flex-col justify-center items-center text-center overflow-hidden pt-16 pb-32 bg-grainient-blue">
         <GrainientBlueSection />
         <HomeHeroSection />
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          INTRO — Gradient background, Text Left, Team Photo Right
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-grainient-white">
+      {/* ─── INTRO — white card overlaps the hero ──────────────────────── */}
+      <section className="relative z-10 -mt-20 rounded-t-[2rem] sm:rounded-t-[3rem] py-14 sm:py-16 md:py-20 px-4 sm:px-6 bg-grainient-white overflow-hidden shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
         <GrainientWhiteSection />
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-20 items-center">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-16 items-center">
             <div data-reveal="left">
               <h2 className="font-sans text-[#7f1d1d] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
                 San Diego&apos;s premier student-run injury prevention program.
@@ -73,10 +69,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          MISSION — Site gradient with volunteering photo + text
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 overflow-hidden bg-grainient-blue">
+      {/* ─── MISSION — blue card overlaps intro ────────────────────────── */}
+      <section className="relative z-20 -mt-10 rounded-t-[2rem] sm:rounded-t-[3rem] py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden bg-grainient-blue shadow-[0_-10px_30px_rgba(0,20,50,0.08)]">
         <GrainientBlueSection />
 
         <div className="container mx-auto max-w-6xl flex flex-col md:flex-row gap-8 sm:gap-12 md:gap-16 items-center justify-center relative z-10">
@@ -112,23 +106,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Impact & Plans */}
-      <HomeImpactSection />
+      {/* ─── IMPACT — white card overlaps mission ──────────────────────── */}
+      <div className="relative z-30 -mt-10 rounded-t-[2rem] sm:rounded-t-[3rem] overflow-hidden shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+        <HomeImpactSection />
+      </div>
 
-      {/* Message from the Presidents */}
-      <section className="relative bg-grainient-blue">
+      {/* ─── PRESIDENTS — blue card overlaps impact ────────────────────── */}
+      <section className="relative z-40 -mt-10 rounded-t-[2rem] sm:rounded-t-[3rem] overflow-hidden bg-grainient-blue shadow-[0_-10px_30px_rgba(0,20,50,0.08)]">
         <GrainientBlueSection />
         <div className="relative z-10">
           <HomePresidentsSection />
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          HOW TO JOIN — White background with framed image
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-grainient-white">
+      {/* ─── HOW TO JOIN — white card overlaps presidents ──────────────── */}
+      <section className="relative z-50 -mt-10 rounded-t-[2rem] sm:rounded-t-[3rem] py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-grainient-white overflow-hidden shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
         <GrainientWhiteSection />
-        <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center relative z-10">
+        <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-14 items-center relative z-10">
           <div data-reveal="left">
             <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-[#7f1d1d] mb-4 sm:mb-6">
               How to Join?

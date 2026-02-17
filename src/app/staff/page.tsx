@@ -84,7 +84,7 @@ export default function StaffPage() {
     <>
       <PageHeader title="Our Staff" subtitle="Meet the team behind SDIPP" />
 
-      <section className="relative py-12 md:py-16 px-4 md:px-6">
+      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-12 md:py-16 px-4 md:px-6">
         <GrainientWhiteSection />
         <div className="container mx-auto relative z-10">
           <section className="pt-2">

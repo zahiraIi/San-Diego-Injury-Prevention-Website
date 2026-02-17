@@ -23,7 +23,14 @@ const navItems: NavItem[] = [
       { name: "Committees", link: "/committees" },
     ],
   },
-  { name: "Events", link: "/events" },
+  {
+    name: "Events",
+    link: "/events",
+    children: [
+      { name: "Calendar", link: "/events" },
+      { name: "Programs", link: "/programs" },
+    ],
+  },
   { name: "Gallery", link: "/gallery" },
   { name: "More", link: "/more" },
   { name: "Contact", link: "/contact" },

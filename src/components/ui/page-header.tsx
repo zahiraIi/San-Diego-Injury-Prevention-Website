@@ -14,7 +14,7 @@ interface PageHeaderProps {
 
 export default function PageHeader({ title, subtitle, size = "default" }: PageHeaderProps) {
   // Use a shorter band for compact headers (e.g. Events page)
-  const paddingClass = size === "compact" ? "py-8 md:py-10" : "py-24 md:py-28";
+  const paddingClass = size === "compact" ? "py-8 md:py-10 pb-20 md:pb-24" : "py-14 md:py-18 pb-24 md:pb-28";
 
   return (
     <section className="relative w-screen ml-[calc(-50vw+50%)]">

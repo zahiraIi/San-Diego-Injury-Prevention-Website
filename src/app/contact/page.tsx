@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Contact Section - Hero Style */}
-      <section className="relative min-h-[600px] flex items-center pt-24 pb-12 px-4 md:px-6 overflow-hidden">
+      <section className="relative min-h-[600px] flex items-center pt-24 pb-32 px-4 md:px-6 overflow-hidden">
         <GrainientBlueSection />
         
         <div className="container mx-auto max-w-6xl relative z-10">
@@ -85,7 +85,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-24 md:py-28 px-4 md:px-6">
+      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-12 md:py-16 px-4 md:px-6">
         <GrainientWhiteSection />
         <div className="container mx-auto max-w-4xl relative z-10">
           <FAQSection 

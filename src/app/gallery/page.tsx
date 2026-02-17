@@ -1,8 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import PageHeader from "@/components/ui/page-header";
 import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 // ─── Gallery section config: folder label + image list ─────────────────────
 
@@ -90,31 +97,52 @@ const GALLERY_SECTIONS: GallerySectionConfig[] = [
   { title: "Atria La Jolla Tai Chi", images: ATRIA_TAI_CHI_IMAGES },
 ];
 
-// ─── Single section: label + bordered grid of squares ─────────────────────
+// ─── Single collapsible section ─────────────────────────────────────────────
 
 function GallerySection({ title, images }: GallerySectionConfig) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <section className="border-2 border-[#1a3a5c]/25 rounded-xl p-4 md:p-6 bg-white/60">
-      <h2 className="text-2xl md:text-3xl font-sans font-bold text-[#1a3a5c] mb-4 md:mb-6">
-        {title}
-      </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-        {images.map((img) => (
-          <div
-            key={img.id}
-            className="relative aspect-square rounded-lg overflow-hidden border-2 border-[#1a3a5c]/20 bg-gray-100"
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            />
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <div className="border border-[#1a3a5c]/20 rounded-xl bg-white/60 overflow-hidden">
+        <CollapsibleTrigger className="flex items-center justify-between w-full px-5 md:px-6 py-4 md:py-5 cursor-pointer hover:bg-white/80 transition-colors group">
+          <div className="flex items-center gap-3">
+            <h2 className="text-xl md:text-2xl font-sans font-bold text-[#1a3a5c]">
+              {title}
+            </h2>
+            <span className="text-sm text-[#1a3a5c]/50 font-medium">
+              {images.length} photos
+            </span>
           </div>
-        ))}
+          <ChevronDown
+            className={`w-5 h-5 text-[#1a3a5c]/60 transition-transform duration-200 ${
+              open ? "rotate-180" : ""
+            }`}
+          />
+        </CollapsibleTrigger>
+
+        <CollapsibleContent className="data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up overflow-hidden">
+          <div className="px-5 md:px-6 pb-5 md:pb-6 pt-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+              {images.map((img) => (
+                <div
+                  key={img.id}
+                  className="relative aspect-square rounded-lg overflow-hidden border border-[#1a3a5c]/15 bg-gray-100"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </CollapsibleContent>
       </div>
-    </section>
+    </Collapsible>
   );
 }
 
@@ -128,17 +156,17 @@ export default function GalleryPage() {
         subtitle="Photos from our events and activities"
       />
 
-      <section className="relative py-16 md:py-24">
+      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-10 md:py-14">
         <GrainientWhiteSection />
         <div className="container mx-auto max-w-6xl px-4 md:px-6 relative z-10">
-          <div className="space-y-10 md:space-y-14">
-          {GALLERY_SECTIONS.map((section) => (
-            <GallerySection
-              key={section.title}
-              title={section.title}
-              images={section.images}
-            />
-          ))}
+          <div className="space-y-4">
+            {GALLERY_SECTIONS.map((section) => (
+              <GallerySection
+                key={section.title}
+                title={section.title}
+                images={section.images}
+              />
+            ))}
           </div>
         </div>
       </section>

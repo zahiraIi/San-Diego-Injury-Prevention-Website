@@ -37,7 +37,7 @@ export function FeaturePresidents({
     : "text-muted-foreground";
 
   return (
-    <div className="w-full py-20 lg:py-32">
+    <div className="w-full py-12 lg:py-16">
       <div className="container mx-auto px-4 md:px-6">
         <div
           className={`grid border rounded-xl p-8 md:p-10 grid-cols-1 gap-8 items-center lg:grid-cols-2 w-full backdrop-blur-xl shadow-2xl shadow-black/10 ${
@@ -100,14 +100,14 @@ export function FeaturePresidents({
           <div
             data-reveal="right"
             data-delay=""
-            className="relative bg-muted rounded-md aspect-square overflow-hidden"
+            className="relative w-full max-w-md mx-auto lg:max-w-none min-w-0 bg-muted rounded-md aspect-[3/4] sm:aspect-[4/5] lg:aspect-square overflow-hidden self-start"
           >
             <Image
               src={imageSrc}
               alt={imageAlt}
               fill
               loading="lazy"
-              className="object-cover"
+              className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
