@@ -12,9 +12,9 @@ export default function MorePage() {
     <>
       <PageHeader title="More" subtitle="Additional resources and information" />
 
-      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-12 md:py-16 px-4 md:px-6">
+      <section className="relative z-10 -mt-16 md:-mt-20 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] bg-white overflow-hidden">
         <GrainientWhiteSection />
-        <div className="container mx-auto relative z-10 pb-12 md:pb-16">
+        <div className="container mx-auto relative z-10 py-12 md:py-16 px-4 md:px-6 pb-20 md:pb-24">
       {/* Training Section */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
