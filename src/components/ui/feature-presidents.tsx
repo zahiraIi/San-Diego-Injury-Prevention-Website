@@ -38,7 +38,7 @@ export function FeaturePresidents({
 
   return (
     <div className="w-full py-12 lg:py-16">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="mx-auto w-full px-4 md:px-10 lg:px-16">
         <div
           className={`grid border rounded-xl p-8 md:p-10 grid-cols-1 gap-8 items-center lg:grid-cols-2 w-full backdrop-blur-xl shadow-2xl shadow-black/10 ${
             light
@@ -100,7 +100,7 @@ export function FeaturePresidents({
           <div
             data-reveal="right"
             data-delay=""
-            className="relative w-full max-w-md mx-auto lg:max-w-none min-w-0 bg-muted rounded-md aspect-[3/4] sm:aspect-[4/5] lg:aspect-square overflow-hidden self-start"
+            className="relative w-full max-w-md mx-auto lg:max-w-none min-w-0 bg-muted rounded-md aspect-[3/4] sm:aspect-[4/5] lg:aspect-square overflow-hidden self-center"
           >
             <Image
               src={imageSrc}
