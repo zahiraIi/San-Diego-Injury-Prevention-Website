@@ -121,9 +121,9 @@ export default function ProgramsPage() {
         subtitle="Our initiatives and volunteer opportunities"
       />
 
-      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-10 md:py-14">
+      <section className="relative z-10 -mt-16 md:-mt-20 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] bg-white overflow-hidden">
         <GrainientWhiteSection />
-        <div className="container mx-auto max-w-4xl px-4 md:px-6 relative z-10">
+        <div className="container mx-auto max-w-4xl px-4 md:px-6 relative z-10 py-10 md:py-14 pb-20 md:pb-24">
           <InteractiveAccordion
             items={accordionItems}
             defaultActiveId={accordionItems[0]?.id}
