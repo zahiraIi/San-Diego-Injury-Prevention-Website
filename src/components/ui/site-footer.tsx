@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Asterisk, Instagram, Link as LinkIcon, Mail } from "lucide-react";
-import GrainientBlueSection from "@/components/ui/GrainientBlueSection";
 
 const NAV_COLUMNS = [
   {
@@ -33,8 +32,13 @@ const NAV_COLUMNS = [
 
 export default function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden">
-      <GrainientBlueSection />
+    <footer
+      className="relative overflow-hidden bg-[#001a3a]"
+      style={{
+        background:
+          "linear-gradient(180deg, #8FBFD9 0%, #1a5a8a 35%, #001a3a 70%, #001a2e 100%)",
+      }}
+    >
       {/* Dark overlay for consistent contrast */}
       <div className="absolute inset-0 bg-[#001a2e]/60 z-[1]" />
 
