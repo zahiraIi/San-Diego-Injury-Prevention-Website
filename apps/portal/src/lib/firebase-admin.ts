@@ -30,7 +30,10 @@ function getApp(): App {
     }
     _app =
       getApps().length === 0
-        ? initializeApp({ credential: cert(parsed) })
+        ? initializeApp({
+            credential: cert(parsed),
+            storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+          })
         : getApps()[0];
   }
   return _app;
