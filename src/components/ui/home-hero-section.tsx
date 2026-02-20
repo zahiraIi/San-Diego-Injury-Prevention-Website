@@ -38,22 +38,22 @@ export default function HomeHeroSection() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative z-10 flex flex-col items-center px-4 sm:px-6 py-12 sm:py-16 md:py-24 max-w-4xl mx-auto"
+      className="relative z-10 flex flex-col items-center justify-center text-center w-full max-w-[563px] sm:max-w-4xl md:max-w-6xl mx-auto px-5 sm:px-6 py-8 sm:py-20 md:py-24"
     >
-      <motion.div variants={asteriskVariant} className="mb-4 sm:mb-6 md:mb-10">
-        <Asterisk className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 text-white" strokeWidth={2} />
+      <motion.div variants={asteriskVariant} className="mb-5 sm:mb-6 md:mb-10">
+        <Asterisk className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 text-white drop-shadow-sm" strokeWidth={2} aria-hidden />
       </motion.div>
 
       <motion.h1
         variants={slideUp}
-        className="font-sans font-bold text-white text-4xl sm:text-5xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tighter max-w-6xl lowercase px-2"
+        className="font-sans font-bold text-white text-[2.25rem] leading-[1.15] sm:text-5xl md:text-8xl lg:text-9xl sm:leading-[0.9] md:leading-[0.9] tracking-tighter max-w-6xl lowercase px-1"
       >
         san diego <br className="block md:hidden" /> <br className="hidden md:block" /> injury prevention
       </motion.h1>
 
       <motion.p
         variants={slideUp}
-        className="font-sans text-white/90 text-lg sm:text-xl md:text-3xl mt-4 sm:mt-6 md:mt-8 tracking-wide font-medium lowercase"
+        className="font-sans text-white/95 text-base sm:text-xl md:text-3xl mt-5 sm:mt-6 md:mt-8 tracking-wide font-medium lowercase max-w-md mx-auto leading-snug"
       >
         program
       </motion.p>

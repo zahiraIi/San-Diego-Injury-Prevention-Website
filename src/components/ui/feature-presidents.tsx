@@ -18,6 +18,8 @@ interface FeaturePresidentsProps {
   imageAlt: string;
   /** Use white text (e.g. on blue gradient) */
   light?: boolean;
+  /** Use solid white card background (e.g. on message-from-presidents page) */
+  whiteCard?: boolean;
 }
 
 export function FeaturePresidents({
@@ -28,23 +30,30 @@ export function FeaturePresidents({
   imageSrc,
   imageAlt,
   light = false,
+  whiteCard = false,
 }: FeaturePresidentsProps) {
-  const textClass = light
+  const onDark = light && !whiteCard;
+  const textClass = onDark
     ? "text-white"
-    : "text-foreground";
-  const mutedClass = light
+    : whiteCard
+      ? "text-black"
+      : "text-foreground";
+  const mutedClass = onDark
     ? "text-white/80"
-    : "text-muted-foreground";
+    : whiteCard
+      ? "text-black/85"
+      : "text-muted-foreground";
+  const cardClass = whiteCard
+    ? "border-border bg-white"
+    : light
+      ? "border-white/25 bg-[#002E5D]/30"
+      : "border-border bg-card/80";
 
   return (
     <div className="w-full py-12 lg:py-16">
       <div className="mx-auto w-full px-4 md:px-10 lg:px-16">
         <div
-          className={`grid border rounded-xl p-8 md:p-10 grid-cols-1 gap-8 items-center lg:grid-cols-2 w-full backdrop-blur-xl shadow-2xl shadow-black/10 ${
-            light
-              ? "border-white/25 bg-[#002E5D]/30"
-              : "border-border bg-card/80"
-          }`}
+          className={`grid border rounded-xl p-8 md:p-10 grid-cols-1 gap-8 items-center lg:grid-cols-2 w-full backdrop-blur-xl shadow-2xl shadow-black/10 ${cardClass}`}
         >
           <div className="flex gap-10 flex-col">
             <div className="flex gap-4 flex-col">
@@ -52,7 +61,13 @@ export function FeaturePresidents({
                 <div>
                   <Badge
                     variant="outline"
-                    className={light ? "border-white/40 text-white/90" : ""}
+                    className={
+                      onDark
+                        ? "border-white/40 text-white/90"
+                        : whiteCard
+                          ? "border-black/30 text-black"
+                          : ""
+                    }
                   >
                     {badge}
                   </Badge>
@@ -82,7 +97,7 @@ export function FeaturePresidents({
                 >
                   <Check
                     className={`w-5 h-5 mt-2 flex-shrink-0 ${
-                      light ? "text-white" : "text-primary"
+                      onDark ? "text-white" : whiteCard ? "text-black" : "text-primary"
                     }`}
                   />
                   <div className="flex flex-col gap-1 min-w-0">
@@ -100,7 +115,7 @@ export function FeaturePresidents({
           <div
             data-reveal="right"
             data-delay=""
-            className="relative w-full max-w-md mx-auto lg:max-w-none min-w-0 bg-muted rounded-md aspect-[3/4] sm:aspect-[4/5] lg:aspect-square overflow-hidden self-center"
+            className="relative w-full max-w-md mx-auto lg:max-w-sm xl:max-w-md min-w-0 bg-muted rounded-md aspect-[3/4] sm:aspect-[4/5] lg:aspect-square overflow-hidden self-center"
           >
             <Image
               src={imageSrc}

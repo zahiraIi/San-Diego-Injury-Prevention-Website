@@ -1,14 +1,7 @@
 "use client";
 
 import { FeaturePresidents } from "@/components/ui/feature-presidents";
-
-const PRESIDENTS_MESSAGE_PARAGRAPHS = [
-  "The San Diego Injury Prevention Program was founded based off a simple realization: injuries are not inevitable. These injuries plague everyone, from children, to senior citizens, to even regular families, leaving lasting consequences impacting multiple facets of life. However, a combination of proper education, community engagement, and lifestyle changes holds the potential to reduce the morbidity of so many traumas. Our mission is therefore, to reduce preventable injuries and promote safer environments for individuals and families throughout San Diego.",
-  "The most effective way to stop injuries is to prevent them from happening. In this spirit, our dedicated team identifies risk factors and promotes evidence-based strategies to help empower our community with the knowledge to live a little safer each day. Addressing every walk of life, our programs extend into every community, be it through our school presentations on adolescent physical activity, mobility and fall prevention classes at senior residential homes, or our public health outreach for various underrepresented groups.",
-  "As collaboration is the cornerstone of community impact, these initiatives would not be possible without our various partners, for which we are grateful to continue working with. Finding other organizations that match our drive to improve our community, the San Diego Injury Prevention Program is always proud to work with the San Diego County Fall Prevention Task Force, UCSD Trauma Center, Scripps Health, United Way of San Diego, and multiple other healthcare professionals and community organizations. It is through this shared commitment to safety and these strong collaborations that we can continue to expand our reach and tailor our initiatives further to our local communities.",
-  "As we grow, we plan on continuing to strengthen our programs and expand access to proper injury prevention services, ensuring that these services are accessible and inclusive. Innovation and analysis will continue to fuel our improvement as we optimize our programs and keep them informed by feedback, research, and data. So, while we will improve and expand, we will never lose sight of our goal and the community we serve.",
-  "Thank you to our partners, our supporters, and of course, our dedicated volunteers. Together we can build a healthier, safer San Diego — one less injury at a time.",
-];
+import { PRESIDENTS_MESSAGE_PARAGRAPHS } from "@/content/presidents-message";
 
 export default function HomePresidentsSection() {
   return (

@@ -101,9 +101,10 @@ export default function TeamSection({ members, title, subtitle }: TeamSectionPro
               <button
                 key={member.name}
                 onClick={() => setActiveMember(member)}
-                className={`group flex flex-col items-center text-center space-y-3 transition-all duration-300 ${
+                className={`group flex flex-col items-center text-center space-y-3 transition-all duration-300 bg-transparent focus:bg-transparent active:bg-transparent focus:outline-none touch-manipulation ${
                   activeMember.name === member.name ? "opacity-100 scale-105" : "opacity-60 hover:opacity-100"
                 }`}
+                style={{ WebkitTapHighlightColor: "transparent" }}
               >
                 <div className={`relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 transition-colors ${
                   activeMember.name === member.name ? "border-accent-red" : "border-transparent group-hover:border-gray-200"

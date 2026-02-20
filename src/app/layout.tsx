@@ -8,6 +8,7 @@ const SiteFooter = dynamic(() => import("@/components/ui/site-footer"));
 const GrainientBackground = dynamic(
   () => import("@/components/ui/GrainientBackground")
 );
+const ScrollReveal = dynamic(() => import("@/components/ui/scroll-reveal"));
 
 const rethinkSans = Rethink_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -75,6 +76,7 @@ export default function RootLayout({
       <body className={`${rethinkSans.variable} font-sans antialiased relative`}>
         <GrainientBackground />
         <div className="relative min-h-screen flex flex-col">
+          <ScrollReveal />
           <StaticNavbar />
           <main className="flex-grow pt-0">
             {children}

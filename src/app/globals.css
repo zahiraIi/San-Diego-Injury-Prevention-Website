@@ -147,6 +147,11 @@ main > div > section p {
   to { height: 0; }
 }
 
+/* Prevent tap highlight on mobile buttons */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

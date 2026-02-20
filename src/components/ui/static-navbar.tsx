@@ -5,7 +5,6 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
-import GrainientBlueSection from "@/components/ui/GrainientBlueSection";
 
 type NavItem = {
   name: string;
@@ -19,6 +18,7 @@ const navItems: NavItem[] = [
     name: "About",
     link: "/about",
     children: [
+      { name: "Message from Presidents", link: "/message-from-presidents" },
       { name: "Staff", link: "/staff" },
       { name: "Committees", link: "/committees" },
     ],
@@ -78,15 +78,15 @@ export default function StaticNavbar() {
           isVisible ? "translate-y-0" : "-translate-y-full"
         )}
       >
-        {/* Left: Logo */}
-        <Link href="/" className="relative w-10 h-10 md:w-16 md:h-16">
+        {/* Left: Logo — larger on mobile */}
+        <Link href="/" className="relative w-14 h-14 md:w-16 md:h-16">
           <Image
             src="/logo.webp"
             alt="SDIPP Logo"
             fill
             className="object-contain drop-shadow-lg"
             priority
-            sizes="64px"
+            sizes="(max-width: 768px) 56px, 64px"
           />
         </Link>
 
@@ -139,16 +139,16 @@ export default function StaticNavbar() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button — larger tap target and icon on mobile */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-3 -m-1"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-8 h-8" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-8 h-8" />
             )}
           </button>
 
@@ -163,31 +163,48 @@ export default function StaticNavbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — first-section overlay on all pages: transparent, centered, spans ~first section only */}
       {mobileMenuOpen && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 z-40 pt-20 pb-8 px-6 overflow-y-auto">
-          <GrainientBlueSection className="-z-10" />
-          <div className="relative z-10 flex flex-col gap-4 max-w-md mx-auto">
+        <div
+          className="md:hidden fixed top-0 left-0 right-0 z-40 h-[48svh] flex flex-col items-center justify-center px-6 text-center"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(143,191,217,0.88), rgba(26,90,138,0.9), rgba(0,26,58,0.92))",
+            backdropFilter: "blur(6px)",
+          }}
+        >
+          {/* Centered watermark */}
+          <p
+            className="absolute inset-0 flex items-center justify-center font-sans text-white/10 pointer-events-none select-none text-[clamp(2.5rem,12vw,5rem)] font-bold tracking-tight"
+            aria-hidden
+          >
+            san diego injury prevention
+          </p>
+          <p className="absolute top-[55%] left-1/2 -translate-x-1/2 font-sans text-white/10 text-sm pointer-events-none select-none" aria-hidden>
+            program
+          </p>
+          {/* Nav + CTA centered */}
+          <div className="relative z-10 flex flex-col items-center gap-1 w-full max-w-xs">
             {navItems.map((item) =>
               item.children ? (
-                <div key={item.name} className="flex flex-col">
+                <div key={item.name} className="flex flex-col items-center w-full">
                   <button
                     type="button"
                     onClick={() =>
                       setOpenDropdown(openDropdown === item.name ? null : item.name)
                     }
-                    className="flex items-center justify-between w-full px-4 py-3 text-left font-sans text-lg font-medium text-white/90 hover:text-white transition-colors"
+                    className="flex items-center justify-center gap-1 w-full py-2.5 font-sans text-base font-medium text-white/95 hover:text-white transition-colors"
                   >
                     <span>{item.name}</span>
                     <ChevronDown
                       className={cn(
-                        "w-5 h-5 transition-transform",
+                        "w-4 h-4 transition-transform",
                         openDropdown === item.name && "-rotate-180",
                       )}
                     />
                   </button>
                   {openDropdown === item.name && (
-                    <div className="pl-4 pt-2 pb-2 flex flex-col gap-2">
+                    <div className="flex flex-col items-center gap-1 pt-1 pb-2">
                       {item.children.map((child) => (
                         <Link
                           key={child.name}
@@ -196,7 +213,7 @@ export default function StaticNavbar() {
                             setOpenDropdown(null);
                             setMobileMenuOpen(false);
                           }}
-                          className="block px-4 py-2 text-left text-base font-sans text-white/80 hover:text-white transition-colors"
+                          className="py-1.5 font-sans text-sm text-white/85 hover:text-white transition-colors"
                         >
                           {child.name}
                         </Link>
@@ -209,7 +226,7 @@ export default function StaticNavbar() {
                   key={item.name}
                   href={item.link ?? "/"}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 text-left font-sans text-lg font-medium text-white/90 hover:text-white transition-colors"
+                  className="py-2.5 font-sans text-base font-medium text-white/95 hover:text-white transition-colors"
                 >
                   {item.name}
                 </Link>
@@ -218,7 +235,7 @@ export default function StaticNavbar() {
             <Link
               href="/apply"
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-4 px-6 py-3 rounded-full font-sans text-base font-medium text-center bg-[#7f1d1d] hover:bg-[#6b1515] border border-[#6b1515] text-white transition-all"
+              className="mt-3 px-5 py-2.5 rounded-full font-sans text-sm font-medium border border-white/80 text-white hover:bg-white/10 transition-all"
             >
               apply →
             </Link>
