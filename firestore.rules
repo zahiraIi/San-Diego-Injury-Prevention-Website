@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users: read own profile, admins read all
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || isAdminOrBoard());
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Events: published events readable by any authenticated user
+    match /events/{eventId} {
+      allow read: if request.auth != null && resource.data.isPublished == true;
+      allow write: if isAdminOrBoard();
+
+      // RSVPs subcollection
+      match /rsvps/{rsvpId} {
+        allow read: if request.auth != null;
+        allow write: if request.auth != null && request.auth.uid == rsvpId;
+      }
+    }
+
+    // Contact: public create, admin read (server-side Admin SDK bypasses rules)
+    match /contactSubmissions/{docId} {
+      allow read: if isAdminOrBoard();
+      allow create: if true;
+    }
+
+    function isAdminOrBoard() {
+      return request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'board'];
+    }
+  }
+}
