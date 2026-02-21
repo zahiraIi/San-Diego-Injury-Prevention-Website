@@ -46,16 +46,16 @@ export default function HomeHeroSection() {
 
       <motion.h1
         variants={slideUp}
-        className="font-sans font-bold text-white text-[2.25rem] leading-[1.15] sm:text-5xl md:text-8xl lg:text-9xl sm:leading-[0.9] md:leading-[0.9] tracking-tighter max-w-6xl lowercase px-1"
+        className="font-sans font-bold text-white text-[2.25rem] leading-[1.15] sm:text-5xl md:text-8xl lg:text-9xl sm:leading-[0.9] md:leading-[0.9] tracking-tighter max-w-6xl px-1"
       >
-        san diego <br className="block md:hidden" /> <br className="hidden md:block" /> injury prevention
+        San Diego <br className="block md:hidden" /> <br className="hidden md:block" /> Injury Prevention
       </motion.h1>
 
       <motion.p
         variants={slideUp}
-        className="font-sans text-white/95 text-base sm:text-xl md:text-3xl mt-5 sm:mt-6 md:mt-8 tracking-wide font-medium lowercase max-w-md mx-auto leading-snug"
+        className="font-sans text-white/95 text-base sm:text-xl md:text-3xl mt-5 sm:mt-6 md:mt-8 tracking-wide font-medium max-w-md mx-auto leading-snug"
       >
-        program
+        Program
       </motion.p>
     </motion.div>
   );

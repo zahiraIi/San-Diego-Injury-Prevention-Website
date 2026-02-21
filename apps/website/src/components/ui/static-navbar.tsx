@@ -34,7 +34,7 @@ const navItems: NavItem[] = [
   { name: "Gallery", link: "/gallery" },
   { name: "More", link: "/more" },
   { name: "Contact", link: "/contact" },
-  { name: "Portal", link: process.env.NEXT_PUBLIC_PORTAL_URL || "/portal" },
+  { name: "Login", link: process.env.NEXT_PUBLIC_PORTAL_URL || "/portal" },
 ];
 
 export default function StaticNavbar() {
@@ -153,13 +153,19 @@ export default function StaticNavbar() {
             )}
           </button>
 
-          {/* Apply Button (desktop) */}
+          {/* Apply Button (desktop) — signup-style with glow */}
           <Link
             href="/apply"
-            className="hidden md:group flex items-center gap-2 px-6 py-2 rounded-full font-sans text-sm font-medium transition-all bg-[#7f1d1d] hover:bg-[#6b1515] border border-[#6b1515] text-white"
+            className="hidden md:group relative flex items-center justify-center w-full sm:w-auto"
           >
-            <span>apply</span>
-            <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+            <span
+              className="absolute inset-0 -m-2 rounded-full bg-gray-100 opacity-40 blur-lg pointer-events-none transition-all duration-300 ease-out group-hover:opacity-60 group-hover:blur-xl group-hover:-m-3"
+              aria-hidden
+            />
+            <span className="relative z-10 flex items-center gap-2 px-4 py-2 sm:px-5 text-xs sm:text-sm font-semibold text-black bg-gradient-to-br from-gray-100 to-gray-300 rounded-full hover:from-gray-200 hover:to-gray-400 transition-all duration-200">
+              <span>apply</span>
+              <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+            </span>
           </Link>
         </div>
       </nav>
@@ -236,9 +242,15 @@ export default function StaticNavbar() {
             <Link
               href="/apply"
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-3 px-5 py-2.5 rounded-full font-sans text-sm font-medium border border-white/80 text-white hover:bg-white/10 transition-all"
+              className="relative group mt-3 w-full sm:w-auto flex items-center justify-center"
             >
-              apply →
+              <span
+                className="absolute inset-0 -m-2 rounded-full bg-gray-100 opacity-40 blur-lg pointer-events-none transition-all duration-300 ease-out group-hover:opacity-60 group-hover:blur-xl"
+                aria-hidden
+              />
+              <span className="relative z-10 px-5 py-2.5 rounded-full font-sans text-sm font-semibold text-black bg-gradient-to-br from-gray-100 to-gray-300 hover:from-gray-200 hover:to-gray-400 transition-all duration-200 w-full text-center">
+                apply →
+              </span>
             </Link>
           </div>
         </div>
