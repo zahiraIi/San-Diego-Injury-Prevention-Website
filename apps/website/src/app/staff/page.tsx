@@ -29,6 +29,7 @@ function generalBoardFileNameToName(filename: string): string {
   return base.replace(/_/g, " ");
 }
 
+// General board photos are loaded from public/images/generalboard/
 const generalBoard = GENERAL_BOARD_IMAGES.map((filename) => ({
   name: generalBoardFileNameToName(filename),
   image: `/images/generalboard/${filename}`,
