@@ -40,9 +40,7 @@ export default function Home() {
                 San Diego&apos;s premier student-run injury prevention program.
               </h2>
               <p className="text-[#0f172a] text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 font-medium">
-                We are a student-run organization dedicated to empowering seniors in the
-                San Diego area through evidence-based fitness programs, community outreach,
-                and fall prevention education.
+                We are a student-run 501(c)3 nonprofit organization centered at UC San Diego, dedicated to empowering our community through injury education, community outreach, and evidence-based programs.
               </p>
               <Link
                 href="/apply"
@@ -81,14 +79,7 @@ export default function Home() {
               Mission
             </h2>
             <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
-              We are dedicated to promoting fitness and mobility among older individuals in the San Diego
-              area. Our club offers a supportive community where members can engage in various activities
-              to enhance their overall well-being.
-            </p>
-            <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
-              At San Diego Injury Prevention Program, we believe in empowering seniors to lead active
-              lives free from injuries. Through our programs, we focus on improving fitness levels,
-              mobility, and quality of life. Join us in our mission to prioritize health and wellness for all.
+              SDIPP is committed to reducing preventable injuries and promoting safer environments for individuals and families across the San Diego area. Through our various programs and initiatives, we aim to increase the use of evidence-based strategies for injury prevention in all areas, from adolescent sports to fall prevention classes at senior residential homes. With the help of our dedicated student volunteers and our various collaborations with other organizations like the UCSD Trauma Center or Scripps Health, we strive to empower our community with the knowledge to live a little safer each day.
             </p>
           </div>
         </div>

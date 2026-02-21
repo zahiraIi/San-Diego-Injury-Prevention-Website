@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | SDIPP",
   },
   description:
-    "Promoting fitness and mobility among older individuals in San Diego through evidence-based programs.",
+    "Student-run organization empowering their San Diego community through education, outreach, and injury prevention.",
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   openGraph: {
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
     siteName: "San Diego Injury Prevention Program",
     title: "San Diego Injury Prevention Program",
     description:
-      "Student-run organization empowering seniors in San Diego through fitness programs, community outreach, and fall prevention education.",
+      "Student-run organization empowering their San Diego community through education, outreach, and injury prevention.",
     url: SITE_URL,
   },
   twitter: {
     card: "summary",
     title: "San Diego Injury Prevention Program",
     description:
-      "Student-run organization empowering seniors in San Diego through fitness programs, community outreach, and fall prevention education.",
+      "Student-run organization empowering their San Diego community through education, outreach, and injury prevention.",
   },
 };
 
@@ -64,7 +64,7 @@ export default function RootLayout({
               name: "San Diego Injury Prevention Program",
               url: SITE_URL,
               description:
-                "Student-run organization empowering seniors in San Diego through fitness programs, community outreach, and fall prevention education.",
+                "Student-run organization empowering their San Diego community through education, outreach, and injury prevention.",
               areaServed: {
                 "@type": "City",
                 name: "San Diego",

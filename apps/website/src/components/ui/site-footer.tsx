@@ -76,7 +76,7 @@ export default function SiteFooter() {
               </span>
             </div>
             <p className="text-white/80 text-xs max-w-xs leading-snug">
-              Student-run organization empowering seniors in San Diego through fitness, outreach, and fall prevention.
+              Student-run organization empowering their San Diego community through education, outreach, and injury prevention.
             </p>
             <div className="flex items-center gap-3 mt-1">
               <a href="https://www.instagram.com/sd__ipp/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="Instagram">
