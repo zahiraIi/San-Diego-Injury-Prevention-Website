@@ -14,10 +14,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    const allowedTypes = ["image/jpeg", "image/png"];
     if (!allowedTypes.includes(file.type)) {
       return NextResponse.json(
-        { error: "Invalid file type. Allowed: JPEG, PNG, WebP" },
+        { error: "Invalid file type. Allowed: JPEG, PNG" },
         { status: 400 }
       );
     }
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const ext = file.type === "image/png" ? "png" : file.type === "image/webp" ? "webp" : "jpg";
+    const ext = file.type === "image/png" ? "png" : "jpg";
     const filename = `avatars/${user.uid}.${ext}`;
     const bucket = getAdminStorage().bucket();
     const fileRef = bucket.file(filename);

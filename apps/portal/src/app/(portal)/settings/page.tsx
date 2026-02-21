@@ -97,6 +97,19 @@ export default function SettingsPage() {
     const file = e.target.files?.[0];
     if (!file || !token) return;
 
+    const allowedTypes = ["image/jpeg", "image/png"];
+    if (!allowedTypes.includes(file.type)) {
+      showMessage("error", "Invalid file type. Only JPEG and PNG are allowed.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+      showMessage("error", "File too large. Maximum size is 2MB.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+
     setAvatarUploading(true);
     try {
       const formData = new FormData();
@@ -307,7 +320,7 @@ export default function SettingsPage() {
                   <input
                     ref={fileInputRef}
                     type="file"
-                    accept="image/jpeg,image/png,image/webp"
+                    accept="image/jpeg,image/png"
                     onChange={handleAvatarUpload}
                     className="hidden"
                   />
