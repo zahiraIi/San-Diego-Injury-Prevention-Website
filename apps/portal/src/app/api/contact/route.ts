@@ -9,6 +9,29 @@ const contactSchema = z.object({
   message: z.string().min(1).max(5000),
 });
 
+const ALLOWED_ORIGINS = [
+  "https://sdipp.org",
+  "https://www.sdipp.org",
+  process.env.WEBSITE_URL,
+].filter(Boolean);
+
+function corsHeaders(req: Request) {
+  const origin = req.headers.get("origin") ?? "";
+  const headers: Record<string, string> = {
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    headers["Access-Control-Allow-Origin"] = origin;
+  }
+  return headers;
+}
+
+// Preflight
+export async function OPTIONS(req: Request) {
+  return new Response(null, { status: 204, headers: corsHeaders(req) });
+}
+
 // Public endpoint — no auth required
 export async function POST(req: Request) {
   try {
@@ -18,7 +41,7 @@ export async function POST(req: Request) {
     if (!parsed.success) {
       return NextResponse.json(
         { error: "Invalid input", details: parsed.error.flatten() },
-        { status: 400 }
+        { status: 400, headers: corsHeaders(req) }
       );
     }
 
@@ -32,13 +55,13 @@ export async function POST(req: Request) {
       createdAt: FieldValue.serverTimestamp(),
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, { headers: corsHeaders(req) });
   } catch (error) {
     const errMsg = error instanceof Error ? error.message : String(error);
     console.error("Contact submission error:", errMsg);
     return NextResponse.json(
       { error: "Failed to submit contact form" },
-      { status: 500 }
+      { status: 500, headers: corsHeaders(req) }
     );
   }
 }
