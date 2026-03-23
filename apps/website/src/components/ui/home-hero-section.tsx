@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Asterisk } from "lucide-react";
 
 const container = {
   hidden: {},
@@ -10,16 +9,6 @@ const container = {
       staggerChildren: 0.25,
       delayChildren: 0.1,
     },
-  },
-};
-
-const asteriskVariant = {
-  hidden: { opacity: 0, rotate: -90, scale: 0.5 },
-  show: {
-    opacity: 1,
-    rotate: 0,
-    scale: 1,
-    transition: { type: "spring" as const, stiffness: 80, damping: 14, mass: 0.8 },
   },
 };
 
@@ -40,10 +29,6 @@ export default function HomeHeroSection() {
       animate="show"
       className="relative z-10 flex flex-col items-center justify-center text-center w-full max-w-[563px] sm:max-w-4xl md:max-w-6xl mx-auto px-5 sm:px-6 py-8 sm:py-20 md:py-24"
     >
-      <motion.div variants={asteriskVariant} className="mb-5 sm:mb-6 md:mb-10">
-        <Asterisk className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 text-white drop-shadow-sm" strokeWidth={2} aria-hidden />
-      </motion.div>
-
       <motion.h1
         variants={slideUp}
         className="font-sans font-bold text-white text-[2.25rem] leading-[1.15] sm:text-5xl md:text-8xl lg:text-9xl sm:leading-[0.9] md:leading-[0.9] tracking-tighter max-w-6xl px-1"
