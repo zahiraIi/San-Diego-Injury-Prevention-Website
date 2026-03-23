@@ -28,9 +28,9 @@ const GBM_IMAGES: GalleryImage[] = [
   ...Array.from({ length: 8 }, (_, i) => ({
     id: `gbm-${i + 1}`,
     src: `/images/GBM/GBM${i + 1}.webp`,
-    alt: `GBM photo ${i + 1}`,
+    alt: `Organization meetings photo ${i + 1}`,
   })),
-  { id: "gbm-9", src: "/images/GBM/GMB9.webp", alt: "GBM photo 9" },
+  { id: "gbm-9", src: "/images/GBM/GMB9.webp", alt: "Organization meetings photo 9" },
 ];
 
 const VITALS_TRAINING_IMAGES: GalleryImage[] = [
@@ -90,7 +90,7 @@ const ATRIA_TAI_CHI_IMAGES: GalleryImage[] = [
 }));
 
 const GALLERY_SECTIONS: GallerySectionConfig[] = [
-  { title: "GBM", images: GBM_IMAGES },
+  { title: "Organization Meetings", images: GBM_IMAGES },
   { title: "Vitals Training", images: VITALS_TRAINING_IMAGES },
   { title: "Volunteering", images: VOLUNTEERING_IMAGES },
   { title: "1:17 Chateau", images: CHATEAU_IMAGES },

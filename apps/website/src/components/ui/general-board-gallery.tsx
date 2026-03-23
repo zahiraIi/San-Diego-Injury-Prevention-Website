@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 export interface GeneralBoardMember {
   name: string;
   image: string;
+  email?: string;
 }
 
 interface GeneralBoardGalleryProps {
@@ -49,6 +50,14 @@ export default function GeneralBoardGallery({
             <figcaption className="mt-3 font-semibold text-[#1a3a5c] text-sm md:text-base">
               {member.name}
             </figcaption>
+            {member.email && (
+              <a
+                href={`mailto:${member.email}`}
+                className="mt-1 text-xs md:text-sm text-gray-600 hover:text-[#1a3a5c] transition-colors break-all"
+              >
+                {member.email}
+              </a>
+            )}
           </motion.figure>
         ))}
       </div>

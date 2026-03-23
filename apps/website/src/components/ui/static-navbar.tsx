@@ -29,10 +29,20 @@ const navItems: NavItem[] = [
     children: [
       { name: "Calendar", link: "/events" },
       { name: "Programs", link: "/programs" },
+      { name: "Gallery", link: "/gallery" },
     ],
   },
-  { name: "Gallery", link: "/gallery" },
-  { name: "More", link: "/more" },
+  {
+    name: "Resources",
+    link: "/more",
+    children: [
+      { name: "For Community Members", link: "/more/community-members" },
+      { name: "Partner With Us", link: "/more/partner-with-us" },
+      { name: "For Volunteers", link: "/more/for-volunteers" },
+    ],
+  },
+  { name: "Apply", link: "/apply" },
+  { name: "FAQs", link: "/faqs" },
   { name: "Contact", link: "/contact" },
   { name: "Login", link: process.env.NEXT_PUBLIC_PORTAL_URL || "/portal" },
 ];

@@ -11,7 +11,7 @@ export default function MembersPage() {
         <GrainientWhiteSection />
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center opacity-60">
           <p>List of volunteers and members will be displayed here.</p>
-          <p className="mt-4">Anyone 14+ can be a volunteer!</p>
+          <p className="mt-4">Anyone 18+ can be a volunteer!</p>
         </div>
       </section>
     </>

@@ -113,7 +113,7 @@ export default function Home() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-2 h-2 w-2 rounded-full bg-[#7f1d1d] flex-shrink-0" />
-                <span>Members must be 14 years of age or older.</span>
+                <span>Members must be 18 years of age or older.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-2 h-2 w-2 rounded-full bg-[#7f1d1d] flex-shrink-0" />

@@ -34,14 +34,8 @@ export default function HomeHeroSection() {
         className="font-sans font-bold text-white text-[2.25rem] leading-[1.15] sm:text-5xl md:text-8xl lg:text-9xl sm:leading-[0.9] md:leading-[0.9] tracking-tighter max-w-6xl px-1"
       >
         San Diego <br className="block md:hidden" /> <br className="hidden md:block" /> Injury Prevention
+        <span className="block mt-2 md:mt-3">Program</span>
       </motion.h1>
-
-      <motion.p
-        variants={slideUp}
-        className="font-sans text-white/95 text-base sm:text-xl md:text-3xl mt-5 sm:mt-6 md:mt-8 tracking-wide font-medium max-w-md mx-auto leading-snug"
-      >
-        Program
-      </motion.p>
     </motion.div>
   );
 }

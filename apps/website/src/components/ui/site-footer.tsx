@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Asterisk, Instagram, Link as LinkIcon, Mail } from "lucide-react";
+import { Asterisk } from "lucide-react";
 
 const NAV_COLUMNS = [
   {
@@ -49,17 +49,6 @@ export default function SiteFooter() {
           </div>
           <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
             <span className="text-white/80 text-[11px] font-medium">Let&apos;s connect</span>
-            <div className="flex items-center gap-2">
-              <a href="https://www.instagram.com/sd__ipp/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white p-1" aria-label="Instagram">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="https://linktr.ee/sdinjurypreventionprogram" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white p-1" aria-label="Linktree">
-                <LinkIcon className="w-4 h-4" />
-              </a>
-              <a href="mailto:sdinjuryprevention@gmail.com" className="text-white/80 hover:text-white p-1" aria-label="Email">
-                <Mail className="w-4 h-4" />
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -78,17 +67,6 @@ export default function SiteFooter() {
             <p className="text-white/80 text-xs max-w-xs leading-snug">
               Student-run organization empowering their San Diego community through education, outreach, and injury prevention.
             </p>
-            <div className="flex items-center gap-3 mt-1">
-              <a href="https://www.instagram.com/sd__ipp/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="Instagram">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="https://linktr.ee/sdinjurypreventionprogram" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="Linktree">
-                <LinkIcon className="w-4 h-4" />
-              </a>
-              <a href="mailto:sdinjuryprevention@gmail.com" className="text-white/80 hover:text-white transition-colors" aria-label="Email">
-                <Mail className="w-4 h-4" />
-              </a>
-            </div>
           </div>
 
           {/* Nav: one row of columns */}

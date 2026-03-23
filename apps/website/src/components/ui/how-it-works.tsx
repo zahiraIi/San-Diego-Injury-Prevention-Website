@@ -123,7 +123,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-sans">
             How to Become a Member
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground font-charter">
+          <p className="mt-4 text-lg text-muted-foreground font-charter text-center mx-auto">
             Join the San Diego Injury Prevention Program and make a meaningful impact in your community
           </p>
         </div>

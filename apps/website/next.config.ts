@@ -1,8 +1,13 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  turbopack: {
+    // Ensure Turbopack resolves modules/chunks from monorepo root.
+    root: path.join(__dirname, "../.."),
+  },
   images: {
     remotePatterns: [],
     formats: ["image/avif", "image/webp"],
