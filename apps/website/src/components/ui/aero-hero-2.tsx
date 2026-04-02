@@ -10,10 +10,11 @@ const HERO_IMAGE_SRC =
   "/images/Health Fairs/DSC04455.webp";
 
 const AVATAR_IMAGES: readonly { alt: string; src: string }[] = [
-  { alt: "SDIPP board member", src: "/images/generalboard/Panav_Vashishat.webp" },
-  { alt: "SDIPP board member", src: "/images/generalboard/Shannon_O_Rourke.webp" },
-  { alt: "SDIPP board member", src: "/images/generalboard/Derek_Nguyen.webp" },
-  { alt: "SDIPP board member", src: "/images/generalboard/Isha_Mittal.webp" },
+  { alt: "Payton Chung", src: "/images/executive/Payton_Chung.webp" },
+  { alt: "Sonja Wang", src: "/images/executive/Sonja_Wang.webp" },
+  { alt: "Owen Dvorak", src: "/images/executive/Owen_Dvorak.webp" },
+  { alt: "Albert Liu", src: "/images/executive/Albert_Liu.webp" },
+  { alt: "Medha Nemani", src: "/images/executive/Medha_Nemani.webp" },
 ];
 
 export default function AeroHero2() {
@@ -50,7 +51,7 @@ export default function AeroHero2() {
             <div className="flex flex-wrap items-center gap-4">
               <div
                 className="flex -space-x-3"
-                aria-label="SDIPP leadership team"
+                aria-label="SDIPP executive board"
               >
                 {AVATAR_IMAGES.map((item, i) => (
                   <Avatar

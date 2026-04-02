@@ -24,7 +24,7 @@ export default function MessageFromPresidentsPage() {
             items={PRESIDENTS_MESSAGE_PARAGRAPHS.map((description) => ({
               description,
             }))}
-            imageSrc="/images/team/Presidents.webp"
+            imageSrc="/images/presidents/Presidents.webp"
             imageAlt="SDIPP Presidents"
             whiteCard
           />

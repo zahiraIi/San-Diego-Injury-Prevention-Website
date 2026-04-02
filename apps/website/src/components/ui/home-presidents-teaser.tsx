@@ -28,13 +28,14 @@ export default function HomePresidentsTeaser() {
               Read full message
             </Link>
           </div>
-          <div className="relative w-full aspect-square lg:aspect-[4/3] order-1 lg:order-2 overflow-hidden bg-gray-200">
+          <div className="relative w-full order-1 lg:order-2">
             <Image
-              src="/images/team/Presidents.webp"
+              src="/images/presidents/Presidents.webp"
               alt="SDIPP Presidents"
-              fill
+              width={4000}
+              height={6000}
               loading="lazy"
-              className="object-cover object-top"
+              className="h-auto w-full object-contain object-top"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>

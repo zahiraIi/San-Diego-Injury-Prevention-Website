@@ -40,7 +40,7 @@ const staff = [
   {
     name: "Owen Dvorak",
     role: "Co-Founder & Executive President of Strategy",
-    avatar: "/images/team/owendvorak.webp",
+    avatar: "/images/executive/Owen_Dvorak.webp",
     email: "oedvorak@ucsd.edu",
     desc: "Owen Dvorak is the co-president and founder of our injury prevention program! His other commitments include neuroblastoma research and registry work with NMDP. Some hobbies of his are board gaming, martial arts, and anything in the sun! Owen wants to help people regain their physical freedom to improve the quality of their lives.",
     reason: "Wants to help people regain their physical freedom to improve the quality of their lives.",
@@ -48,7 +48,7 @@ const staff = [
   {
     name: "Albert Liu",
     role: "Co-Founder & Executive President of Operations",
-    avatar: "/images/team/albertliu.webp",
+    avatar: "/images/executive/Albert_Liu.webp",
     email: "axliu@ucsd.edu",
     desc: "Albert Liu is the co-president and founder of our injury prevention program! He is further engaged in cartilage tissue engineering research and leads outreach work for a free tutoring program for K-12 students. In his free time, he loves racing on the UCSD Dragon Boat Team, playing badminton and volleyball with his friends, or just working out at the gym! Albert wants to support his community by increasing overall wellness through a combination of fitness and education.",
     reason: "Wants to support his community by increasing overall wellness through fitness and education.",
@@ -56,7 +56,7 @@ const staff = [
   {
     name: "Sonja Wang",
     role: "Executive Vice President",
-    avatar: "/images/team/sonjawang.webp",
+    avatar: "/images/executive/Sonja_Wang.webp",
     email: "sow022@ucsd.edu",
     desc: "Sonja Wang is the vice president of our program! In addition to her involvement in SDIPP and volunteering, she enjoys creating art, figure skating, and dancing. Sonja is focused on empowering individuals to enjoy safe and independent lives.",
     reason: "Focused on empowering individuals to enjoy safe and independent lives.",
@@ -64,7 +64,7 @@ const staff = [
   {
     name: "Medha Nemani",
     role: "Executive Secretary",
-    avatar: "/images/team/medhanamani.webp",
+    avatar: "/images/executive/Medha_Nemani.webp",
     email: "medhanemani@gmail.com",
     desc: "Medha Nemani is the secretary of our program! Along with her commitment to the program and research, her hobbies include playing the piano, crafts, taking evening walks, and working on her novel. Medha is passionate about ensuring people are healthy and happy in all phases of their life.",
     reason: "Passionate about ensuring people are healthy and happy in all phases of their life.",
@@ -72,7 +72,7 @@ const staff = [
   {
     name: "Payton Chung",
     role: "Executive Treasurer",
-    avatar: "/images/team/paytonchung.webp",
+    avatar: "/images/executive/Payton_Chung.webp",
     email: "pchung6867@gmail.com",
     desc: "Payton Chung is the treasurer of our program! His other commitments include research on breast cancer metastasis and leading other UCSD organizations like Quiz Bowl. Some of his hobbies include cooking, baking, board/tabletop games, and trivia. Payton is passionate about helping others in the San Diego community in an administrative role.",
     reason: "Passionate about helping others in the San Diego community in an administrative role.",
@@ -80,7 +80,7 @@ const staff = [
   {
     name: "Aarav Rajpara",
     role: "Executive Legal Consultation Chair",
-    avatar: "/images/team/aaravrajpara.webp",
+    avatar: "/images/executive/aaravrajpara.png",
     email: "avrajpara@ucsd.edu",
     desc: "Aarav Rajpara is a legal consultant chair of our program. His other commitments include internship work at private litigation firms in Southern California and involvement in Triton Mock Trial at UCSD. Some of his hobbies include hiking, skiing and visits to the beach. Aarav hopes to pursue a career in public interest, focusing on providing remedy to individuals and nonprofit organizations in need.",
     reason: "Hopes to pursue a career in public interest, focusing on providing remedy to individuals and nonprofit organizations in need.",

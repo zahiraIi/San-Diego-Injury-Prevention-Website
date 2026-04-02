@@ -19,6 +19,9 @@ interface FeaturePresidentsProps {
   items: FeatureItem[];
   imageSrc: string;
   imageAlt: string;
+  /** Pixel dimensions of `imageSrc` so layout preserves aspect ratio (no cropping). */
+  imageWidth?: number;
+  imageHeight?: number;
   /** Use white text (e.g. on blue gradient) */
   light?: boolean;
   /** Use solid white card background (e.g. on message-from-presidents page) */
@@ -33,6 +36,8 @@ export function FeaturePresidents({
   items,
   imageSrc,
   imageAlt,
+  imageWidth = 4000,
+  imageHeight = 6000,
   light = false,
   whiteCard = false,
 }: FeaturePresidentsProps) {
@@ -125,14 +130,15 @@ export function FeaturePresidents({
           <div
             data-reveal="right"
             data-delay=""
-            className="relative w-full max-w-md mx-auto lg:max-w-sm xl:max-w-md min-w-0 bg-muted rounded-md aspect-[3/4] sm:aspect-[4/5] lg:aspect-square overflow-hidden self-center"
+            className="relative w-full max-w-md min-w-0 self-center overflow-hidden rounded-md xl:max-w-lg"
           >
             <Image
               src={imageSrc}
               alt={imageAlt}
-              fill
+              width={imageWidth}
+              height={imageHeight}
               loading="lazy"
-              className="object-cover object-center"
+              className="h-auto w-full object-contain object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
