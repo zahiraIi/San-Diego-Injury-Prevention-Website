@@ -88,8 +88,10 @@ export default function TeamSection({ members, title, subtitle }: TeamSectionPro
                     src={activeMember.avatar}
                     alt={activeMember.name}
                     fill
+                    quality={85}
                     className="object-cover object-center"
                     priority
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -116,7 +118,9 @@ export default function TeamSection({ members, title, subtitle }: TeamSectionPro
                     src={member.avatar}
                     alt={member.name}
                     fill
+                    quality={60}
                     className="object-cover"
+                    sizes="(max-width: 768px) 80px, 96px"
                   />
                 </div>
                 <div>

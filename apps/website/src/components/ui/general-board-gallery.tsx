@@ -44,8 +44,10 @@ export default function GeneralBoardGallery({
                 src={member.image}
                 alt={member.name}
                 fill
+                loading="lazy"
+                quality={75}
                 className="object-cover"
-                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
+                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 200px"
               />
             </div>
             <figcaption className="mt-3 space-y-1">

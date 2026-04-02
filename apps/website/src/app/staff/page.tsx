@@ -95,15 +95,16 @@ export default function StaffPage() {
       <section className="relative z-10 sm: overflow-hidden py-12 md:py-16 px-4 md:px-6">
                 <div className="container mx-auto relative z-10">
           <section className="pt-2 pb-8 md:pb-10">
-            {/* unoptimized: serve file as-is (no Next image pipeline). Intrinsic sizing preserves original aspect ratio. */}
+            {/* Next.js optimized image to prevent 7MB file loads */}
             <Image
               src="/images/board/wholeboard.webp"
               alt="SDIPP whole board"
               width={3200}
               height={2133}
-              unoptimized
               priority
+              quality={85}
               className="mx-auto h-auto w-full max-w-5xl rounded-2xl shadow-lg"
+              sizes="(max-width: 1024px) 100vw, 1024px"
             />
           </section>
 
