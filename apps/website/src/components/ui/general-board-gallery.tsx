@@ -25,7 +25,7 @@ export default function GeneralBoardGallery({
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-2xl md:text-3xl font-sans font-bold text-[#1a3a5c] mb-8 md:mb-10 text-center"
+        className="text-2xl md:text-3xl font-sans font-bold text-[#1B2A53] mb-8 md:mb-10 text-center"
       >
         {title}
       </motion.h2>
@@ -49,11 +49,11 @@ export default function GeneralBoardGallery({
               />
             </div>
             <figcaption className="mt-3 space-y-1">
-              <span className="block font-semibold text-[#1a3a5c] text-sm md:text-base">
+              <span className="block font-semibold text-[#1B2A53] text-sm md:text-base">
                 {member.name}
               </span>
               {member.role && (
-                <span className="block text-xs md:text-sm text-[#1a3a5c]/85 font-medium leading-snug">
+                <span className="block text-xs md:text-sm text-[#1B2A53]/85 font-medium leading-snug">
                   {member.role}
                 </span>
               )}
@@ -61,7 +61,7 @@ export default function GeneralBoardGallery({
             {member.email && (
               <a
                 href={`mailto:${member.email}`}
-                className="mt-1 text-xs md:text-sm text-gray-600 hover:text-[#1a3a5c] transition-colors break-all"
+                className="mt-1 text-xs md:text-sm text-gray-600 hover:text-[#1B2A53] transition-colors break-all"
               >
                 {member.email}
               </a>

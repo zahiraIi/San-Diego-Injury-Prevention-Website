@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import PageHeader from "@/components/ui/page-header";
 import CalendarView from "@/components/ui/calendar-view";
 import EventsDisplay from "@/components/ui/events-display";
-import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 export default function EventsPage() {
   return (
@@ -16,9 +15,8 @@ export default function EventsPage() {
       />
 
       {/* Main Content Area with Gradient Background */}
-      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-10 md:py-14 px-4 md:px-6 pb-14 md:pb-16">
-        <GrainientWhiteSection />
-        <div className="container mx-auto max-w-6xl relative z-10">
+      <section className="relative z-10 sm: overflow-hidden py-10 md:py-14 px-4 md:px-6 pb-14 md:pb-16">
+                <div className="container mx-auto max-w-6xl relative z-10">
           {/* Calendar View */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -38,7 +36,7 @@ export default function EventsPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="max-w-4xl mx-auto w-full"
           >
-            <h2 className="text-2xl md:text-3xl font-sans text-[#1a3a5c] mb-8 md:mb-10">
+            <h2 className="text-2xl md:text-3xl font-sans text-[#1B2A53] mb-8 md:mb-10">
               Upcoming Events
             </h2>
             <EventsDisplay />

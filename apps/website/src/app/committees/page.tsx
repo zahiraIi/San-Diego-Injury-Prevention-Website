@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Timeline } from "@/components/ui/timeline";
 import { Users, CalendarDays, BarChart3, Scale, type LucideIcon } from "lucide-react";
 import PageHeader from "@/components/ui/page-header";
-import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 interface Committee {
   name: string;
@@ -105,7 +104,7 @@ const timelineData = committees.map((committee) => ({
       {/* Member count badge */}
       <div className="flex items-center gap-4">
         <committee.icon className="w-8 h-8 text-accent-blue" />
-        <span className="text-[#1a3a5c] font-sans text-xl bg-accent-blue/10 px-5 py-2 rounded-full">
+        <span className="text-[#1B2A53] font-sans text-xl bg-accent-blue/10 px-5 py-2 rounded-full">
           {committee.members}
         </span>
       </div>
@@ -131,11 +130,11 @@ const timelineData = committees.map((committee) => ({
           )}
           {committee.tasks && (
             <div className={committee.focus ? "md:border-l md:border-accent-blue/30 md:pl-8" : ""}>
-              <h4 className="text-xl font-sans text-[#7f1d1d] mb-4">Member Tasks</h4>
+              <h4 className="text-xl font-sans text-[#E2231A] mb-4">Member Tasks</h4>
               <ul className="space-y-3">
                 {committee.tasks.map((task, i) => (
                   <li key={i} className="text-[#0f172a] text-base md:text-lg flex items-start gap-3">
-                    <span className="text-[#7f1d1d]">✓</span>
+                    <span className="text-[#E2231A]">✓</span>
                     <span>{task}</span>
                   </li>
                 ))}
@@ -157,9 +156,8 @@ export default function CommitteesPage() {
       />
 
       {/* Timeline Section */}
-      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-12 md:py-16 px-6">
-        <GrainientWhiteSection />
-        <div className="container mx-auto max-w-6xl relative z-10">
+      <section className="relative z-10 sm: overflow-hidden py-12 md:py-16 px-6">
+                <div className="container mx-auto max-w-6xl relative z-10">
           <Timeline data={timelineData} />
         </div>
       </section>

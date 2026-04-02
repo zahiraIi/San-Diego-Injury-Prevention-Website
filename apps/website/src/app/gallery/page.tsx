@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import PageHeader from "@/components/ui/page-header";
-import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 import {
   Collapsible,
   CollapsibleContent,
@@ -24,6 +23,54 @@ interface GalleryImage {
 interface GallerySectionConfig {
   title: string;
   images: GalleryImage[];
+}
+
+function GalleryImageTile({
+  img,
+  hasCaptions,
+}: {
+  img: GalleryImage;
+  hasCaptions: boolean;
+}) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className={hasCaptions ? "flex flex-col gap-2 min-w-0" : "contents"}>
+      <div
+        className={
+          hasCaptions
+            ? "relative aspect-[4/3] sm:aspect-square rounded-lg overflow-hidden border border-[#1B2A53]/15 bg-gray-100"
+            : "relative aspect-square rounded-lg overflow-hidden border border-[#1B2A53]/15 bg-gray-100"
+        }
+      >
+        {!isLoaded ? (
+          <div
+            className="absolute inset-0 animate-pulse bg-gradient-to-br from-slate-200 via-slate-100 to-slate-200"
+            aria-hidden
+          />
+        ) : null}
+        <Image
+          src={img.src}
+          alt={img.alt}
+          fill
+          className={`object-cover transition-opacity duration-500 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          sizes={
+            hasCaptions
+              ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          }
+          onLoadingComplete={() => setIsLoaded(true)}
+        />
+      </div>
+      {hasCaptions && img.caption ? (
+        <p className="text-sm md:text-[15px] text-[#1B2A53]/90 leading-relaxed">
+          {img.caption}
+        </p>
+      ) : null}
+    </div>
+  );
 }
 
 const FALL_PREVENTION_ATRIA_IMAGES: GalleryImage[] = [
@@ -209,18 +256,18 @@ function GallerySection({ title, images }: GallerySectionConfig) {
 
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
-      <div className="border border-[#1a3a5c]/20 rounded-xl bg-white/60 overflow-hidden">
+      <div className="border border-[#1B2A53]/20 rounded-xl bg-white/60 overflow-hidden">
         <CollapsibleTrigger className="flex items-center justify-between w-full px-5 md:px-6 py-4 md:py-5 cursor-pointer hover:bg-white/80 transition-colors group">
           <div className="flex items-center gap-3">
-            <h2 className="text-xl md:text-2xl font-sans font-bold text-[#1a3a5c]">
+            <h2 className="text-xl md:text-2xl font-sans font-bold text-[#1B2A53]">
               {title}
             </h2>
-            <span className="text-sm text-[#1a3a5c]/50 font-medium">
+            <span className="text-sm text-[#1B2A53]/50 font-medium">
               {images.length} photos
             </span>
           </div>
           <ChevronDown
-            className={`w-5 h-5 text-[#1a3a5c]/60 transition-transform duration-200 ${
+            className={`w-5 h-5 text-[#1B2A53]/60 transition-transform duration-200 ${
               open ? "rotate-180" : ""
             }`}
           />
@@ -236,37 +283,11 @@ function GallerySection({ title, images }: GallerySectionConfig) {
               }
             >
               {images.map((img) => (
-                <div
+                <GalleryImageTile
                   key={img.id}
-                  className={
-                    hasCaptions ? "flex flex-col gap-2 min-w-0" : "contents"
-                  }
-                >
-                  <div
-                    className={
-                      hasCaptions
-                        ? "relative aspect-[4/3] sm:aspect-square rounded-lg overflow-hidden border border-[#1a3a5c]/15 bg-gray-100"
-                        : "relative aspect-square rounded-lg overflow-hidden border border-[#1a3a5c]/15 bg-gray-100"
-                    }
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-cover"
-                      sizes={
-                        hasCaptions
-                          ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      }
-                    />
-                  </div>
-                  {hasCaptions && img.caption ? (
-                    <p className="text-sm md:text-[15px] text-[#1a3a5c]/90 leading-relaxed">
-                      {img.caption}
-                    </p>
-                  ) : null}
-                </div>
+                  img={img}
+                  hasCaptions={hasCaptions}
+                />
               ))}
             </div>
           </div>
@@ -286,9 +307,8 @@ export default function GalleryPage() {
         subtitle="Photos from our events and activities"
       />
 
-      <section className="relative z-10 -mt-16 md:-mt-20 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] bg-white overflow-hidden">
-        <GrainientWhiteSection />
-        <div className="container mx-auto max-w-6xl px-4 md:px-6 relative z-10 py-10 md:py-14 pb-20 md:pb-24">
+      <section className="relative z-10 md: sm: bg-white overflow-hidden">
+                <div className="container mx-auto max-w-6xl px-4 md:px-6 relative z-10 py-10 md:py-14 pb-20 md:pb-24">
           <div className="space-y-4">
             {GALLERY_SECTIONS.map((section) => (
               <GallerySection

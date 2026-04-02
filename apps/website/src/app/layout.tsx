@@ -1,16 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Rethink_Sans } from "next/font/google";
+import { Rethink_Sans, Oswald } from "next/font/google";
 import dynamic from "next/dynamic";
 import "./globals.css";
 
 const StaticNavbar = dynamic(() => import("@/components/ui/static-navbar"));
 const SiteFooter = dynamic(() => import("@/components/ui/site-footer"));
-const GrainientBackground = dynamic(
-  () => import("@/components/ui/GrainientBackground")
-);
 const ScrollReveal = dynamic(() => import("@/components/ui/scroll-reveal"));
 
 const rethinkSans = Rethink_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const oswald = Oswald({ subsets: ["latin"], variable: "--font-heading" });
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -73,8 +71,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${rethinkSans.variable} font-sans antialiased relative`}>
-        <GrainientBackground />
+      <body className={`${rethinkSans.variable} ${oswald.variable} font-sans antialiased relative bg-white`}>
         <div className="relative min-h-screen flex flex-col">
           <ScrollReveal />
           <StaticNavbar />

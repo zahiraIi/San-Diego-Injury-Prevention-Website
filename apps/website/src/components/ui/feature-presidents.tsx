@@ -50,7 +50,7 @@ export function FeaturePresidents({
   const cardClass = whiteCard
     ? "border-border bg-white"
     : light
-      ? "border-white/25 bg-[#002E5D]/30"
+      ? "border-white/25 bg-[#1B2A53]/30"
       : "border-border bg-card/80";
 
   return (

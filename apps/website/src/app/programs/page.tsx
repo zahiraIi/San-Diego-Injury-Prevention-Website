@@ -1,7 +1,6 @@
 "use client";
 
 import PageHeader from "@/components/ui/page-header";
-import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 import {
   InteractiveAccordion,
   type AccordionItem,
@@ -18,7 +17,7 @@ interface Program {
 const PROGRAMS: Program[] = [
   {
     title: "Fall Prevention Classes",
-    image: "/images/volunteering/volunteer12.webp",
+    image: "/images/Fall Prevention Classes at Atria La Jolla/1.webp",
     body: [
       "SDIPP's weekly fall prevention and tai chi classes at local retirement homes are our longest standing volunteer opportunity. Each session includes a warm up, workout, and cool down designed to accommodate the various mobility and activity levels of the seniors.",
       "Our classes highlight the importance of movement to prevent injuries while facilitating connection between generations. Volunteers get the chance to hone their communication, teaching, and professionalism skills while forming meaningful relationships with seniors.",
@@ -26,7 +25,7 @@ const PROGRAMS: Program[] = [
   },
   {
     title: "Health Fair",
-    image: "/images/volunteering/volunteer9.webp",
+    image: "/images/Health Fairs/DSC04455.webp",
     body: [
       "The SDIPP AANHPI Health and Wellness Fair is a free, off-campus, public health fair on February 21st that will focus on the mental and physical wellness of the Asian American, Native Hawaiian, and Pacific Islander community in San Diego.",
       "This fair will bring together a handful of local San Diego organizations, health providers, and educators that will be providing their resources, education and free screenings to our community guests.",
@@ -35,7 +34,7 @@ const PROGRAMS: Program[] = [
   },
   {
     title: "Community Collab Events",
-    image: "/images/DSC01200.webp",
+    image: "/images/Health Literacy Presentations/hlp3.webp",
     body: [
       "SDIPP participates in a variety of community collaboration events including work with other UCSD student organizations, many different San Diego injury prevention task forces, and a variety of Scripps and UCSD Health faculty.",
       "External community events expand our injury prevention resources, so our organization can participate in more complex outreach targeted toward various community-wide injury-prevention initiatives, including resources that support geriatrics, pediatrics, trauma, public health, and more.",
@@ -57,7 +56,7 @@ const PROGRAMS: Program[] = [
   },
   {
     title: "Health Literacy Program",
-    image: "/images/HLP.webp",
+    image: "/images/Health Literacy Presentations/hlp2.webp",
     body: [
       "The San Diego Injury Prevention Program created the Health Literacy Program (HLP) in collaboration with United Way of San Diego's STEAM-to-Careers program to increase access to health-related career guidance for high school students.",
       "Currently held at Lincoln High School, these presentations focus on injury prevention and health topics, incorporating activities that allow students to practice their ability to recognize risks and misinformation as well as college guidance.",
@@ -99,7 +98,7 @@ function programToAccordionItem(program: Program, index: number): AccordionItem 
             </span>
             <a
               href={program.contact.href}
-              className="text-[#1a3a5c] font-medium underline underline-offset-2 hover:text-[#7f1d1d] transition-colors"
+              className="text-[#1B2A53] font-medium underline underline-offset-2 hover:text-[#E2231A] transition-colors"
             >
               {program.contact.label}
             </a>
@@ -121,9 +120,8 @@ export default function ProgramsPage() {
         subtitle="Our initiatives and volunteer opportunities"
       />
 
-      <section className="relative z-10 -mt-16 md:-mt-20 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] bg-white overflow-hidden">
-        <GrainientWhiteSection />
-        <div className="container mx-auto max-w-4xl px-4 md:px-6 relative z-10 py-10 md:py-14 pb-20 md:pb-24">
+      <section className="relative z-10 md: sm: bg-white overflow-hidden">
+                <div className="container mx-auto max-w-4xl px-4 md:px-6 relative z-10 py-10 md:py-14 pb-20 md:pb-24">
           <InteractiveAccordion
             items={accordionItems}
             defaultActiveId={accordionItems[0]?.id}

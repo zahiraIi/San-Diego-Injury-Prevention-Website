@@ -159,7 +159,7 @@ export default function CalendarView() {
       {/* ── Header: Month/Year + navigation ── */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <h2 className="font-sans text-2xl md:text-3xl text-[#1a3a5c]">
+          <h2 className="font-sans text-2xl md:text-3xl text-[#1B2A53]">
             {MONTHS[currentMonth]} {currentYear}
           </h2>
           <button
@@ -172,25 +172,25 @@ export default function CalendarView() {
         <div className="flex items-center gap-1">
           <button
             onClick={goToPrevMonth}
-            className="p-2 rounded-full hover:bg-[#1a3a5c]/10 transition-colors"
+            className="p-2 rounded-full hover:bg-[#1B2A53]/10 transition-colors"
             aria-label="Previous month"
           >
-            <ChevronLeft className="w-5 h-5 text-[#1a3a5c]" />
+            <ChevronLeft className="w-5 h-5 text-[#1B2A53]" />
           </button>
           <button
             onClick={goToNextMonth}
-            className="p-2 rounded-full hover:bg-[#1a3a5c]/10 transition-colors"
+            className="p-2 rounded-full hover:bg-[#1B2A53]/10 transition-colors"
             aria-label="Next month"
           >
-            <ChevronRight className="w-5 h-5 text-[#1a3a5c]" />
+            <ChevronRight className="w-5 h-5 text-[#1B2A53]" />
           </button>
         </div>
       </div>
 
       {/* ── Calendar grid ── */}
-      <div className="border border-[#1a3a5c]/15 rounded-2xl overflow-hidden bg-white">
+      <div className="border border-[#1B2A53]/15 rounded-2xl overflow-hidden bg-white">
         {/* Weekday header */}
-        <div className="grid grid-cols-7 bg-[#1a3a5c]">
+        <div className="grid grid-cols-7 bg-[#1B2A53]">
           {WEEKDAYS.map((day) => (
             <div
               key={day}
@@ -215,10 +215,10 @@ export default function CalendarView() {
                 key={idx}
                 onClick={() => setSelectedDate(isSelected ? null : key)}
                 className={`
-                  relative min-h-[60px] md:min-h-[80px] p-1.5 md:p-2 border-b border-r border-[#1a3a5c]/8
+                  relative min-h-[60px] md:min-h-[80px] p-1.5 md:p-2 border-b border-r border-[#1B2A53]/8
                   text-left transition-colors duration-150 group
                   ${inMonth ? "bg-white" : "bg-gray-50/60"}
-                  ${isSelected ? "bg-accent-red/5 ring-2 ring-accent-red/30 ring-inset" : "hover:bg-[#1a3a5c]/5"}
+                  ${isSelected ? "bg-accent-red/5 ring-2 ring-accent-red/30 ring-inset" : "hover:bg-[#1B2A53]/5"}
                 `}
               >
                 {/* Day number */}
@@ -226,7 +226,7 @@ export default function CalendarView() {
                   className={`
                     inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-semibold
                     ${isToday ? "bg-accent-red text-white" : ""}
-                    ${inMonth ? "text-[#1a3a5c]" : "text-gray-300"}
+                    ${inMonth ? "text-[#1B2A53]" : "text-gray-300"}
                   `}
                 >
                   {date.getDate()}
@@ -290,10 +290,10 @@ export default function CalendarView() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.25 }}
-            className="mt-6 border border-[#1a3a5c]/15 rounded-2xl bg-white p-5 md:p-6"
+            className="mt-6 border border-[#1B2A53]/15 rounded-2xl bg-white p-5 md:p-6"
           >
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-sans text-lg md:text-xl text-[#1a3a5c]">
+              <h3 className="font-sans text-lg md:text-xl text-[#1B2A53]">
                 {new Date(selectedDate + "T00:00:00").toLocaleDateString("en-US", {
                   weekday: "long",
                   month: "long",
@@ -319,7 +319,7 @@ export default function CalendarView() {
                     key={event.id}
                     className="border-l-4 border-accent-red pl-4 py-2"
                   >
-                    <h4 className="font-sans font-bold text-[#1a3a5c] text-base mb-1">
+                    <h4 className="font-sans font-bold text-[#1B2A53] text-base mb-1">
                       {event.name}
                     </h4>
                     <div className="space-y-1.5 text-sm text-gray-600">

@@ -17,9 +17,8 @@ export default function MessageFromPresidentsPage() {
         subtitle="A note from our leadership"
       />
 
-      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] overflow-hidden py-12 md:py-16 bg-grainient-white shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
-        <GrainientWhiteSection />
-        <div className="relative z-10">
+      <section className="relative z-10 sm: overflow-hidden py-12 md:py-16 bg-white ">
+                <div className="relative z-10">
           <FeaturePresidents
             showHeading={false}
             items={PRESIDENTS_MESSAGE_PARAGRAPHS.map((description) => ({

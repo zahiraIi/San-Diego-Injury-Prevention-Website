@@ -41,7 +41,7 @@ export default function FAQSection({
             <h3 className="text-xl md:text-2xl font-bold text-[#4a0404] mb-3 md:mb-4 font-sans leading-tight">
               {item.question}
             </h3>
-            <div className="text-[#1a3a5c] text-base md:text-lg leading-relaxed font-light [&_a]:font-semibold [&_a]:text-accent-blue [&_a]:underline-offset-2 hover:[&_a]:underline">
+            <div className="text-[#1B2A53] text-base md:text-lg leading-relaxed font-light [&_a]:font-semibold [&_a]:text-accent-blue [&_a]:underline-offset-2 hover:[&_a]:underline">
               {typeof item.answer === "string" ? (
                 <span className="whitespace-pre-line">{item.answer}</span>
               ) : (

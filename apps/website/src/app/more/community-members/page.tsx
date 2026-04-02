@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, FileText } from "lucide-react";
 import PageHeader from "@/components/ui/page-header";
-import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 const COMMUNITY_PDFS = [
   {
@@ -42,9 +41,8 @@ export default function CommunityMembersPage() {
         subtitle="Local partners, printable guides, and San Diego fall-prevention resources"
       />
 
-      <section className="relative z-10 -mt-16 md:-mt-20 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] bg-white overflow-hidden">
-        <GrainientWhiteSection />
-        <div className="container mx-auto relative z-10 py-12 md:py-16 px-4 md:px-6 pb-20 md:pb-24 space-y-16 md:space-y-20">
+      <section className="relative z-10 md: sm: bg-white overflow-hidden">
+                <div className="container mx-auto relative z-10 py-12 md:py-16 px-4 md:px-6 pb-20 md:pb-24 space-y-16 md:space-y-20">
           <motion.section
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -52,10 +50,10 @@ export default function CommunityMembersPage() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto space-y-4"
           >
-            <h2 className="text-3xl md:text-4xl font-sans font-bold text-[#1a3a5c]">
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-[#1B2A53]">
               Jewish Family Service of San Diego
             </h2>
-            <p className="text-lg text-[#1a3a5c]/90 leading-relaxed">
+            <p className="text-lg text-[#1B2A53]/90 leading-relaxed">
               Explore programs and support from Jewish Family Service of San Diego — a trusted
               community resource for health, wellness, and social services across the region.
             </p>
@@ -77,10 +75,10 @@ export default function CommunityMembersPage() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-sans font-bold text-[#1a3a5c] mb-6">
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-[#1B2A53] mb-6">
               Printable resources
             </h2>
-            <p className="text-lg text-[#1a3a5c]/90 leading-relaxed mb-8">
+            <p className="text-lg text-[#1B2A53]/90 leading-relaxed mb-8">
               Download injury-prevention and fall-prevention guides you can read at home or share
               with family and caregivers.
             </p>
@@ -91,11 +89,11 @@ export default function CommunityMembersPage() {
                     href={doc.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-3 rounded-xl border border-[#1a3a5c]/15 bg-white/80 px-4 py-3 text-[#1a3a5c] hover:border-accent-blue/40 hover:bg-accent-blue/5 transition-colors"
+                    className="flex items-start gap-3 rounded-xl border border-[#1B2A53]/15 bg-white/80 px-4 py-3 text-[#1B2A53] hover:border-accent-blue/40 hover:bg-accent-blue/5 transition-colors"
                   >
                     <FileText className="w-5 h-5 text-accent-blue shrink-0 mt-0.5" />
                     <span className="font-medium leading-snug">{doc.label}</span>
-                    <ExternalLink className="w-4 h-4 shrink-0 ml-auto text-[#1a3a5c]/50" />
+                    <ExternalLink className="w-4 h-4 shrink-0 ml-auto text-[#1B2A53]/50" />
                   </Link>
                 </li>
               ))}
@@ -109,7 +107,7 @@ export default function CommunityMembersPage() {
             transition={{ duration: 0.6 }}
             className="grid md:grid-cols-2 gap-6 md:gap-8 items-start"
           >
-            <div className="space-y-4 text-lg text-[#1a3a5c]">
+            <div className="space-y-4 text-lg text-[#1B2A53]">
               <h2 className="text-3xl md:text-4xl font-sans text-accent-red mb-5">
                 San Diego Fall Prevention Task Force
               </h2>

@@ -1,8 +1,6 @@
-"use client";
-
 import Grainient from "@/components/ui/Grainient";
 
-/** Blue/white Grainient for use in any section (no animation). Renders absolute inset-0 by default. */
+/** Blue section WebGL gradient, lazily initialized near viewport. */
 export default function GrainientBlueSection({ className = "" }: { className?: string }) {
   return (
     <div className={`absolute inset-0 ${className}`.trim()}>
@@ -12,6 +10,9 @@ export default function GrainientBlueSection({ className = "" }: { className?: s
         color3="#001a3a"
         timeSpeed={0}
         grainAnimated={false}
+        maxDpr={1}
+        lazy
+        fallbackClassName="bg-grainient-blue"
         className="w-full h-full"
       />
     </div>

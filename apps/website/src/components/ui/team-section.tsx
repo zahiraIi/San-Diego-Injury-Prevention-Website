@@ -44,7 +44,7 @@ export default function TeamSection({ members, title, subtitle }: TeamSectionPro
                 className="space-y-6"
               >
                 <div>
-                  <h4 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-2">
+                  <h4 className="text-3xl md:text-4xl font-bold text-[#1B2A53] mb-2">
                     {activeMember.name}
                   </h4>
                   <p className="text-xl text-accent-red font-medium">
@@ -55,7 +55,7 @@ export default function TeamSection({ members, title, subtitle }: TeamSectionPro
                 {activeMember.email && (
                   <a
                     href={`mailto:${activeMember.email}`}
-                    className="inline-flex items-center gap-2 text-gray-600 hover:text-[#1a3a5c] transition-colors"
+                    className="inline-flex items-center gap-2 text-gray-600 hover:text-[#1B2A53] transition-colors"
                   >
                     <Mail className="w-5 h-5" />
                     <span className="text-sm md:text-base">{activeMember.email}</span>
@@ -121,7 +121,7 @@ export default function TeamSection({ members, title, subtitle }: TeamSectionPro
                 </div>
                 <div>
                   <h5 className={`font-bold text-sm md:text-base transition-colors ${
-                    activeMember.name === member.name ? "text-[#1a3a5c]" : "text-gray-600"
+                    activeMember.name === member.name ? "text-[#1B2A53]" : "text-gray-600"
                   }`}>
                     {member.name}
                   </h5>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Grainient.css";
 
 const hexToRgb = (hex: string): [number, number, number] => {
@@ -128,7 +128,20 @@ export interface GrainientProps {
   color2?: string;
   color3?: string;
   className?: string;
+  fallbackClassName?: string;
+  maxDpr?: number;
+  lazy?: boolean;
 }
+
+type OglModule = typeof import("ogl");
+let oglModulePromise: Promise<OglModule> | null = null;
+
+const loadOgl = (): Promise<OglModule> => {
+  if (!oglModulePromise) {
+    oglModulePromise = import("ogl");
+  }
+  return oglModulePromise;
+};
 
 /** Static dark blue & white gradient (no animation). Use as full-bleed background. */
 export default function Grainient({
@@ -155,10 +168,35 @@ export default function Grainient({
   color2 = "#2774ae",
   color3 = "#002E5D",
   className = "",
+  fallbackClassName = "",
+  maxDpr = 1.25,
+  lazy = false,
 }: GrainientProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [canInit, setCanInit] = useState(!lazy);
 
   useEffect(() => {
+    if (!lazy || canInit) return;
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setCanInit(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px" },
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [lazy, canInit]);
+
+  useEffect(() => {
+    if (!canInit) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -174,14 +212,15 @@ export default function Grainient({
       : (id: number) => clearTimeout(id);
 
     idleHandle = scheduleInit(async () => {
-      const { Renderer, Program, Mesh, Triangle } = await import("ogl");
+      const { Renderer, Program, Mesh, Triangle } = await loadOgl();
       if (cancelled) return;
 
       const renderer = new Renderer({
         webgl: 2,
         alpha: true,
         antialias: false,
-        dpr: Math.min(window.devicePixelRatio || 1, 2),
+        dpr: Math.min(window.devicePixelRatio || 1, maxDpr),
+        powerPreference: "low-power",
       });
 
       const gl = renderer.gl;
@@ -268,6 +307,7 @@ export default function Grainient({
       cleanup?.();
     };
   }, [
+    canInit,
     timeSpeed,
     colorBalance,
     warpStrength,
@@ -290,12 +330,13 @@ export default function Grainient({
     color1,
     color2,
     color3,
+    maxDpr,
   ]);
 
   return (
     <div
       ref={containerRef}
-      className={`grainient-container ${className}`.trim()}
+      className={`grainient-container ${fallbackClassName} ${className}`.trim()}
       aria-hidden
     />
   );

@@ -4,7 +4,6 @@ import Image from "next/image";
 import PageHeader from "@/components/ui/page-header";
 import TeamSection from "@/components/ui/team-section";
 import GeneralBoardGallery from "@/components/ui/general-board-gallery";
-import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 const GENERAL_BOARD_MEMBERS = [
   { filename: "Derek_Nguyen.webp", email: "den010@ucsd.edu", role: "Executive Health Coordinator" },
@@ -93,9 +92,8 @@ export default function StaffPage() {
     <>
       <PageHeader title="Our Staff" subtitle="Meet the team behind SDIPP" />
 
-      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-12 md:py-16 px-4 md:px-6">
-        <GrainientWhiteSection />
-        <div className="container mx-auto relative z-10">
+      <section className="relative z-10 sm: overflow-hidden py-12 md:py-16 px-4 md:px-6">
+                <div className="container mx-auto relative z-10">
           <section className="pt-2 pb-8 md:pb-10">
             {/* unoptimized: serve file as-is (no Next image pipeline). Intrinsic sizing preserves original aspect ratio. */}
             <Image
@@ -110,7 +108,7 @@ export default function StaffPage() {
           </section>
 
           <section className="pt-2">
-            <h2 className="text-xl md:text-2xl font-sans font-bold text-[#1a3a5c] mb-4 text-center md:text-left">
+            <h2 className="text-xl md:text-2xl font-sans font-bold text-[#1B2A53] mb-4 text-center md:text-left">
               Executive Board
             </h2>
             <TeamSection members={staff} />

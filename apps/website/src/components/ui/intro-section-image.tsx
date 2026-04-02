@@ -1,19 +1,22 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const FALLBACK_SRCS = [
   "/images/board/wholeboard.webp",
-  "/images/vitals-training/IMG_7695.webp",
-  "/images/volunteering/volunteer1.webp",
+  "/images/Fall Prevention Classes at Atria La Jolla/1.webp",
+  "/images/Health Fairs/DSC04455.webp",
 ];
 
 export default function IntroSectionImage() {
   const [srcIndex, setSrcIndex] = useState(0);
   const [showPlaceholder, setShowPlaceholder] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const src = FALLBACK_SRCS[srcIndex] ?? FALLBACK_SRCS[0];
 
   const handleError = () => {
+    setIsLoaded(false);
     if (srcIndex < FALLBACK_SRCS.length - 1) {
       setSrcIndex((i) => i + 1);
     } else {
@@ -35,14 +38,26 @@ export default function IntroSectionImage() {
           SDIPP board
         </div>
       ) : (
-        /* eslint-disable-next-line @next/next/no-img-element */
-        <img
+        <>
+          {!isLoaded ? (
+            <div
+              className="absolute inset-0 animate-pulse bg-gradient-to-br from-slate-200 via-slate-100 to-slate-200"
+              aria-hidden
+            />
+          ) : null}
+          <Image
           src={src}
-          alt="SDIPP board members"
-          className="absolute inset-0 h-full w-full object-cover"
+          alt="SDIPP community programs and outreach"
+          fill
+          className={`absolute inset-0 object-cover transition-opacity duration-500 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
           onError={handleError}
-          loading="eager"
+          onLoadingComplete={() => setIsLoaded(true)}
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
+        </>
       )}
     </div>
   );

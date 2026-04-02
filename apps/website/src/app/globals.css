@@ -3,9 +3,11 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --accent-red: #7f1d1d;
-  --accent-blue: #1a3a5c;
-  --radius: 0.625rem;
+  --uw-blue: #1B2A53;
+  --uw-red: #E2231A;
+  --accent-red: var(--uw-red);
+  --accent-blue: var(--uw-blue);
+  --radius: 0rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -37,6 +39,7 @@
 
   /* Custom fonts */
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-heading), var(--font-sans);
   --font-family-charter: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -129,12 +132,12 @@ main > div > section p {
   transition-delay: 0.1s;
 }
 
-/* CSS gradient fallbacks for Grainient backgrounds */
+/* Solid color fallbacks replacing grainients */
 .bg-grainient-blue {
-  background: linear-gradient(135deg, #8FBFD9, #1a5a8a, #001a3a);
+  background-color: var(--uw-blue);
 }
 .bg-grainient-white {
-  background: linear-gradient(135deg, #FFFFFF, #F5F5F5, #E8E8E8);
+  background-color: #FFFFFF;
 }
 
 /* Collapsible expand/collapse animations */

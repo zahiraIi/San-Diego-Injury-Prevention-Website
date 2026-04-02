@@ -6,7 +6,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import PageHeader from "@/components/ui/page-header";
-import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 type PartnerTab = "partner" | "collaborator";
 
@@ -52,7 +51,7 @@ const COLLABORATORS: PartnerGroup[] = [
       },
       {
         name: "Volunteers in Medicine San Diego",
-        image: "/images/collaborators/logo-volunteers-in-medicine.png",
+        image: "/images/collaborators/logo-volunteers-in-medicine.webp",
         imageAlt: "Volunteers in Medicine San Diego logo",
         variant: "logo",
         desc: "Collaborates with us at community health fairs by providing educational presentations and on-site engagement to expand access to care and health resources.",
@@ -129,12 +128,16 @@ function PartnerCard({ item }: { item: PartnerItem }) {
   const isPhoto = item.variant === "photo";
 
   return (
-    <div className="bg-white/60 rounded-xl p-6 border border-[#1a3a5c]/10 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+    <div
+      className={`bg-white/60 rounded-xl p-6 border border-[#1B2A53]/10 flex flex-col sm:flex-row gap-6 sm:gap-8 ${
+        isPhoto ? "items-start" : "items-start sm:items-center"
+      }`}
+    >
       <div
         className={
           isPhoto
             ? "shrink-0 w-full max-w-[200px] sm:max-w-[220px] mx-auto sm:mx-0"
-            : "shrink-0 w-full sm:w-44 md:w-52 flex items-center justify-center sm:justify-start min-h-[4.5rem]"
+            : "shrink-0 w-full sm:w-52 h-28 flex items-center justify-start"
         }
       >
         <Image
@@ -144,14 +147,14 @@ function PartnerCard({ item }: { item: PartnerItem }) {
           height={isPhoto ? 560 : 160}
           className={
             isPhoto
-              ? "w-full h-auto rounded-lg object-cover shadow-sm border border-[#1a3a5c]/10"
-              : "max-h-24 w-auto max-w-full object-contain object-left"
+              ? "w-full h-auto rounded-lg object-cover shadow-sm border border-[#1B2A53]/10"
+              : "h-full w-full max-h-28 object-contain object-left"
           }
           sizes={isPhoto ? "(max-width: 640px) 200px, 220px" : "(max-width: 640px) 100vw, 208px"}
         />
       </div>
       <div className="min-w-0 flex-1">
-        <h4 className="text-lg font-bold text-[#1a3a5c] mb-2">{item.name}</h4>
+        <h4 className="text-lg font-bold text-[#1B2A53] mb-2">{item.name}</h4>
         <p className="text-[#0f172a]/90 text-base leading-relaxed">{item.desc}</p>
       </div>
     </div>
@@ -168,9 +171,8 @@ export default function PartnerWithUsPage() {
         subtitle="Collaborate with SDIPP on outreach, education, and community impact"
       />
 
-      <section className="relative z-10 -mt-16 md:-mt-20 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] bg-white overflow-hidden">
-        <GrainientWhiteSection />
-        <div className="container mx-auto relative z-10 py-12 md:py-16 px-4 md:px-6 pb-20 md:pb-24">
+      <section className="relative z-10 md: sm: bg-white overflow-hidden">
+                <div className="container mx-auto relative z-10 py-12 md:py-16 px-4 md:px-6 pb-20 md:pb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +183,7 @@ export default function PartnerWithUsPage() {
             <div
               role="tablist"
               aria-label="Partner information"
-              className="flex flex-wrap gap-2 border-b border-[#1a3a5c]/15 pb-px mb-8"
+              className="flex flex-wrap gap-2 border-b border-[#1B2A53]/15 pb-px mb-8"
             >
               <button
                 type="button"
@@ -193,8 +195,8 @@ export default function PartnerWithUsPage() {
                 onClick={() => setTab("partner")}
                 className={`relative px-4 py-3 text-sm md:text-base font-semibold rounded-t-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue/50 ${
                   tab === "partner"
-                    ? "text-[#1a3a5c]"
-                    : "text-[#1a3a5c]/60 hover:text-[#1a3a5c]"
+                    ? "text-[#1B2A53]"
+                    : "text-[#1B2A53]/60 hover:text-[#1B2A53]"
                 }`}
               >
                 Partner with us
@@ -212,8 +214,8 @@ export default function PartnerWithUsPage() {
                 onClick={() => setTab("collaborator")}
                 className={`relative px-4 py-3 text-sm md:text-base font-semibold rounded-t-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue/50 ${
                   tab === "collaborator"
-                    ? "text-[#1a3a5c]"
-                    : "text-[#1a3a5c]/60 hover:text-[#1a3a5c]"
+                    ? "text-[#1B2A53]"
+                    : "text-[#1B2A53]/60 hover:text-[#1B2A53]"
                 }`}
               >
                 Become a collaborator
@@ -228,7 +230,7 @@ export default function PartnerWithUsPage() {
               role="tabpanel"
               aria-labelledby="tab-partner"
               hidden={tab !== "partner"}
-              className="space-y-10 text-[#1a3a5c]"
+              className="space-y-10 text-[#1B2A53]"
             >
               <div className="space-y-6">
                 <p className="text-lg leading-relaxed">
@@ -241,7 +243,7 @@ export default function PartnerWithUsPage() {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1a3a5c] text-white font-semibold hover:bg-[#0f2a42] transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1B2A53] text-white font-semibold hover:bg-[#E2231A] transition-colors"
                 >
                   Contact SDIPP
                   <ArrowRight className="w-4 h-4" />
@@ -269,9 +271,9 @@ export default function PartnerWithUsPage() {
               role="tabpanel"
               aria-labelledby="tab-collaborator"
               hidden={tab !== "collaborator"}
-              className="space-y-6 text-[#1a3a5c]"
+              className="space-y-6 text-[#1B2A53]"
             >
-              <h2 className="text-2xl md:text-3xl font-sans font-bold text-[#1a3a5c]">
+              <h2 className="text-2xl md:text-3xl font-sans font-bold text-[#1B2A53]">
                 Become a collaborator
               </h2>
               <p className="text-lg leading-relaxed">
@@ -281,7 +283,7 @@ export default function PartnerWithUsPage() {
                 new ideas, we welcome opportunities to work together.
               </p>
 
-              <div className="pt-6 border-t border-[#1a3a5c]/10">
+              <div className="pt-6 border-t border-[#1B2A53]/10">
                 <p className="text-lg leading-relaxed mb-6">
                   If you&apos;re interested in collaborating, feel free to{" "}
                   <Link
@@ -301,7 +303,7 @@ export default function PartnerWithUsPage() {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1a3a5c] text-white font-semibold hover:bg-[#0f2a42] transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1B2A53] text-white font-semibold hover:bg-[#E2231A] transition-colors"
                 >
                   Get in touch
                   <ArrowRight className="w-4 h-4" />

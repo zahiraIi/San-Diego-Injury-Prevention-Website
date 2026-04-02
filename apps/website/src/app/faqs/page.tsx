@@ -3,7 +3,6 @@
 import Link from "next/link";
 import PageHeader from "@/components/ui/page-header";
 import FAQSection, { type FAQItem } from "@/components/ui/faq-section";
-import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
 const ABOUT_ITEMS: FAQItem[] = [
   {
@@ -155,9 +154,8 @@ export default function FAQsPage() {
     <>
       <PageHeader title="FAQs" subtitle="Frequently asked questions about SDIPP" />
 
-      <section className="relative z-10 -mt-12 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden py-12 md:py-16 px-4 md:px-6">
-        <GrainientWhiteSection />
-        <div className="container mx-auto max-w-4xl relative z-10 space-y-16 md:space-y-20 pb-8">
+      <section className="relative z-10 sm: overflow-hidden py-12 md:py-16 px-4 md:px-6">
+                <div className="container mx-auto max-w-4xl relative z-10 space-y-16 md:space-y-20 pb-8">
           <FAQSection title="About SDIPP" items={ABOUT_ITEMS} />
           <FAQSection title="Volunteers" items={VOLUNTEER_ITEMS} />
           <FAQSection title="Organizations & chapters" items={ORG_ITEMS} />

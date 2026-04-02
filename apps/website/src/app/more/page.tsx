@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import PageHeader from "@/components/ui/page-header";
-import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -11,9 +10,8 @@ export default function MorePage() {
     <>
       <PageHeader title="Resources" subtitle="Explore info for community members, partners, and volunteers" />
 
-      <section className="relative z-10 -mt-16 md:-mt-20 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] bg-white overflow-hidden">
-        <GrainientWhiteSection />
-        <div className="container mx-auto relative z-10 py-12 md:py-16 px-4 md:px-6 pb-20 md:pb-24">
+      <section className="relative z-10 md: sm: bg-white overflow-hidden">
+                <div className="container mx-auto relative z-10 py-12 md:py-16 px-4 md:px-6 pb-20 md:pb-24">
           <motion.section
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,15 +39,15 @@ export default function MorePage() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-[#1a3a5c]/30 transition-all"
+                  className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-[#1B2A53]/30 transition-all"
                 >
-                  <h2 className="text-xl md:text-2xl font-sans font-bold text-[#1a3a5c]">
+                  <h2 className="text-xl md:text-2xl font-sans font-bold text-[#1B2A53]">
                     {item.title}
                   </h2>
-                  <p className="mt-3 text-[#1a3a5c]/90 text-base leading-relaxed">
+                  <p className="mt-3 text-[#1B2A53]/90 text-base leading-relaxed">
                     {item.body}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#1a3a5c] group-hover:text-[#0f2a42]">
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#1B2A53] hover:text-[#E2231A]">
                     View details
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </span>

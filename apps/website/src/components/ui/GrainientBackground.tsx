@@ -1,8 +1,6 @@
-"use client";
-
 import Grainient from "@/components/ui/Grainient";
 
-/** Full-viewport static gradient background for the entire site. */
+/** Full-viewport WebGL gradient with tuned render cost. */
 export default function GrainientBackground() {
   return (
     <div
@@ -15,6 +13,8 @@ export default function GrainientBackground() {
         color3="#001a3a"
         timeSpeed={0}
         grainAnimated={false}
+        maxDpr={1.25}
+        fallbackClassName="bg-grainient-blue"
         className="w-full h-full"
       />
     </div>
