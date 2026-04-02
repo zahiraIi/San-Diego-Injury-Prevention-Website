@@ -257,19 +257,20 @@ function GallerySection({ title, images }: GallerySectionConfig) {
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
       <div className="border border-[#1B2A53]/20 rounded-xl bg-white/60 overflow-hidden">
-        <CollapsibleTrigger className="flex items-center justify-between w-full px-5 md:px-6 py-4 md:py-5 cursor-pointer hover:bg-white/80 transition-colors group">
-          <div className="flex items-center gap-3">
-            <h2 className="text-xl md:text-2xl font-sans font-bold text-[#1B2A53]">
+        <CollapsibleTrigger className="flex items-start justify-between gap-3 w-full px-5 md:px-6 py-4 md:py-5 cursor-pointer text-left hover:bg-white/80 transition-colors group">
+          <div className="flex min-w-0 flex-1 flex-col gap-1 text-left sm:flex-row sm:items-baseline sm:gap-3">
+            <h2 className="text-xl font-sans font-bold leading-snug text-[#1B2A53] md:text-2xl">
               {title}
             </h2>
-            <span className="text-sm text-[#1B2A53]/50 font-medium">
+            <span className="shrink-0 text-sm font-medium tabular-nums text-[#1B2A53]/50">
               {images.length} photos
             </span>
           </div>
           <ChevronDown
-            className={`w-5 h-5 text-[#1B2A53]/60 transition-transform duration-200 ${
+            className={`mt-0.5 h-5 w-5 shrink-0 text-[#1B2A53]/60 transition-transform duration-200 ${
               open ? "rotate-180" : ""
             }`}
+            aria-hidden
           />
         </CollapsibleTrigger>
 
