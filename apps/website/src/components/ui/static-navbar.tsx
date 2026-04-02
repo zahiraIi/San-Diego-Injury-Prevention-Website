@@ -41,7 +41,6 @@ const navItems: NavItem[] = [
       { name: "For Volunteers", link: "/more/for-volunteers" },
     ],
   },
-  { name: "Apply", link: "/apply" },
   { name: "FAQs", link: "/faqs" },
   { name: "Contact", link: "/contact" },
 ];
