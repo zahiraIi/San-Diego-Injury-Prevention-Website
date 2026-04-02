@@ -7,17 +7,101 @@ import { ExternalLink, FileText } from "lucide-react";
 import PageHeader from "@/components/ui/page-header";
 import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
+const COMMUNITY_PDFS = [
+  {
+    href: "/documents/community/CDC-DIP_At-a-Glance_Falls_508.pdf",
+    label: "CDC Fall Prevention — At a Glance (falls)",
+  },
+  {
+    href: "/documents/community/SDIPP_Comprehensive_Pamphlet.pdf",
+    label: "SDIPP comprehensive pamphlet",
+  },
+  {
+    href: "/documents/community/STEADI_Feet_Footwear_Guide_O.pdf",
+    label: "STEADI — feet and footwear guide",
+  },
+  {
+    href: "/documents/community/steadi-brochure-postural-hypotension-508.pdf",
+    label: "STEADI — postural hypotension brochure",
+  },
+  {
+    href: "/documents/community/steadi-brochure-stayindependent-508.pdf",
+    label: "STEADI — staying independent brochure",
+  },
+  {
+    href: "/documents/community/steadi-brochure-whatyoucando-508.pdf",
+    label: "STEADI — what you can do brochure",
+  },
+] as const;
+
 export default function CommunityMembersPage() {
   return (
     <>
       <PageHeader
         title="For Community Members"
-        subtitle="San Diego Fall Prevention Task Force resources"
+        subtitle="Local partners, printable guides, and San Diego fall-prevention resources"
       />
 
       <section className="relative z-10 -mt-16 md:-mt-20 rounded-t-[2rem] sm:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)] bg-white overflow-hidden">
         <GrainientWhiteSection />
-        <div className="container mx-auto relative z-10 py-12 md:py-16 px-4 md:px-6 pb-20 md:pb-24">
+        <div className="container mx-auto relative z-10 py-12 md:py-16 px-4 md:px-6 pb-20 md:pb-24 space-y-16 md:space-y-20">
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto space-y-4"
+          >
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-[#1a3a5c]">
+              Jewish Family Service of San Diego
+            </h2>
+            <p className="text-lg text-[#1a3a5c]/90 leading-relaxed">
+              Explore programs and support from Jewish Family Service of San Diego — a trusted
+              community resource for health, wellness, and social services across the region.
+            </p>
+            <Link
+              href="https://www.jfssd.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent-blue text-white rounded-full font-bold hover:bg-accent-blue/90 transition-colors"
+            >
+              Visit jfssd.org
+              <ExternalLink className="w-4 h-4" />
+            </Link>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-[#1a3a5c] mb-6">
+              Printable resources
+            </h2>
+            <p className="text-lg text-[#1a3a5c]/90 leading-relaxed mb-8">
+              Download injury-prevention and fall-prevention guides you can read at home or share
+              with family and caregivers.
+            </p>
+            <ul className="space-y-3">
+              {COMMUNITY_PDFS.map((doc) => (
+                <li key={doc.href}>
+                  <Link
+                    href={doc.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 rounded-xl border border-[#1a3a5c]/15 bg-white/80 px-4 py-3 text-[#1a3a5c] hover:border-accent-blue/40 hover:bg-accent-blue/5 transition-colors"
+                  >
+                    <FileText className="w-5 h-5 text-accent-blue shrink-0 mt-0.5" />
+                    <span className="font-medium leading-snug">{doc.label}</span>
+                    <ExternalLink className="w-4 h-4 shrink-0 ml-auto text-[#1a3a5c]/50" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.section>
+
           <motion.section
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,14 +114,13 @@ export default function CommunityMembersPage() {
                 San Diego Fall Prevention Task Force
               </h2>
               <p>
-                Established in 2004, the San Diego Fall Prevention Task Force consists of
-                service providers and community members dedicated to promoting the health,
-                safety, independence, and quality of life of older adults through fall prevention.
+                Established in 2004, the San Diego Fall Prevention Task Force consists of service
+                providers and community members dedicated to promoting the health, safety,
+                independence, and quality of life of older adults through fall prevention.
               </p>
               <p>
-                The coalition convenes monthly to collaborate on initiatives, awareness
-                campaigns, and programs that reduce falls and their consequences in San Diego
-                County.
+                The coalition convenes monthly to collaborate on initiatives, awareness campaigns,
+                and programs that reduce falls and their consequences in San Diego County.
               </p>
               <div className="pt-4">
                 <Link

@@ -1,7 +1,34 @@
 "use client";
 
 import { useScroll, useTransform, motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+
+/** Distance from `el`'s top border to `ancestor`'s top border, using offsetParent chain (stable for sticky). */
+function offsetTopToAncestor(el: HTMLElement, ancestor: HTMLElement): number | null {
+  let top = 0;
+  let n: HTMLElement | null = el;
+  while (n && n !== ancestor) {
+    top += n.offsetTop;
+    n = n.offsetParent as HTMLElement | null;
+  }
+  return n === ancestor ? top : null;
+}
+
+/** Vertical center of the timeline dot relative to the timeline content root (scroll-independent). */
+function measureLineEndToDotCenter(refEl: HTMLElement): number | null {
+  const dots = refEl.querySelectorAll<HTMLElement>("[data-timeline-dot]");
+  const lastDot = dots[dots.length - 1];
+  if (!lastDot) return null;
+
+  const fromRefTop = offsetTopToAncestor(lastDot, refEl);
+  if (fromRefTop !== null) {
+    return fromRefTop + lastDot.offsetHeight / 2;
+  }
+
+  const cr = refEl.getBoundingClientRect();
+  const dr = lastDot.getBoundingClientRect();
+  return dr.top - cr.top + dr.height / 2;
+}
 
 export interface TimelineEntry {
   title: string;
@@ -21,22 +48,42 @@ export const Timeline = ({ data, title, subtitle }: TimelineProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
 
+  const updateHeight = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    const end = measureLineEndToDotCenter(el);
+    if (end !== null && end > 0) {
+      setHeight(end);
+    } else {
+      setHeight(el.getBoundingClientRect().height);
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    updateHeight();
+    requestAnimationFrame(() => updateHeight());
+  }, [data, updateHeight]);
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const updateHeight = () => setHeight(el.getBoundingClientRect().height);
-    updateHeight();
-    const observer = new ResizeObserver(updateHeight);
+    const observer = new ResizeObserver(() => {
+      requestAnimationFrame(() => updateHeight());
+    });
     observer.observe(el);
-    return () => observer.disconnect();
-  }, [data]);
+    window.addEventListener("load", updateHeight);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("load", updateHeight);
+    };
+  }, [data, updateHeight]);
 
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 10%", "end 50%"],
+    target: ref,
+    offset: ["start 10%", "end end"],
   });
 
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
+  const heightTransform = useTransform(scrollYProgress, (v) => v * height);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
@@ -63,10 +110,11 @@ export const Timeline = ({ data, title, subtitle }: TimelineProps) => {
         {data.map((item, index) => (
           <div
             key={index}
+            data-timeline-row
             className="flex justify-start pt-10 md:pt-40 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white flex items-center justify-center border-2 border-[#1a3a5c]/20 shadow-md">
+              <div data-timeline-dot className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white flex items-center justify-center border-2 border-[#1a3a5c]/20 shadow-md">
                 <div className="h-4 w-4 rounded-full bg-accent-blue/10 border-2 border-accent-blue" />
               </div>
               <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-[#1a3a5c]">
@@ -86,7 +134,7 @@ export const Timeline = ({ data, title, subtitle }: TimelineProps) => {
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-[#1a3a5c]/20 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-[#1a3a5c]/20 to-[#1a3a5c]/20 [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_100%)]"
         >
           <motion.div
             style={{

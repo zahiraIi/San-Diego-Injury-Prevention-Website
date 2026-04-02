@@ -11,8 +11,11 @@ export interface FeatureItem {
 
 interface FeaturePresidentsProps {
   badge?: string;
-  title: string;
+  /** Shown in the card when `showHeading` is true (e.g. homepage teaser). */
+  title?: string;
   subtitle?: string;
+  /** When false, the large title/subtitle block is omitted (hero already has the title). */
+  showHeading?: boolean;
   items: FeatureItem[];
   imageSrc: string;
   imageAlt: string;
@@ -23,9 +26,10 @@ interface FeaturePresidentsProps {
 }
 
 export function FeaturePresidents({
-  badge = "Message",
+  badge,
   title,
   subtitle,
+  showHeading = true,
   items,
   imageSrc,
   imageAlt,
@@ -56,38 +60,44 @@ export function FeaturePresidents({
           className={`grid border rounded-xl p-8 md:p-10 grid-cols-1 gap-8 items-center lg:grid-cols-2 w-full backdrop-blur-xl shadow-2xl shadow-black/10 ${cardClass}`}
         >
           <div className="flex gap-10 flex-col">
-            <div className="flex gap-4 flex-col">
-              {badge && (
-                <div>
-                  <Badge
-                    variant="outline"
-                    className={
-                      onDark
-                        ? "border-white/40 text-white/90"
-                        : whiteCard
-                          ? "border-black/30 text-black"
-                          : ""
-                    }
-                  >
-                    {badge}
-                  </Badge>
-                </div>
-              )}
-              <div className="flex gap-2 flex-col">
-                <h2
-                  className={`text-4xl lg:text-5xl xl:text-6xl tracking-tighter max-w-xl text-left font-bold ${textClass}`}
-                >
-                  {title}
-                </h2>
-                {subtitle && (
-                  <p
-                    className={`text-xl leading-relaxed tracking-tight max-w-xl text-left ${mutedClass}`}
-                  >
-                    {subtitle}
-                  </p>
+            {(badge || showHeading) && (
+              <div className="flex gap-4 flex-col">
+                {badge && (
+                  <div>
+                    <Badge
+                      variant="outline"
+                      className={
+                        onDark
+                          ? "border-white/40 text-white/90"
+                          : whiteCard
+                            ? "border-black/30 text-black"
+                            : ""
+                      }
+                    >
+                      {badge}
+                    </Badge>
+                  </div>
+                )}
+                {showHeading && (
+                  <div className="flex gap-2 flex-col">
+                    {title ? (
+                      <h2
+                        className={`text-4xl lg:text-5xl xl:text-6xl tracking-tighter max-w-xl text-left font-bold ${textClass}`}
+                      >
+                        {title}
+                      </h2>
+                    ) : null}
+                    {subtitle && (
+                      <p
+                        className={`text-xl leading-relaxed tracking-tight max-w-xl text-left ${mutedClass}`}
+                      >
+                        {subtitle}
+                      </p>
+                    )}
+                  </div>
                 )}
               </div>
-            </div>
+            )}
             <div className="grid lg:pl-6 grid-cols-1 sm:grid-cols-3 items-start lg:grid-cols-1 gap-6">
               {items.map((item, i) => (
                 <div

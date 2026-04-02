@@ -17,6 +17,8 @@ interface GalleryImage {
   id: string;
   src: string;
   alt: string;
+  /** Optional caption shown under the image */
+  caption?: string;
 }
 
 interface GallerySectionConfig {
@@ -24,83 +26,186 @@ interface GallerySectionConfig {
   images: GalleryImage[];
 }
 
-const GBM_IMAGES: GalleryImage[] = [
-  ...Array.from({ length: 8 }, (_, i) => ({
-    id: `gbm-${i + 1}`,
-    src: `/images/GBM/GBM${i + 1}.webp`,
-    alt: `Organization meetings photo ${i + 1}`,
-  })),
-  { id: "gbm-9", src: "/images/GBM/GMB9.webp", alt: "Organization meetings photo 9" },
+const FALL_PREVENTION_ATRIA_IMAGES: GalleryImage[] = [
+  {
+    id: "atria-fp-1",
+    src: "/images/Fall Prevention Classes at Atria La Jolla/1.webp",
+    alt: "SDIPP Executive Health Coordinator leads a guided warm-up for residents",
+    caption:
+      "SDIPP Executive Health Coordinator leads participants through a guided warm-up, helping residents improve mobility, build strength, and prepare safely for fall prevention exercises.",
+  },
+  {
+    id: "atria-fp-2",
+    src: "/images/Fall Prevention Classes at Atria La Jolla/2.webp",
+    alt: "SDIPP volunteers lead chair-based exercises for participants",
+    caption:
+      "SDIPP volunteers adapt exercises into chair-based movements, ensuring workouts are safe, accessible, and effective for participants of all mobility levels.",
+  },
+  {
+    id: "atria-fp-3",
+    src: "/images/Fall Prevention Classes at Atria La Jolla/3.webp",
+    alt: "Participants in a gentle shoulder warm-up during fall prevention class",
+    caption:
+      "Participants engage in a gentle shoulder warm-up, improving flexibility and relieving stiffness, part of a regular routine to promote mobility, maintain joint health, and support long-term injury prevention.",
+  },
 ];
 
-const VITALS_TRAINING_IMAGES: GalleryImage[] = [
-  "IMG_0726",
-  "IMG_0727",
-  "IMG_0728",
-  "IMG_0729",
-  "IMG_0730",
-  "IMG_0731",
-  "IMG_0732",
-  "IMG_0733",
-  "IMG_7684",
-  "IMG_7685",
-  "IMG_7686",
-  "IMG_7688",
-  "IMG_7689",
-  "IMG_7692",
-  "IMG_7694",
-  "IMG_7695",
-].map((name, i) => ({
-  id: `vitals-${i + 1}`,
-  src: `/images/vitals-training/${name}.webp`,
-  alt: `Vitals training ${i + 1}`,
-}));
+const FALL_PREVENTION_CHATEAU_IMAGES: GalleryImage[] = [
+  {
+    id: "chateau-fp-1",
+    src: "/images/Fall Prevention Classes at Chateau La Jolla/chateau1.webp",
+    alt: "Participants in guided hip-strengthening exercises with chairs and volunteers",
+    caption:
+      "In one of our first classes, participants perform guided hip-strengthening exercises with the support of chairs and volunteers, helping improve stability, enhance balance, and reduce the risk of falls in a safe and supportive environment.",
+  },
+  {
+    id: "chateau-fp-2",
+    src: "/images/Fall Prevention Classes at Chateau La Jolla/chateau2.webp",
+    alt: "Volunteers demonstrate safe techniques for getting back up after a fall",
+    caption:
+      "Volunteers demonstrate safe techniques for getting back up after a fall, empowering participants with the skills and confidence to respond effectively and reduce the risk of injury.",
+  },
+  {
+    id: "chateau-fp-3",
+    src: "/images/Fall Prevention Classes at Chateau La Jolla/chateau3.webp",
+    alt: "Participants perform guided lunges for strength and balance",
+    caption:
+      "Participants perform guided lunges to build lower body strength, improve balance, and support overall mobility in a safe and encouraging environment.",
+  },
+];
 
-const VOLUNTEERING_IMAGES: GalleryImage[] = Array.from(
-  { length: 11 },
-  (_, i) => ({
-    id: `vol-${i + 1}`,
-    src: `/images/volunteering/volunteer${i + 1}.webp`,
-    alt: `Volunteering ${i + 1}`,
-  })
-);
+const HEALTH_FAIRS_IMAGES: GalleryImage[] = [
+  {
+    id: "health-fair-55",
+    src: "/images/Health Fairs/DSC04455.webp",
+    alt: "Volunteers teach Stop the Bleed tourniquet and first aid skills at a health fair",
+    caption:
+      "Volunteers utilize their ACS Stop the Bleed training to teach participants how to apply a tourniquet and provide basic first aid for traumatic injuries, building confidence and lifesaving skills in emergency situations.",
+  },
+  {
+    id: "health-fair-01",
+    src: "/images/Health Fairs/DSC04501.webp",
+    alt: "Volunteers demonstrate tai chi with an older participant",
+    caption:
+      "Volunteers demonstrate tai chi techniques to an older participant, promoting gentle movement, balance, and confidence through guided, individualized instruction.",
+  },
+  {
+    id: "health-fair-39",
+    src: "/images/Health Fairs/DSC04539.webp",
+    alt: "Pualani Vazquez presents on car safety and injury prevention",
+    caption:
+      "Pualani Vazquez, a Trauma Injury Prevention Coordinator at Scripps Health, delivers an engaging session on car safety, educating attendees on best practices, injury prevention, and strategies to stay safe on the road.",
+  },
+];
 
-const CHATEAU_IMAGES: GalleryImage[] = Array.from({ length: 23 }, (_, i) => ({
-  id: `chateau-${i + 1}`,
-  src: `/images/chateau/chateau${i + 1}.webp`,
-  alt: `Chateau La Jolla event ${i + 1}`,
-}));
+const HEALTH_LITERACY_PRESENTATIONS_IMAGES: GalleryImage[] = [
+  {
+    id: "hlp-1",
+    src: "/images/Health Literacy Presentations/hlp1.webp",
+    alt: "Volunteer leads a health literacy presentation for high school students",
+    caption:
+      "Volunteer leads an engaging presentation for high school students, introducing key concepts of health literacy in a relatable and accessible way. By encouraging questions and real-life connections, they help students build the confidence and knowledge needed to better understand their health and make informed choices in their daily lives.",
+  },
+  {
+    id: "hlp-2",
+    src: "/images/Health Literacy Presentations/hlp2.webp",
+    alt: "SDIPP Health Coordinator teaches Lincoln High School students blood pressure measurement",
+    caption:
+      "An SDIPP Health Coordinator assists in teaching Lincoln High School students how to measure blood pressure manually using auscultation, along with training in standard vital sign assessment.",
+  },
+  {
+    id: "hlp-3",
+    src: "/images/Health Literacy Presentations/hlp3.webp",
+    alt: "SDIPP volunteers table at United Way Lunchtime Orientation Kickoff",
+    caption:
+      'SDIPP student volunteers host a tabling event at the United Way "Lunchtime Orientation Kickoff," representing the Healthcare Pathway by sharing information about program participation and answering general questions about the college experience.',
+  },
+];
 
-const ATRIA_TAI_CHI_IMAGES: GalleryImage[] = [
-  "IMG_0661",
-  "IMG_0663",
-  "IMG_0664",
-  "IMG_0665",
-  "IMG_0666",
-  "IMG_0667",
-  "IMG_0668",
-  "IMG_0669",
-  "IMG_0670",
-  "IMG_0671",
-  "IMG_0672",
-].map((name, i) => ({
-  id: `atria-${i + 1}`,
-  src: `/images/atria-tai-chi/${name}.webp`,
-  alt: `Atria La Jolla Tai Chi ${i + 1}`,
-}));
+const ORGANIZATION_MEETINGS_IMAGES: GalleryImage[] = [
+  {
+    id: "org-1",
+    src: "/images/Organization Meetings/org1.webp",
+    alt: "Co-president introduces nursing home volunteer opportunities for fall prevention classes",
+    caption:
+      "A co-president introduces upcoming nursing home volunteer opportunities, where members will lead fall prevention and mobility classes. Members learn how they can get involved in supporting older adults while gaining meaningful, hands-on experience in community health.",
+  },
+  {
+    id: "org-2",
+    src: "/images/Organization Meetings/org2.webp",
+    alt: "Members listen during a general meeting as leaders share updates",
+    caption:
+      "Members listen attentively during a general meeting as club leaders share updates on ongoing activities and introduce new opportunities for involvement.",
+  },
+];
+
+const VOLUNTEER_TRAINING_IMAGES: GalleryImage[] = [
+  {
+    id: "vt-1",
+    src: "/images/volunteer training/vt1.webp",
+    alt: "Volunteers practice first aid for traumatic injuries and severe bleeding",
+    caption:
+      "Volunteers practice first aid for traumatic injuries, focusing on managing bleeding from bullet wounds and similar severe injuries using techniques like direct pressure.",
+  },
+  {
+    id: "vt-2",
+    src: "/images/volunteer training/vt2.webp",
+    alt: "Volunteers in a simulated emergency trauma scenario",
+    caption:
+      "Volunteers participate in a simulated emergency scenario, putting their first aid and trauma response skills into practice in a realistic, hands-on training exercise.",
+  },
+  {
+    id: "vt-3",
+    src: "/images/volunteer training/vt3.webp",
+    alt: "Volunteers practice wound packing and tourniquet application",
+    caption:
+      "Two volunteers get hands-on practice with advanced trauma care, practicing wound packing and the proper application of tourniquets to control serious bleeding.",
+  },
+  {
+    id: "vt-4",
+    src: "/images/volunteer training/vt4.webp",
+    alt: "SDIPP Health Coordinators and EMTs prepare to lead vitals training",
+    caption:
+      "SDIPP Health Coordinators and National Registry Certified EMTs prepare to lead a vitals training session, preparing to teach essential skills to volunteers.",
+  },
+  {
+    id: "vt-5",
+    src: "/images/volunteer training/vt5.webp",
+    alt: "Volunteers practice measuring vital signs with certified EMTs",
+    caption:
+      "Volunteers practice measuring key vital signs—including blood pressure, respiratory rate, heart rate, pupillary reactivity, and capillary refill time—gaining hands-on experience under the guidance of our certified EMTs.",
+  },
+];
 
 const GALLERY_SECTIONS: GallerySectionConfig[] = [
-  { title: "Organization Meetings", images: GBM_IMAGES },
-  { title: "Vitals Training", images: VITALS_TRAINING_IMAGES },
-  { title: "Volunteering", images: VOLUNTEERING_IMAGES },
-  { title: "1:17 Chateau", images: CHATEAU_IMAGES },
-  { title: "Atria La Jolla Tai Chi", images: ATRIA_TAI_CHI_IMAGES },
+  {
+    title: "Fall Prevention Classes at Atria La Jolla",
+    images: FALL_PREVENTION_ATRIA_IMAGES,
+  },
+  {
+    title: "Fall Prevention Classes at Chateau La Jolla",
+    images: FALL_PREVENTION_CHATEAU_IMAGES,
+  },
+  {
+    title: "Health Fairs",
+    images: HEALTH_FAIRS_IMAGES,
+  },
+  {
+    title: "Health Literacy Presentations",
+    images: HEALTH_LITERACY_PRESENTATIONS_IMAGES,
+  },
+  { title: "Organization Meetings", images: ORGANIZATION_MEETINGS_IMAGES },
+  {
+    title: "Volunteer Training",
+    images: VOLUNTEER_TRAINING_IMAGES,
+  },
 ];
 
 // ─── Single collapsible section ─────────────────────────────────────────────
 
 function GallerySection({ title, images }: GallerySectionConfig) {
   const [open, setOpen] = useState(false);
+  const hasCaptions = images.some((img) => img.caption);
 
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
@@ -123,19 +228,44 @@ function GallerySection({ title, images }: GallerySectionConfig) {
 
         <CollapsibleContent className="data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up overflow-hidden">
           <div className="px-5 md:px-6 pb-5 md:pb-6 pt-1">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            <div
+              className={
+                hasCaptions
+                  ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
+                  : "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
+              }
+            >
               {images.map((img) => (
                 <div
                   key={img.id}
-                  className="relative aspect-square rounded-lg overflow-hidden border border-[#1a3a5c]/15 bg-gray-100"
+                  className={
+                    hasCaptions ? "flex flex-col gap-2 min-w-0" : "contents"
+                  }
                 >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
+                  <div
+                    className={
+                      hasCaptions
+                        ? "relative aspect-[4/3] sm:aspect-square rounded-lg overflow-hidden border border-[#1a3a5c]/15 bg-gray-100"
+                        : "relative aspect-square rounded-lg overflow-hidden border border-[#1a3a5c]/15 bg-gray-100"
+                    }
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                      sizes={
+                        hasCaptions
+                          ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      }
+                    />
+                  </div>
+                  {hasCaptions && img.caption ? (
+                    <p className="text-sm md:text-[15px] text-[#1a3a5c]/90 leading-relaxed">
+                      {img.caption}
+                    </p>
+                  ) : null}
                 </div>
               ))}
             </div>

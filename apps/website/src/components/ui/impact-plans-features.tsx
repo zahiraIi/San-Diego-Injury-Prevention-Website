@@ -18,7 +18,7 @@ interface ImpactPlansFeaturesProps {
 
 export function ImpactPlansFeatures({
   title = "How we create impact",
-  subtitle = "From committees to community collaboration—see what drives our mission forward.",
+  subtitle = "From community outreach to collaborations within healthcare—see what drives our mission forward.",
   items,
 }: ImpactPlansFeaturesProps) {
   const [topRow, bottomRow] = [items.slice(0, 3), items.slice(3, 5)];

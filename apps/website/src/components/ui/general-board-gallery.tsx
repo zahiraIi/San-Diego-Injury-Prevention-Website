@@ -7,6 +7,7 @@ export interface GeneralBoardMember {
   name: string;
   image: string;
   email?: string;
+  role?: string;
 }
 
 interface GeneralBoardGalleryProps {
@@ -47,8 +48,15 @@ export default function GeneralBoardGallery({
                 sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
               />
             </div>
-            <figcaption className="mt-3 font-semibold text-[#1a3a5c] text-sm md:text-base">
-              {member.name}
+            <figcaption className="mt-3 space-y-1">
+              <span className="block font-semibold text-[#1a3a5c] text-sm md:text-base">
+                {member.name}
+              </span>
+              {member.role && (
+                <span className="block text-xs md:text-sm text-[#1a3a5c]/85 font-medium leading-snug">
+                  {member.role}
+                </span>
+              )}
             </figcaption>
             {member.email && (
               <a

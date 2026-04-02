@@ -21,8 +21,7 @@ export default function MessageFromPresidentsPage() {
         <GrainientWhiteSection />
         <div className="relative z-10">
           <FeaturePresidents
-            badge="Message"
-            title="Message from the Presidents"
+            showHeading={false}
             items={PRESIDENTS_MESSAGE_PARAGRAPHS.map((description) => ({
               description,
             }))}

@@ -1,15 +1,28 @@
 "use client";
 
+import Image from "next/image";
 import { Timeline } from "@/components/ui/timeline";
-import { Users, CalendarDays, BarChart3, Scale } from "lucide-react";
+import { Users, CalendarDays, BarChart3, Scale, type LucideIcon } from "lucide-react";
 import PageHeader from "@/components/ui/page-header";
 import GrainientWhiteSection from "@/components/ui/GrainientWhiteSection";
 
-const committees = [
+interface Committee {
+  name: string;
+  members: string;
+  icon: LucideIcon;
+  /** Committee lead photo under `public/images/committees/` */
+  leadPhoto?: string;
+  description: string[];
+  focus: string | null;
+  tasks: string[] | null;
+}
+
+const committees: Committee[] = [
   {
     name: "Outreach Committee",
     members: "5+ general members",
     icon: Users,
+    leadPhoto: "/images/committees/outreach-committee.png",
     description: [
       "Explore public health initiatives and research in San Diego county and seeing how we could get involved → focus on underserved communities.",
       "Expand and maintain program partnerships.",
@@ -29,6 +42,7 @@ const committees = [
     name: "Logistics Committee",
     members: "~6 general members",
     icon: CalendarDays,
+    leadPhoto: "/images/committees/logistics-committee.png",
     description: [
       "Organize and facilitate smooth execution of volunteer events to maximize community benefit",
     ],
@@ -46,6 +60,7 @@ const committees = [
     name: "Research & Impact Committee",
     members: "~6 general members",
     icon: BarChart3,
+    leadPhoto: "/images/committees/research-and-impact-committee.png",
     description: [
       "Research and utilize resources to educate the community and improve our programs.",
       "Write summaries to support advertising and volunteer initiatives",
@@ -75,6 +90,18 @@ const timelineData = committees.map((committee) => ({
   title: committee.name,
   content: (
     <div className="space-y-8">
+      {committee.leadPhoto ? (
+        <div className="relative w-full max-w-3xl aspect-[16/10] rounded-2xl overflow-hidden border border-accent-blue/20 shadow-md bg-[#f8fafc]">
+          <Image
+            src={committee.leadPhoto}
+            alt={`${committee.name} leads`}
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 768px"
+          />
+        </div>
+      ) : null}
+
       {/* Member count badge */}
       <div className="flex items-center gap-4">
         <committee.icon className="w-8 h-8 text-accent-blue" />
