@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+
+/** Display size of each stack portrait; used in `sizes` so Next serves sharp 1x/2x assets. */
+const AVATAR_PX = 48;
 
 /** Full-bleed hero image — large WebP from `/public/images`. */
 const HERO_IMAGE_SRC =
@@ -26,7 +28,7 @@ export default function AeroHero2() {
           alt="San Diego Injury Prevention Program at a community health event"
           fill
           priority
-          quality={90}
+          quality={95}
           className="object-cover object-center"
           sizes="100vw"
         />
@@ -53,16 +55,20 @@ export default function AeroHero2() {
                 className="flex -space-x-3"
                 aria-label="SDIPP executive board"
               >
-                {AVATAR_IMAGES.map((item, i) => (
-                  <Avatar
+                {AVATAR_IMAGES.map((item) => (
+                  <div
                     key={item.src}
-                    className="size-12 border-2 border-white/90 transition-all duration-300 hover:grayscale-0"
+                    className="relative size-12 shrink-0 overflow-hidden rounded-full border-2 border-white/90 bg-[#1B2A53]"
                   >
-                    <AvatarImage src={item.src} alt={item.alt} />
-                    <AvatarFallback className="bg-[#1B2A53] text-white">
-                      M{i + 1}
-                    </AvatarFallback>
-                  </Avatar>
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      quality={95}
+                      sizes={`${AVATAR_PX}px`}
+                      className="object-cover object-top"
+                    />
+                  </div>
                 ))}
               </div>
               <div className="flex flex-col font-normal leading-tight">
