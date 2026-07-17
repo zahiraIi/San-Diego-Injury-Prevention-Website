@@ -16,7 +16,7 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-const SITE_URL = "https://sdipp.org";
+const SITE_URL = "https://san-diego-injury-prevention-website.vercel.app/";
 
 export const metadata: Metadata = {
   title: {
