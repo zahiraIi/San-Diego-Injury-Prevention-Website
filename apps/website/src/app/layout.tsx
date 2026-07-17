@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "Student-run organization empowering their San Diego community through education, outreach, and injury prevention.",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon-32x32.png",
     shortcut: "/favicon-32x32.png",
     apple: "/apple-touch-icon.png",
   },
@@ -59,8 +59,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://linktr.ee" />
 
-        {/* Favicon links (fallback / explicit) */}
-        <link rel="icon" href="/favicon.ico" />
+        {/* Favicon links (PNG only) */}
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
